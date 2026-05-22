@@ -1,5 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import { Award, Check, Users, Heart, Code2, Sparkles } from "lucide-react";
+import {
+  Award,
+  Check,
+  Users,
+  Heart,
+  Code2,
+  Sparkles,
+} from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
 import pssLogo from "../../imports/PSS_logo_N_(1).png";
 import aposLogo from "../../imports/APOS_main_(1).png";
@@ -71,34 +78,6 @@ const innovations2025 = [
   },
 ];
 
-const winners2024 = [
-  {
-    prize: "Champion",
-    team: "Missy Bot 1.0",
-    group: "Group 13",
-    description:
-      "AI breast care nurse supporting elderly patients with cognitive, visual, and hearing impairments.",
-    image:
-      "https://images.unsplash.com/photo-1765896387377-e293914d1e69?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbGRlcmx5JTIwcGF0aWVudCUyMGNhcmUlMjBudXJzZXxlbnwxfHx8fDE3NzcwMzY2NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-  },
-  {
-    prize: "1st Runner-up",
-    team: "SimplePLAN",
-    group: "Group 4",
-    description: "Digital platform enabling advanced care planning conversations.",
-    image:
-      "https://images.unsplash.com/photo-1666886573301-b5d526cfd518?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxkaWdpdGFsJTIwaGVhbHRoJTIwcGxhbm5pbmclMjBjb25zdWx0YXRpb258ZW58MXx8fHwxNzc3MDM2NjUyfDA&ixlib=rb-4.1.0&q=80&w=1080",
-  },
-  {
-    prize: "2nd Runner-up",
-    team: "RALPH",
-    group: "Group 19",
-    description: "Personalised pocket pharmacist supporting counselling services.",
-    image:
-      "https://images.unsplash.com/photo-1576091358783-a212ec293ff3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwaGFybWFjaXN0JTIwY291bnNlbGluZyUyMHBhdGllbnR8ZW58MXx8fHwxNzc3MDM2NjUzfDA&ixlib=rb-4.1.0&q=80&w=1080",
-  },
-];
-
 const partners = [
   {
     name: "Pharmaceutical Society of Singapore",
@@ -147,7 +126,7 @@ function FadeIn({
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true);
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -158,7 +137,9 @@ function FadeIn({
       ref={ref}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(24px)",
+        transform: visible
+          ? "translateY(0)"
+          : "translateY(24px)",
         transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`,
       }}
     >
@@ -171,26 +152,32 @@ export function AboutPage() {
   return (
     <div
       className="min-h-screen"
-      style={{ background: "#ffffff", fontFamily: "'Space Grotesk', sans-serif" }}
+      style={{
+        background: "#ffffff",
+        fontFamily: "'Space Grotesk', sans-serif",
+      }}
     >
       {/* Hero */}
       <section
         className="relative pt-36 pb-20 overflow-hidden"
         style={{
-          background: "linear-gradient(135deg, #fef3f7 0%, #fef8fa 50%, #f5f3ff 100%)",
+          background:
+            "linear-gradient(135deg, #fef3f7 0%, #fef8fa 50%, #f5f3ff 100%)",
         }}
       >
         <div
           className="absolute top-0 right-0 w-[700px] h-[700px] rounded-full pointer-events-none"
           style={{
-            background: "radial-gradient(circle, rgba(236,72,153,0.07) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(236,72,153,0.07) 0%, transparent 70%)",
             filter: "blur(80px)",
           }}
         />
         <div
           className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
           style={{
-            background: "radial-gradient(circle, rgba(168,85,247,0.07) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(168,85,247,0.07) 0%, transparent 70%)",
             filter: "blur(80px)",
           }}
         />
@@ -228,7 +215,8 @@ export function AboutPage() {
             Healthcare innovation,{" "}
             <span
               style={{
-                background: "linear-gradient(135deg, #ec4899, #a855f7)",
+                background:
+                  "linear-gradient(135deg, #ec4899, #a855f7)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
@@ -246,9 +234,10 @@ export function AboutPage() {
               maxWidth: "640px",
             }}
           >
-            HackitRx is Singapore's patient-centred health hackathon. Since 2024, we have
-            been bridging the gap between those who experience healthcare challenges and
-            those who have the skills to solve them.
+            HackitRx is Singapore's patient-centred health
+            hackathon. Since 2024, we have been bridging the gap
+            between those who experience healthcare challenges
+            and those who have the skills to solve them.
           </p>
         </div>
       </section>
@@ -259,16 +248,27 @@ export function AboutPage() {
           <FadeIn>
             <h2
               className="mb-4"
-              style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: "#1a1a2e" }}
+              style={{
+                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                fontWeight: 700,
+                color: "#1a1a2e",
+              }}
             >
               Three editions. One mission.
             </h2>
             <p
               className="mb-14"
-              style={{ fontSize: "1.05rem", color: "#6a6a7e", lineHeight: 1.75, maxWidth: "620px" }}
+              style={{
+                fontSize: "1.05rem",
+                color: "#6a6a7e",
+                lineHeight: 1.75,
+                maxWidth: "620px",
+              }}
             >
-              Each edition has refined how we bring patients and builders together — and raised the
-              bar for what collaborative healthcare innovation looks like in Singapore.
+              Each edition has refined how we bring patients and
+              builders together — and raised the bar for what
+              collaborative healthcare innovation looks like in
+              Singapore.
             </p>
           </FadeIn>
 
@@ -277,7 +277,8 @@ export function AboutPage() {
             <div
               className="absolute left-[20px] top-6 bottom-6 w-0.5 hidden sm:block"
               style={{
-                background: "linear-gradient(180deg, #f59e0b, #ec4899, #a855f7)",
+                background:
+                  "linear-gradient(180deg, #f59e0b, #ec4899, #a855f7)",
               }}
             />
 
@@ -293,7 +294,13 @@ export function AboutPage() {
                         border: `2px solid ${m.color}`,
                       }}
                     >
-                      <span style={{ fontSize: "0.75rem", fontWeight: 800, color: m.color }}>
+                      <span
+                        style={{
+                          fontSize: "0.75rem",
+                          fontWeight: 800,
+                          color: m.color,
+                        }}
+                      >
                         {m.year.slice(2)}
                       </span>
                     </div>
@@ -333,18 +340,39 @@ export function AboutPage() {
                       </div>
                       <p
                         className="mb-5"
-                        style={{ fontSize: "0.98rem", color: "#4a4a5e", lineHeight: 1.8 }}
+                        style={{
+                          fontSize: "0.98rem",
+                          color: "#4a4a5e",
+                          lineHeight: 1.8,
+                        }}
                       >
                         {m.description}
                       </p>
                       <div
                         className="inline-flex flex-col items-start px-4 py-3 rounded-xl"
-                        style={{ background: `${m.color}0e`, border: `1px solid ${m.color}22` }}
+                        style={{
+                          background: `${m.color}0e`,
+                          border: `1px solid ${m.color}22`,
+                        }}
                       >
-                        <span style={{ fontSize: "0.7rem", fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.07em" }}>
+                        <span
+                          style={{
+                            fontSize: "0.7rem",
+                            fontWeight: 700,
+                            color: "#9ca3af",
+                            textTransform: "uppercase",
+                            letterSpacing: "0.07em",
+                          }}
+                        >
                           {m.stat}
                         </span>
-                        <span style={{ fontSize: "1.5rem", fontWeight: 800, color: m.color }}>
+                        <span
+                          style={{
+                            fontSize: "1.5rem",
+                            fontWeight: 800,
+                            color: m.color,
+                          }}
+                        >
                           {m.statValue}
                         </span>
                       </div>
@@ -361,7 +389,8 @@ export function AboutPage() {
       <section
         className="py-24"
         style={{
-          background: "linear-gradient(135deg, #fef8fa 0%, #f8f4fe 100%)",
+          background:
+            "linear-gradient(135deg, #fef8fa 0%, #f8f4fe 100%)",
         }}
       >
         <div className="max-w-6xl mx-auto px-6">
@@ -380,7 +409,11 @@ export function AboutPage() {
               </span>
               <h2
                 className="mt-2"
-                style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: "#1a1a2e" }}
+                style={{
+                  fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                  fontWeight: 700,
+                  color: "#1a1a2e",
+                }}
               >
                 2025 Winning Solutions
               </h2>
@@ -395,7 +428,8 @@ export function AboutPage() {
                   style={{
                     background: "rgba(255, 255, 255, 0.8)",
                     border: "1px solid rgba(236,72,153,0.12)",
-                    boxShadow: "0 4px 16px rgba(168,85,247,0.07)",
+                    boxShadow:
+                      "0 4px 16px rgba(168,85,247,0.07)",
                   }}
                 >
                   <div className="relative h-44 overflow-hidden">
@@ -415,15 +449,32 @@ export function AboutPage() {
                   <div className="p-6">
                     <h4
                       className="mb-4"
-                      style={{ fontSize: "1.3rem", fontWeight: 700, color: "#ec4899" }}
+                      style={{
+                        fontSize: "1.3rem",
+                        fontWeight: 700,
+                        color: "#ec4899",
+                      }}
                     >
                       {item.team}
                     </h4>
                     <ul className="space-y-2.5">
                       {item.solutions.map((sol, idx) => (
-                        <li key={idx} className="flex items-start gap-2.5">
-                          <Check size={16} className="mt-0.5 flex-shrink-0" style={{ color: "#a855f7" }} />
-                          <span style={{ fontSize: "0.95rem", color: "#3a3a4e", lineHeight: 1.6 }}>
+                        <li
+                          key={idx}
+                          className="flex items-start gap-2.5"
+                        >
+                          <Check
+                            size={16}
+                            className="mt-0.5 flex-shrink-0"
+                            style={{ color: "#a855f7" }}
+                          />
+                          <span
+                            style={{
+                              fontSize: "0.95rem",
+                              color: "#3a3a4e",
+                              lineHeight: 1.6,
+                            }}
+                          >
                             {sol}
                           </span>
                         </li>
@@ -455,7 +506,11 @@ export function AboutPage() {
               </span>
               <h2
                 className="mt-2"
-                style={{ fontSize: "clamp(1.8rem, 4vw, 2.6rem)", fontWeight: 700, color: "#1a1a2e" }}
+                style={{
+                  fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                  fontWeight: 700,
+                  color: "#1a1a2e",
+                }}
               >
                 2024 Award Winners
               </h2>
@@ -470,7 +525,8 @@ export function AboutPage() {
                   style={{
                     background: "rgba(255, 255, 255, 0.8)",
                     border: "1px solid rgba(245,158,11,0.15)",
-                    boxShadow: "0 4px 16px rgba(245,158,11,0.07)",
+                    boxShadow:
+                      "0 4px 16px rgba(245,158,11,0.07)",
                   }}
                 >
                   <div className="relative h-44 overflow-hidden">
@@ -489,11 +545,21 @@ export function AboutPage() {
                     <div className="absolute bottom-3 left-4">
                       <div
                         className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full"
-                        style={{ background: "rgba(245, 158, 11, 0.92)" }}
+                        style={{
+                          background:
+                            "rgba(245, 158, 11, 0.92)",
+                        }}
                       >
-                        <Award size={13} style={{ color: "#fff" }} />
+                        <Award
+                          size={13}
+                          style={{ color: "#fff" }}
+                        />
                         <span
-                          style={{ fontSize: "0.8rem", fontWeight: 700, color: "#fff" }}
+                          style={{
+                            fontSize: "0.8rem",
+                            fontWeight: 700,
+                            color: "#fff",
+                          }}
                         >
                           {item.prize}
                         </span>
@@ -503,17 +569,30 @@ export function AboutPage() {
                   <div className="p-6">
                     <h4
                       className="mb-1"
-                      style={{ fontSize: "1.2rem", fontWeight: 700, color: "#f59e0b" }}
+                      style={{
+                        fontSize: "1.2rem",
+                        fontWeight: 700,
+                        color: "#f59e0b",
+                      }}
                     >
                       {item.team}
                     </h4>
                     <p
                       className="mb-3"
-                      style={{ fontSize: "0.82rem", color: "#94a3b8" }}
+                      style={{
+                        fontSize: "0.82rem",
+                        color: "#94a3b8",
+                      }}
                     >
                       {item.group}
                     </p>
-                    <p style={{ fontSize: "0.95rem", color: "#3a3a4e", lineHeight: 1.65 }}>
+                    <p
+                      style={{
+                        fontSize: "0.95rem",
+                        color: "#3a3a4e",
+                        lineHeight: 1.65,
+                      }}
+                    >
                       {item.description}
                     </p>
                   </div>
@@ -528,7 +607,8 @@ export function AboutPage() {
       <section
         className="py-24"
         style={{
-          background: "linear-gradient(135deg, #fef3f7 0%, #f5f3ff 100%)",
+          background:
+            "linear-gradient(135deg, #fef3f7 0%, #f5f3ff 100%)",
         }}
       >
         <div className="max-w-5xl mx-auto px-6">
@@ -564,8 +644,10 @@ export function AboutPage() {
                   maxWidth: "560px",
                 }}
               >
-                HackitRx brings together three organisations that each represent a critical
-                perspective: clinical expertise, patient voice, and technology.
+                HackitRx brings together three organisations
+                that each represent a critical perspective:
+                clinical expertise, patient voice, and
+                technology.
               </p>
             </div>
           </FadeIn>
@@ -604,7 +686,11 @@ export function AboutPage() {
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-2">
                         <h3
-                          style={{ fontSize: "1.2rem", fontWeight: 700, color: "#1a1a2e" }}
+                          style={{
+                            fontSize: "1.2rem",
+                            fontWeight: 700,
+                            color: "#1a1a2e",
+                          }}
                         >
                           {p.name}
                         </h3>
@@ -626,14 +712,27 @@ export function AboutPage() {
                         className="inline-flex items-center gap-1.5 mb-3 px-3 py-1 rounded-lg"
                         style={{ background: `${p.color}0e` }}
                       >
-                        <Icon size={14} style={{ color: p.color }} />
+                        <Icon
+                          size={14}
+                          style={{ color: p.color }}
+                        />
                         <span
-                          style={{ fontSize: "0.78rem", fontWeight: 600, color: p.color }}
+                          style={{
+                            fontSize: "0.78rem",
+                            fontWeight: 600,
+                            color: p.color,
+                          }}
                         >
                           {p.role}
                         </span>
                       </div>
-                      <p style={{ fontSize: "0.97rem", color: "#4a4a5e", lineHeight: 1.8 }}>
+                      <p
+                        style={{
+                          fontSize: "0.97rem",
+                          color: "#4a4a5e",
+                          lineHeight: 1.8,
+                        }}
+                      >
                         {p.description}
                       </p>
                     </div>
