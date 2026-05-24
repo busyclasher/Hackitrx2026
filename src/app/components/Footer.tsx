@@ -1,9 +1,22 @@
 import { Heart } from "lucide-react";
+import { useNavigate, useLocation } from "react-router";
 
 export function Footer() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isMainPage = location.pathname === "/";
+
   const scrollTo = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (isMainPage) {
+      const el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    } else {
+      navigate(`/#${id}`);
+    }
+  };
+
+  const goToPage = (path: string) => {
+    navigate(path);
   };
 
   return (
@@ -69,8 +82,7 @@ export function Footer() {
               {[
                 { label: "About", id: "about" },
                 { label: "How It Works", id: "how-it-works" },
-                { label: "Workshops", id: "workshops" },
-                { label: "Past Stories", id: "past-stories" },
+                { label: "Workshops", id: "events" },
               ].map((link) => (
                 <li key={link.id}>
                   <button
@@ -85,6 +97,18 @@ export function Footer() {
                   </button>
                 </li>
               ))}
+              <li>
+                <button
+                  onClick={() => goToPage("/past-winners")}
+                  className="text-sm transition-colors duration-200 hover:text-pink-400"
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    color: "rgba(255,255,255,0.5)",
+                  }}
+                >
+                  Past Winners
+                </button>
+              </li>
             </ul>
           </div>
 

@@ -1,9 +1,9 @@
-import { Users } from "lucide-react";
-import { Speakers } from "./Speakers";
+import { Award } from "lucide-react";
+import { PastStories } from "./PastStories";
 
 const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
 
-export function SpeakersPage() {
+export function PastWinnersPage() {
   return (
     <div
       className="min-h-screen"
@@ -16,29 +16,29 @@ export function SpeakersPage() {
         }}
       >
         <div
-          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
+          className="pointer-events-none absolute right-0 top-0 h-[600px] w-[600px] rounded-full"
           style={{
             background: "radial-gradient(circle, rgba(236,72,153,0.07) 0%, transparent 70%)",
             filter: "blur(80px)",
           }}
         />
         <div
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
+          className="pointer-events-none absolute bottom-0 left-0 h-[500px] w-[500px] rounded-full"
           style={{
             background: "radial-gradient(circle, rgba(168,85,247,0.07) 0%, transparent 70%)",
             filter: "blur(80px)",
           }}
         />
 
-        <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
+        <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
           <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
+            className="mb-6 inline-flex items-center gap-2 rounded-full px-4 py-2"
             style={{
               background: "rgba(236, 72, 153, 0.08)",
               border: "1.5px solid rgba(236, 72, 153, 0.25)",
             }}
           >
-            <Users size={16} style={{ color: "#ec4899" }} />
+            <Award size={16} style={{ color: "#ec4899" }} />
             <span
               style={{
                 fontSize: "0.85rem",
@@ -47,7 +47,7 @@ export function SpeakersPage() {
                 letterSpacing: "0.06em",
               }}
             >
-              Guest Speakers
+              Past Winners
             </span>
           </div>
 
@@ -61,7 +61,7 @@ export function SpeakersPage() {
               letterSpacing: "-0.02em",
             }}
           >
-            Meet Our{" "}
+            Previous{" "}
             <span
               style={{
                 background: "linear-gradient(135deg, #ec4899, #a855f7)",
@@ -70,52 +70,50 @@ export function SpeakersPage() {
                 backgroundClip: "text",
               }}
             >
-              Speakers
+              Hackathon Winners
             </span>
           </h1>
 
           <p
-            className="max-w-2xl mx-auto"
+            className="mx-auto max-w-2xl"
             style={{
               fontSize: "clamp(1.05rem, 2vw, 1.2rem)",
               color: "#4a4a5e",
               lineHeight: 1.75,
             }}
           >
-            Learn from experienced healthcare professionals, technologists, and patient advocates
-            who will guide you through your innovation journey.
+            Discover how past teams transformed healthcare challenges into impactful solutions.
           </p>
         </div>
       </section>
 
-      <Speakers />
+      <PastStories />
 
       <section
         className="border-t py-20"
         style={{
           borderColor: "rgba(236, 72, 153, 0.1)",
-          background: "linear-gradient(135deg, #fef3f7 0%, #f5f3ff 100%)",
+          background: "linear-gradient(135deg, #fef8fa 0%, #f5f3ff 100%)",
         }}
       >
-        <div className="max-w-xl mx-auto px-6 text-center">
+        <div className="mx-auto max-w-xl px-6 text-center">
           <h2
             className="mb-3"
             style={{ fontSize: "1.9rem", fontWeight: 700, color: "#1a1a2e" }}
           >
-            Stay in the loop
+            Be part of the next breakthrough
           </h2>
           <p
             className="mb-8"
             style={{ fontSize: "1rem", color: "#6a6a7e", lineHeight: 1.75 }}
           >
-            Join our Telegram channel for updates on workshops, new speaker announcements, and
-            HackitRX 2026 news.
+            Join our Telegram channel for HackitRX 2026 updates, workshops, and announcements.
           </p>
           <a
             href={TELEGRAM_CHANNEL_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all duration-200 hover:scale-105"
+            className="inline-flex items-center gap-2 rounded-full px-8 py-4 font-semibold transition-all duration-200 hover:scale-105"
             style={{
               fontSize: "1rem",
               background: "linear-gradient(135deg, #ec4899, #a855f7)",

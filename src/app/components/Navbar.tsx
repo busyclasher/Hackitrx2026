@@ -5,14 +5,11 @@ import { Menu, X, ChevronDown } from "lucide-react";
 
 const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
 
-const anchorLinks = [
-  { label: "Past Winners", href: "#past-stories" },
-];
-
 const pageLinks = [
   { label: "About", path: "/about" },
   { label: "Programmes", path: "/programmes" },
   { label: "Speakers", path: "/speakers" },
+  { label: "Past Winners", path: "/past-winners" },
 ];
 
 export function Navbar() {
@@ -98,28 +95,6 @@ export function Navbar() {
               {link.label}
             </button>
           ))}
-          {anchorLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className="transition-colors duration-200"
-              style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: "1.05rem",
-                fontWeight: 500,
-                color: "#4a4a5e",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-                padding: 0,
-              }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#ec4899")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#4a4a5e")}
-            >
-              {link.label}
-            </button>
-          ))}
-
           {/* Get Involved Dropdown */}
           <div
             className="relative"
@@ -265,24 +240,6 @@ export function Navbar() {
                 fontSize: "1.1rem",
                 fontWeight: 500,
                 color: location.pathname === link.path ? "#ec4899" : "#4a4a5e",
-                background: "none",
-                border: "none",
-                cursor: "pointer",
-              }}
-            >
-              {link.label}
-            </button>
-          ))}
-          {anchorLinks.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className="py-2 text-left"
-              style={{
-                fontFamily: "'Space Grotesk', sans-serif",
-                fontSize: "1.1rem",
-                fontWeight: 500,
-                color: "#4a4a5e",
                 background: "none",
                 border: "none",
                 cursor: "pointer",

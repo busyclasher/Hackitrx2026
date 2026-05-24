@@ -11,7 +11,7 @@ import {
   ExternalLink,
 } from "lucide-react";
 // @ts-ignore
-import singaporean2SvgRaw from "../../imports/singaporean__2_.svg?raw";
+import advocatesHumanSvgRaw from "../../assets/images/advocates-human.svg?raw";
 import { SvgScene } from "./SvgScene";
 
 // Replace this with the actual FormSG URL when available
@@ -197,7 +197,7 @@ export function PatientOrgPage() {
             {/* Right: illustration */}
             <div className="flex-shrink-0 w-full lg:w-[300px] xl:w-[360px] flex items-end justify-center">
               <SvgScene
-                raw={singaporean2SvgRaw}
+                raw={advocatesHumanSvgRaw}
                 aspectRatio="565/782"
                 className="max-w-[240px] lg:max-w-full"
               />

@@ -8,6 +8,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
+import { innovations2025, winners2024 } from "../../data/pastWinners";
 import pssLogo from "../../imports/PSS_logo_N_(1).png";
 import aposLogo from "../../imports/APOS_main_(1).png";
 import ogpLogo from "../../imports/OGP_black.png";
@@ -42,39 +43,6 @@ const milestones = [
     stat: "Date",
     statValue: "Oct 10–11",
     color: "#a855f7",
-  },
-];
-
-const innovations2025 = [
-  {
-    team: "Care+",
-    image:
-      "https://images.unsplash.com/photo-1676311522524-fa7c0bffd644?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoZWFsdGhjYXJlJTIwbW9iaWxlJTIwYXBwJTIwbWVkaWNhdGlvbnxlbnwxfHx8fDE3NzcwMzY2NTF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    solutions: [
-      "Optimised medication scheduling for cancer treatment",
-      "Financial planning tool for insurance coverage",
-      "Personalised patient education",
-    ],
-  },
-  {
-    team: "GoldLabel+",
-    image:
-      "https://images.unsplash.com/photo-1762328500413-1a4cb2023059?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxwaWxsJTIwYm90dGxlJTIwcHJlc2NyaXB0aW9uJTIwbGFiZWx8ZW58MXx8fHwxNzc3MDM2NjUxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-    solutions: [
-      "AI-powered simplified medication labels",
-      "Visual pictograms for easy understanding",
-      "Multi-language translation support",
-    ],
-  },
-  {
-    team: "PillSnap",
-    image:
-      "https://images.unsplash.com/photo-1666214275099-0ca566aefe26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxBSSUyMG1lZGljYWwlMjB0ZWNobm9sb2d5JTIwc2Nhbm5lcnxlbnwxfHx8fDE3NzcwMzY2NTJ8MA&ixlib=rb-4.1.0&q=80&w=1080",
-    solutions: [
-      "AI pill identification using image recognition",
-      "Analyses colour, size, and imprint details",
-      "Provides ranked match suggestions",
-    ],
   },
 ];
 
@@ -436,7 +404,11 @@ export function AboutPage() {
                     <ImageWithFallback
                       src={item.image}
                       alt={item.team}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${
+                        "imageFit" in item && item.imageFit === "contain"
+                          ? "object-contain bg-white p-4"
+                          : "object-cover"
+                      }`}
                     />
                     <div
                       className="absolute inset-0"
