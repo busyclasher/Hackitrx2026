@@ -2,7 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router";
 import hackitRxLogo from "../../imports/HackitRx_logo_black.png";
 import { Menu, X, ChevronDown } from "lucide-react";
-import { WaitlistModal } from "./WaitlistModal";
+
+const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
 
 const anchorLinks = [
   { label: "Past Winners", href: "#past-stories" },
@@ -11,11 +12,11 @@ const anchorLinks = [
 const pageLinks = [
   { label: "About", path: "/about" },
   { label: "Programmes", path: "/programmes" },
+  { label: "Speakers", path: "/speakers" },
 ];
 
 export function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [showWaitlist, setShowWaitlist] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
   const navigate = useNavigate();
@@ -217,20 +218,21 @@ export function Navbar() {
 
         {/* CTA */}
         <div className="hidden md:flex items-center">
-          <button
-            onClick={() => setShowWaitlist(true)}
+          <a
+            href={TELEGRAM_CHANNEL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-lg"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "1rem",
               background: "linear-gradient(135deg, #ec4899, #a855f7)",
               boxShadow: "0 4px 15px rgba(236, 72, 153, 0.3)",
-              border: "none",
-              cursor: "pointer",
+              textDecoration: "none",
             }}
           >
-            Join Waitlist
-          </button>
+            Join Telegram
+          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -289,27 +291,23 @@ export function Navbar() {
               {link.label}
             </button>
           ))}
-          <button
-            onClick={() => {
-              setMenuOpen(false);
-              setShowWaitlist(true);
-            }}
+          <a
+            href={TELEGRAM_CHANNEL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => setMenuOpen(false)}
             className="mt-2 px-6 py-3 rounded-full font-semibold text-white text-center"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "1rem",
               background: "linear-gradient(135deg, #ec4899, #a855f7)",
-              border: "none",
-              cursor: "pointer",
+              textDecoration: "none",
             }}
           >
-            Join Waitlist
-          </button>
+            Join Telegram
+          </a>
         </div>
       )}
-
-      {/* Waitlist Modal */}
-      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </nav>
   );
 }

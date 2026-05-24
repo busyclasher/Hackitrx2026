@@ -1,12 +1,11 @@
-import { useState } from "react";
 import hackitRxLogo from "../../imports/HackitRx_logo_black.png";
 // @ts-ignore
 import singaporeanSvgRaw from "../../imports/singaporean.svg?raw";
-import { WaitlistModal } from "./WaitlistModal";
 import { SvgScene } from "./SvgScene";
 
+const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
+
 export function Hero() {
-  const [showWaitlist, setShowWaitlist] = useState(false);
   return (
     <section
       className="relative min-h-screen flex flex-col items-center overflow-hidden"
@@ -165,20 +164,21 @@ export function Hero() {
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
-              <button
-                onClick={() => setShowWaitlist(true)}
+              <a
+                href={TELEGRAM_CHANNEL_URL}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="px-9 py-4 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105"
                 style={{
                   fontFamily: "'Space Grotesk', sans-serif",
                   background: "linear-gradient(135deg, #ec4899, #a855f7)",
                   boxShadow: "0 4px 20px rgba(236, 72, 153, 0.3)",
                   fontSize: "1.1rem",
-                  border: "none",
-                  cursor: "pointer",
+                  textDecoration: "none",
                 }}
               >
-                Get Involved
-              </button>
+                Join Telegram
+              </a>
               <a
                 href="#events"
                 className="px-9 py-4 rounded-full font-semibold transition-all duration-200 hover:scale-105"
@@ -289,9 +289,6 @@ export function Hero() {
           ))}
         </div>
       </div>
-
-      {/* Waitlist Modal */}
-      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </section>
   );
 }

@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Award, Check, Lightbulb } from "lucide-react";
 import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { WaitlistModal } from "./WaitlistModal";
+
+const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
 
 const innovations2025 = [
   {
@@ -58,7 +59,6 @@ const winners2024 = [
 ];
 
 export function PastStories() {
-  const [showWaitlist, setShowWaitlist] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
@@ -342,26 +342,24 @@ export function PastStories() {
           >
             Be part of the next breakthrough
           </p>
-          <button
-            onClick={() => setShowWaitlist(true)}
+          <a
+            href={TELEGRAM_CHANNEL_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-10 py-5 rounded-full font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "1.2rem",
               background: "linear-gradient(135deg, #ec4899, #a855f7)",
               color: "#ffffff",
-              border: "none",
-              cursor: "pointer",
+              textDecoration: "none",
             }}
           >
             <Lightbulb size={22} />
-            Join Waitlist
-          </button>
+            Join Telegram
+          </a>
         </div>
       </div>
-
-      {/* Waitlist Modal */}
-      <WaitlistModal isOpen={showWaitlist} onClose={() => setShowWaitlist(false)} />
     </section>
   );
 }
