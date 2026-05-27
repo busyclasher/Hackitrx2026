@@ -25,6 +25,7 @@ const whyJoin = [
     icon: Code,
     color: "#a855f7",
     title: "For engineers, designers & PMs",
+    short: "Engineers & PMs",
     body: "Tired of shipping the next feature on someone's roadmap? Want to put your AI skills behind something that actually lands in someone's hands? HackitRx hands you real, patient-sourced problems — and the people on the other side who can tell you whether you're solving the right one.",
     highlight: false,
   },
@@ -32,6 +33,7 @@ const whyJoin = [
     icon: Stethoscope,
     color: "#ec4899",
     title: "For healthcare professionals",
+    short: "Healthcare",
     body: "You see it every day — patients struggling with the things you wish you had time to fix. Want to scale your impact beyond the consult room? HackitRx gives you the team, the tools, and the time to turn the gaps you see into solutions patients can actually use.",
     highlight: false,
   },
@@ -39,15 +41,17 @@ const whyJoin = [
     icon: Landmark,
     color: "#14b8a6",
     title: "For government, agencies & the ecosystem",
+    short: "Government",
     body: "You set policy, fund initiatives, and shape the system from the top down. Come see what the gaps look like from the ground up — and back the solutions that prove they can scale.",
     highlight: false,
   },
   {
     icon: Brain,
-    color: "#ffffff",
+    color: "#f59e0b",
     title: "For everyone else",
+    short: "Everyone else",
     body: "Anyone who's watched a parent, a sibling, or a friend struggle with the care system and thought it shouldn't have to be this hard — you belong here. No credentials required. Curiosity and conviction are enough.",
-    highlight: true,
+    highlight: false,
   },
 ];
 
@@ -148,46 +152,36 @@ function FadeIn({
   );
 }
 
-function SignUpButton({
-  children,
-  variant = "solid",
-}: {
-  children: React.ReactNode;
-  variant?: "solid" | "white";
-}) {
+function SignUpButton({ variant = "solid" }: { variant?: "solid" | "white" }) {
+  // Sign-ups are not open yet — rendered as a disabled "Coming Soon!" button.
   const base =
-    "inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-transform duration-200 hover:scale-105";
+    "inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold whitespace-nowrap w-full sm:w-auto";
   const style: React.CSSProperties =
     variant === "white"
       ? {
           fontSize: "1.05rem",
-          background: "#ffffff",
-          color: "#a855f7",
-          textDecoration: "none",
-          boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
+          background: "rgba(255,255,255,0.18)",
+          color: "#ffffff",
+          border: "1.5px solid rgba(255,255,255,0.45)",
+          cursor: "not-allowed",
         }
       : {
           fontSize: "1.05rem",
-          background: "linear-gradient(135deg, #a855f7, #ec4899)",
-          color: "#ffffff",
-          textDecoration: "none",
-          boxShadow: "0 4px 20px rgba(168,85,247,0.3)",
+          background: "#e5e7eb",
+          color: "#9ca3af",
+          border: "1.5px solid #e5e7eb",
+          cursor: "not-allowed",
         };
   return (
-    <a
-      href={REGISTRATION_URL}
-      target="_blank"
-      rel="noopener noreferrer"
-      className={base}
-      style={style}
-    >
-      {children}
-    </a>
+    <span className={base} style={style} aria-disabled="true">
+      Sign up now (Coming Soon!)
+    </span>
   );
 }
 
 export function BuilderPage() {
   const navigate = useNavigate();
+  const [activeAudience, setActiveAudience] = useState(0);
 
   return (
     <div className="min-h-screen" style={{ background: "#ffffff" }}>
@@ -291,7 +285,7 @@ export function BuilderPage() {
                 actually waiting for.
               </p>
 
-              <SignUpButton>Sign up now →</SignUpButton>
+              <SignUpButton />
             </div>
 
             {/* Right: illustration (preserved) */}
@@ -347,11 +341,42 @@ export function BuilderPage() {
             </div>
           </FadeIn>
 
+          {/* Mobile: audience toggle */}
+          <div className="flex flex-wrap gap-2 mb-6 sm:hidden">
+            {whyJoin.map((c, i) => (
+              <button
+                key={c.short}
+                onClick={() => setActiveAudience(i)}
+                className="px-4 py-2 rounded-full transition-colors duration-200"
+                style={{
+                  fontSize: "0.88rem",
+                  fontWeight: 600,
+                  background:
+                    i === activeAudience
+                      ? "linear-gradient(135deg, #ec4899, #a855f7)"
+                      : "#ffffff",
+                  color: i === activeAudience ? "#ffffff" : "#6b7280",
+                  border:
+                    i === activeAudience
+                      ? "1.5px solid transparent"
+                      : "1.5px solid #e5e7eb",
+                  cursor: "pointer",
+                }}
+              >
+                {c.short}
+              </button>
+            ))}
+          </div>
+
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {whyJoin.map((c, i) => {
               const Icon = c.icon;
               return (
-                <FadeIn key={c.title} delay={i * 90} className="h-full">
+                <FadeIn
+                  key={c.title}
+                  delay={i * 90}
+                  className={`h-full ${i === activeAudience ? "" : "hidden sm:block"}`}
+                >
                   <div
                     className="rounded-3xl p-8 text-center flex flex-col items-center h-full"
                     style={
@@ -465,7 +490,7 @@ export function BuilderPage() {
             </h2>
           </FadeIn>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-center">
             {/* Left: items */}
             <div className="flex flex-col gap-4">
               {beforeApply.map((item, i) => {
@@ -604,8 +629,8 @@ export function BuilderPage() {
                   maxWidth: "640px",
                 }}
               >
-                About 2–3 hours of focused time per week — spread across evenings,
-                weekends, and a handful of in-person moments from the kick-off day onward.
+                About 2–3 hours of focused time per week, over 6 weeks — spread across
+                evenings, weekends, and a handful of in-person moments.
               </p>
             </div>
           </FadeIn>
@@ -747,7 +772,7 @@ export function BuilderPage() {
         className="py-24"
         style={{ background: "linear-gradient(135deg, #ec4899 0%, #a855f7 100%)" }}
       >
-        <div className="max-w-2xl mx-auto px-6 text-center">
+        <div className="max-w-3xl mx-auto px-6 text-center">
           <FadeIn>
             <h2
               className="mb-4"
@@ -772,13 +797,13 @@ export function BuilderPage() {
               The problem statements are real. The patients are waiting. The tools are in
               your hands.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <SignUpButton variant="white">Sign up now →</SignUpButton>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <SignUpButton variant="white" />
               <a
                 href={TELEGRAM_CHANNEL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-transform duration-200 hover:scale-105"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold whitespace-nowrap transition-transform duration-200 hover:scale-105"
                 style={{
                   fontSize: "1.05rem",
                   background: "rgba(255,255,255,0.12)",

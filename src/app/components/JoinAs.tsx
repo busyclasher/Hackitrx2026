@@ -60,16 +60,17 @@ const patientOrgData = {
 interface CardProps {
   data: typeof builderData;
   active: boolean;
+  mobileHidden: boolean;
   onClick: () => void;
   onCTA: () => void;
 }
 
-function PersonaCard({ data, active, onClick, onCTA }: CardProps) {
+function PersonaCard({ data, active, mobileHidden, onClick, onCTA }: CardProps) {
   const Icon = data.icon;
 
   return (
     <div
-      className="rounded-3xl p-8 flex flex-col cursor-pointer transition-all duration-500"
+      className={`rounded-3xl p-8 ${mobileHidden ? "hidden md:flex" : "flex"} flex-col cursor-pointer transition-all duration-500`}
       style={{
         background: active ? "#ffffff" : "#f9fafb",
         border: active
@@ -400,12 +401,14 @@ export function JoinAs() {
           <PersonaCard
             data={builderData}
             active={active === "builder"}
+            mobileHidden={active !== "builder"}
             onClick={() => setActive("builder")}
             onCTA={() => navigate("/join/builder")}
           />
           <PersonaCard
             data={patientOrgData}
             active={active === "patient-org"}
+            mobileHidden={active !== "patient-org"}
             onClick={() => setActive("patient-org")}
             onCTA={() => navigate("/join/patient-organisation")}
           />

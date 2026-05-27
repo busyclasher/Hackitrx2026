@@ -107,7 +107,7 @@ export function PastWinnersPage() {
             className="mb-8"
             style={{ fontSize: "1rem", color: "#6a6a7e", lineHeight: 1.75 }}
           >
-            Join our Telegram channel for HackitRX 2026 updates, workshops, and announcements.
+            Join our Telegram channel for HackitRx 2026 updates, workshops, and announcements.
           </p>
           <a
             href={TELEGRAM_CHANNEL_URL}

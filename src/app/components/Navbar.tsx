@@ -179,7 +179,7 @@ export function Navbar() {
                     e.currentTarget.style.color = "#4a4a5e";
                   }}
                 >
-                  Patient Organisations
+                  Patient & Social Service Organisation
                 </button>
                 </div>
               </div>
@@ -242,6 +242,45 @@ export function Navbar() {
               {link.label}
             </button>
           ))}
+
+          {/* Get Involved */}
+          <div
+            className="flex flex-col gap-3 pt-3"
+            style={{ borderTop: "1px solid rgba(236, 72, 153, 0.1)" }}
+          >
+            <span
+              style={{
+                fontSize: "0.75rem",
+                fontWeight: 700,
+                color: "#9ca3af",
+                textTransform: "uppercase",
+                letterSpacing: "0.08em",
+              }}
+            >
+              Get Involved
+            </span>
+            {[
+              { label: "Hackers", path: "/join/builder" },
+              { label: "Patient & Social Service Organisation", path: "/join/patient-organisation" },
+            ].map((link) => (
+              <button
+                key={link.path}
+                onClick={() => { setMenuOpen(false); navigate(link.path); }}
+                className="text-left"
+                style={{
+                  fontSize: "1.1rem",
+                  fontWeight: 500,
+                  color: location.pathname === link.path ? "#ec4899" : "#4a4a5e",
+                  background: "none",
+                  border: "none",
+                  cursor: "pointer",
+                }}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
+
           <a
             href={TELEGRAM_CHANNEL_URL}
             target="_blank"

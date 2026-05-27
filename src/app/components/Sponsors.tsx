@@ -79,13 +79,13 @@ export function Sponsors() {
         </div>
 
         {/* Organizer Logos */}
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-16">
+        <div className="flex flex-nowrap justify-center items-center gap-3 sm:gap-10 md:gap-16">
           {organizers.map((org) => (
             <div
               key={org.abbr}
-              className="flex items-center justify-center p-6 rounded-2xl transition-all duration-300"
+              className="flex-1 min-w-0 flex items-center justify-center p-2 sm:p-6 rounded-2xl transition-all duration-300"
               style={{
-                minWidth: "180px",
+                maxWidth: "240px",
                 background: "transparent",
                 transform: "scale(1)",
               }}
@@ -103,7 +103,7 @@ export function Sponsors() {
               <img
                 src={org.logo}
                 alt={org.name}
-                className="max-h-20 md:max-h-24 w-auto object-contain transition-all duration-300"
+                className="max-h-12 sm:max-h-20 md:max-h-24 w-auto max-w-full object-contain transition-all duration-300"
                 style={{ filter: "grayscale(20%)", opacity: 0.85 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.filter = "grayscale(0%)";

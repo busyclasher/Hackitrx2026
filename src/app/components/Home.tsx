@@ -140,12 +140,12 @@ export function Hero() {
             </p>
 
             {/* CTAs */}
-            <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
+            <div className="flex gap-3 sm:gap-4 w-full sm:w-auto justify-center lg:justify-start">
               <a
                 href={TELEGRAM_CHANNEL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-9 py-4 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center text-center px-4 sm:px-9 py-4 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105"
                 style={{
                   background: "linear-gradient(135deg, #ec4899, #a855f7)",
                   boxShadow: "0 4px 20px rgba(236, 72, 153, 0.3)",
@@ -157,7 +157,7 @@ export function Hero() {
               </a>
               <a
                 href="/programmes"
-                className="px-9 py-4 rounded-full font-semibold transition-all duration-200 hover:scale-105"
+                className="flex-1 sm:flex-none inline-flex items-center justify-center text-center px-4 sm:px-9 py-4 rounded-full font-semibold transition-all duration-200 hover:scale-105"
                 style={{
                   background: "#ffffff",
                   border: "2px solid #ec4899",

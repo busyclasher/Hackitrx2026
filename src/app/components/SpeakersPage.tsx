@@ -109,7 +109,7 @@ export function SpeakersPage() {
             style={{ fontSize: "1rem", color: "#6a6a7e", lineHeight: 1.75 }}
           >
             Join our Telegram channel for updates on workshops, new speaker announcements, and
-            HackitRX 2026 news.
+            HackitRx 2026 news.
           </p>
           <a
             href={TELEGRAM_CHANNEL_URL}
