@@ -336,7 +336,7 @@ export function PatientOrgPage() {
 
       {/* Timeline */}
       <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6">
+        <div className="max-w-4xl mx-auto px-5 sm:px-6">
           <div className="flex items-center gap-3 mb-10">
             <Calendar size={22} style={{ color: "#14b8a6" }} />
             <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: "#1a1a2e" }}>
@@ -347,7 +347,7 @@ export function PatientOrgPage() {
           <div className="relative">
             {/* Vertical line */}
             <div
-              className="absolute left-[26px] top-8 bottom-8 w-0.5 hidden sm:block"
+              className="absolute left-[22px] sm:left-[26px] top-6 sm:top-8 bottom-8 w-0.5"
               style={{ background: "linear-gradient(180deg, #14b8a6, #a855f7)" }}
             />
 
@@ -355,9 +355,9 @@ export function PatientOrgPage() {
               {timeline.map((step, i) => {
                 const Icon = step.icon;
                 return (
-                  <div key={i} className="flex gap-6">
+                  <div key={i} className="flex gap-4 sm:gap-6">
                     <div
-                      className="w-14 h-14 rounded-full flex-shrink-0 flex items-center justify-center relative z-10"
+                      className="w-11 h-11 sm:w-14 sm:h-14 rounded-full flex-shrink-0 flex items-center justify-center relative z-10"
                       style={{
                         background: `${step.color}15`,
                         border: `2px solid ${step.color}40`,
@@ -366,7 +366,7 @@ export function PatientOrgPage() {
                       <Icon size={20} style={{ color: step.color }} />
                     </div>
 
-                    <div className="pt-1 pb-2 flex-1">
+                    <div className="pt-1 pb-2 flex-1 min-w-0">
                       <p
                         style={{
                           fontSize: "0.78rem",
@@ -375,6 +375,7 @@ export function PatientOrgPage() {
                           textTransform: "uppercase",
                           letterSpacing: "0.08em",
                           marginBottom: "4px",
+                          overflowWrap: "break-word",
                         }}
                       >
                         {step.date}
@@ -385,11 +386,19 @@ export function PatientOrgPage() {
                           fontWeight: 700,
                           color: "#1a1a2e",
                           marginBottom: "6px",
+                          overflowWrap: "break-word",
                         }}
                       >
                         {step.title}
                       </h3>
-                      <p style={{ fontSize: "0.95rem", color: "#6a6a7e", lineHeight: 1.7 }}>
+                      <p
+                        style={{
+                          fontSize: "0.95rem",
+                          color: "#6a6a7e",
+                          lineHeight: 1.7,
+                          overflowWrap: "break-word",
+                        }}
+                      >
                         {step.description}
                       </p>
                     </div>
