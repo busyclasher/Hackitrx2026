@@ -7,7 +7,6 @@ import {
   Pill,
   Repeat,
   Linkedin,
-  User,
   Workflow,
   Maximize2,
   X,
@@ -27,6 +26,16 @@ import winHonPhoto from "../../../images/team/win-hon.jpg";
 import hazelPhoto from "../../../images/team/hazel.jpg";
 import eunicePhoto from "../../../images/team/eunice.jpg";
 import stellaPhoto from "../../../images/team/stella.jpg";
+import tatMingPhoto from "../../../images/Advisors/Tat Ming.jpeg";
+import jasmineAdvPhoto from "../../../images/Advisors/Jasmine.jpeg";
+import vivianPhoto from "../../../images/Advisors/VIvian Lim OGP.jpeg";
+import nidhiPhoto from "../../../images/Advisors/Nidhi.jpeg";
+import kelvinPhoto from "../../../images/Advisors/Kelvin Tan.jpeg";
+import jianWeiPhoto from "../../../images/Advisors/Jian Wei.jpeg";
+import zhengKangPhoto from "../../../images/Advisors/Zheng Kang.jpeg";
+import sharonPhoto from "../../../images/Advisors/Sharon Yeo.jpeg";
+import nigelPhoto from "../../../images/Advisors/Nigel Lim.jpeg";
+import elstonPhoto from "../../../images/Advisors/Elston.jpeg";
 
 const journey = [
   {
@@ -106,11 +115,73 @@ const team = [
   },
 ];
 
-const advisorPlaceholders = [
-  { bg: "linear-gradient(135deg, #ec4899, #f472b6)" },
-  { bg: "linear-gradient(135deg, #a855f7, #c084fc)" },
-  { bg: "linear-gradient(135deg, #14b8a6, #2dd4bf)" },
-  { bg: "linear-gradient(135deg, #0ea5e9, #38bdf8)" },
+const advisors: {
+  name: string;
+  role: string;
+  linkedin?: string;
+  photo?: string;
+  initials?: string;
+}[] = [
+  {
+    name: "Ng Tat Ming",
+    role: "Principal Pharmacist (Specialist), Research and Innovation Lead at TTSH",
+    linkedin: "https://www.linkedin.com/in/tat-ming-ng-sg/",
+    photo: tatMingPhoto,
+  },
+  {
+    name: "Jasmine Ong",
+    role: "Clinician Innovation, NMRC Clinician Innovator Award; Principal Clinical Pharmacist, SGH",
+    linkedin: "https://www.linkedin.com/in/jasmine-ong-8b9043243/",
+    photo: jasmineAdvPhoto,
+  },
+  {
+    name: "Vivian Lim",
+    role: "Community Development at OGP, Co-founder of GEN",
+    linkedin: "https://www.linkedin.com/in/vivian-lim/",
+    photo: vivianPhoto,
+  },
+  {
+    name: "Nidhi Swarup",
+    role: "Founding Chair, Alliance of Patient's Organizations Singapore (APOS)",
+    linkedin: "https://www.linkedin.com/in/nidhi-swarup-09100128/",
+    photo: nidhiPhoto,
+  },
+  {
+    name: "Dr Kelvin Tan",
+    role: "Head of Programme (Minor in Applied Ageing Studies) at SUSS",
+    linkedin: "https://www.linkedin.com/in/dr-kelvin-tan-phd-51235a8a/",
+    photo: kelvinPhoto,
+  },
+  {
+    name: "Goh Jian Wei",
+    role: "Manager, Technology, Strategic Planning & Integration (TSPI), TTSH",
+    linkedin: "https://www.linkedin.com/in/jianweigoh/",
+    photo: jianWeiPhoto,
+  },
+  {
+    name: "Elston Foo",
+    role: "Senior Business Partner, Transformation Office, Enterprise Singapore",
+    linkedin: "https://www.linkedin.com/in/elston-foo/",
+    photo: elstonPhoto,
+  },
+  {
+    name: "Lum Zheng Kang",
+    role: "Founder & CEO of Collabring",
+    linkedin: "https://www.linkedin.com/in/zklum/",
+    photo: zhengKangPhoto,
+  },
+  {
+    name: "Sharon Yeo",
+    role: "Senior Pharmacist (Informatics) at TTSH",
+    linkedin: "https://www.linkedin.com/in/sharon-yeo-mei-ching/",
+    photo: sharonPhoto,
+  },
+  {
+    name: "Nigel Lim",
+    role: "Pharmacist-innovator, Biodesign Innovation Fellow & Senior Pharmacist, NTFGH",
+    linkedin: "https://www.linkedin.com/in/nigel-lim-sg/",
+    photo: nigelPhoto,
+  },
 ];
 
 const partners = [
@@ -184,6 +255,79 @@ function FadeIn({
     >
       {children}
     </div>
+  );
+}
+
+function AdvisorCard({
+  a,
+}: {
+  a: { name: string; role: string; linkedin?: string; photo?: string; initials?: string };
+}) {
+  const inner = (
+    <>
+      <div
+        className="relative rounded-2xl overflow-hidden mb-4"
+        style={{
+          aspectRatio: "1 / 1",
+          boxShadow: "0 8px 24px rgba(26,26,46,0.1)",
+        }}
+      >
+        {a.photo ? (
+          <img
+            src={a.photo}
+            alt={a.name}
+            loading="lazy"
+            className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+          />
+        ) : (
+          <div
+            className="w-full h-full flex items-center justify-center"
+            style={{ background: "linear-gradient(135deg, #14b8a6, #a855f7)" }}
+          >
+            <span style={{ color: "#ffffff", fontWeight: 800, fontSize: "2rem" }}>
+              {a.initials}
+            </span>
+          </div>
+        )}
+        {a.linkedin && (
+          <div
+            className="absolute bottom-3 right-3 w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110"
+            style={{
+              background: "rgba(255,255,255,0.92)",
+              backdropFilter: "blur(6px)",
+              boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+            }}
+          >
+            <Linkedin size={18} style={{ color: "#0a66c2" }} />
+          </div>
+        )}
+      </div>
+      <h3
+        className="transition-colors duration-200 group-hover:text-[#ec4899]"
+        style={{
+          fontSize: "1.05rem",
+          fontWeight: 700,
+          color: "#1a1a2e",
+          lineHeight: 1.3,
+        }}
+      >
+        {a.name}
+      </h3>
+      <p
+        className="mt-1"
+        style={{ fontSize: "0.85rem", color: "#6a6a7e", lineHeight: 1.5 }}
+      >
+        {a.role}
+      </p>
+    </>
+  );
+
+  return a.linkedin ? (
+    <a href={a.linkedin} target="_blank" rel="noopener noreferrer" className="group block">
+      {inner}
+    </a>
+  ) : (
+    <div className="group block">{inner}</div>
   );
 }
 
@@ -708,86 +852,57 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Advisors (placeholder) */}
+      {/* Advisors */}
       <section className="pb-24">
         <div className="max-w-6xl mx-auto px-6">
           <FadeIn>
-            <div
-              className="rounded-3xl p-8 md:p-12"
+            <h2
+              className="mb-2"
               style={{
-                background:
-                  "linear-gradient(135deg, #f6f4fd 0%, #fef6fb 100%)",
-                border: "1px solid rgba(168, 85, 247, 0.12)",
+                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                fontWeight: 700,
+                color: "#1a1a2e",
               }}
             >
-              <div className="flex items-center gap-5 mb-10">
-                <h2
-                  style={{
-                    fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)",
-                    fontWeight: 700,
-                    color: "#1a1a2e",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  Advisors
-                </h2>
-                <div
-                  className="flex-1 h-px"
-                  style={{ background: "rgba(168, 85, 247, 0.2)" }}
-                />
-                <span
-                  className="px-3 py-1 rounded-full"
-                  style={{
-                    background: "rgba(168, 85, 247, 0.1)",
-                    fontSize: "0.72rem",
-                    fontWeight: 700,
-                    color: "#a855f7",
-                    letterSpacing: "0.06em",
-                    textTransform: "uppercase",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  To be announced
-                </span>
-              </div>
+              Advisors
+            </h2>
+            <p
+              className="mb-12"
+              style={{
+                fontSize: "1.05rem",
+                color: "#6a6a7e",
+                lineHeight: 1.7,
+                maxWidth: "560px",
+              }}
+            >
+              The experts and practitioners guiding HackitRx and the teams we support.
+            </p>
+          </FadeIn>
 
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
-                {advisorPlaceholders.map((a, i) => (
-                  <div key={i}>
-                    <div
-                      className="rounded-2xl flex items-center justify-center mb-4"
-                      style={{
-                        aspectRatio: "1 / 1",
-                        background: a.bg,
-                        opacity: 0.85,
-                      }}
-                    >
-                      <User size={40} style={{ color: "rgba(255,255,255,0.9)" }} />
-                    </div>
-                    <h3
-                      style={{
-                        fontSize: "1rem",
-                        fontWeight: 700,
-                        color: "#1a1a2e",
-                      }}
-                    >
-                      To be announced
-                    </h3>
-                    <p
-                      className="mt-1"
-                      style={{
-                        fontSize: "0.85rem",
-                        color: "#8a8a9e",
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      Advisor &amp; Mentor
-                    </p>
+          {/* 4 x 2 grid */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
+            {advisors.slice(0, 8).map((a, i) => (
+              <FadeIn key={a.name} delay={(i % 4) * 80}>
+                <AdvisorCard a={a} />
+              </FadeIn>
+            ))}
+          </div>
+
+          {/* Sliding container for any extra advisors */}
+          {advisors.length > 8 && (
+            <div className="mt-10 -mx-6 px-6">
+              <div className="flex gap-6 overflow-x-auto snap-x snap-mandatory pb-4">
+                {advisors.slice(8).map((a) => (
+                  <div
+                    key={a.name}
+                    className="flex-shrink-0 w-[45%] sm:w-[220px] snap-start"
+                  >
+                    <AdvisorCard a={a} />
                   </div>
                 ))}
               </div>
             </div>
-          </FadeIn>
+          )}
         </div>
       </section>
 
