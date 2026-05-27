@@ -6,9 +6,9 @@ import { Menu, X, ChevronDown } from "lucide-react";
 const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
 
 const pageLinks = [
+  { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Programmes", path: "/programmes" },
-  { label: "Speakers", path: "/speakers" },
   { label: "Past Winners", path: "/past-winners" },
 ];
 
@@ -80,7 +80,6 @@ export function Navbar() {
               onClick={() => { navigate(link.path); }}
               className="transition-colors duration-200"
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: "1.05rem",
                 fontWeight: 500,
                 color: location.pathname === link.path ? "#ec4899" : "#4a4a5e",
@@ -104,7 +103,6 @@ export function Navbar() {
             <button
               className="flex items-center gap-1 transition-colors duration-200"
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: "1.05rem",
                 fontWeight: 500,
                 color: "#4a4a5e",
@@ -140,7 +138,6 @@ export function Navbar() {
                   }}
                   className="w-full px-4 py-2.5 text-left transition-colors duration-200"
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "0.95rem",
                     fontWeight: 500,
                     color: "#4a4a5e",
@@ -157,7 +154,7 @@ export function Navbar() {
                     e.currentTarget.style.color = "#4a4a5e";
                   }}
                 >
-                  Participants
+                  Hackers
                 </button>
                 <button
                   onClick={() => {
@@ -166,7 +163,6 @@ export function Navbar() {
                   }}
                   className="w-full px-4 py-2.5 text-left transition-colors duration-200"
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "0.95rem",
                     fontWeight: 500,
                     color: "#4a4a5e",
@@ -199,14 +195,13 @@ export function Navbar() {
             rel="noopener noreferrer"
             className="px-6 py-3 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105 hover:shadow-lg"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "1rem",
               background: "linear-gradient(135deg, #ec4899, #a855f7)",
               boxShadow: "0 4px 15px rgba(236, 72, 153, 0.3)",
               textDecoration: "none",
             }}
           >
-            Join Telegram
+            Join Our Community
           </a>
         </div>
 
@@ -236,7 +231,6 @@ export function Navbar() {
               onClick={() => { setMenuOpen(false); navigate(link.path); }}
               className="py-2 text-left"
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: "1.1rem",
                 fontWeight: 500,
                 color: location.pathname === link.path ? "#ec4899" : "#4a4a5e",
@@ -255,13 +249,12 @@ export function Navbar() {
             onClick={() => setMenuOpen(false)}
             className="mt-2 px-6 py-3 rounded-full font-semibold text-white text-center"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "1rem",
               background: "linear-gradient(135deg, #ec4899, #a855f7)",
               textDecoration: "none",
             }}
           >
-            Join Telegram
+            Join Our Community
           </a>
         </div>
       )}

@@ -10,7 +10,7 @@ const organizers = [
     abbr: "PSS",
   },
   {
-    name: "Alliance for Patient-Oriented Solutions",
+    name: "Alliance of Patient's Organizations Singapore",
     logo: aposLogo,
     abbr: "APOS",
   },
@@ -68,7 +68,6 @@ export function Sponsors() {
           <h2
             className="mb-6"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(1.8rem, 4vw, 2.5rem)",
               fontWeight: 700,
               color: "#1a1a2e",

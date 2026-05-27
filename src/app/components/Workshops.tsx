@@ -117,7 +117,6 @@ export function Workshops() {
             <span
               className="font-semibold"
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: "1rem",
                 color: "#ec4899",
               }}
@@ -129,7 +128,6 @@ export function Workshops() {
           <h2
             className="mb-4"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(2.2rem, 5vw, 3.5rem)",
               fontWeight: 700,
               color: "#1a1a2e",
@@ -150,7 +148,6 @@ export function Workshops() {
           </h2>
           <p
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(1rem, 2vw, 1.15rem)",
               color: "#5a5a6e",
             }}
@@ -188,7 +185,6 @@ export function Workshops() {
                     >
                       <p
                         style={{
-                          fontFamily: "'Space Grotesk', sans-serif",
                           fontSize: "0.82rem",
                           fontWeight: 700,
                           color: event.color,
@@ -236,7 +232,6 @@ export function Workshops() {
                       </div>
                       <span
                         style={{
-                          fontFamily: "'Space Grotesk', sans-serif",
                           fontSize: "0.78rem",
                           fontWeight: 700,
                           letterSpacing: "0.08em",
@@ -251,7 +246,6 @@ export function Workshops() {
                     <h3
                       className="mb-3"
                       style={{
-                        fontFamily: "'Space Grotesk', sans-serif",
                         fontSize: "1.2rem",
                         fontWeight: 700,
                         color: "#1a1a2e",
@@ -262,7 +256,6 @@ export function Workshops() {
                     </h3>
                     <p
                       style={{
-                        fontFamily: "'Space Grotesk', sans-serif",
                         fontSize: "1rem",
                         color: "#5a5a6e",
                         lineHeight: 1.75,
@@ -282,7 +275,6 @@ export function Workshops() {
                       >
                         <p
                           style={{
-                            fontFamily: "'Space Grotesk', sans-serif",
                             fontSize: "0.95rem",
                             color: "#4a4a5e",
                             lineHeight: 1.7,
@@ -298,7 +290,6 @@ export function Workshops() {
                       onClick={() => setExpandedEvent(expandedEvent === idx ? null : idx)}
                       className="mt-4 inline-flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200"
                       style={{
-                        fontFamily: "'Space Grotesk', sans-serif",
                         fontSize: "0.9rem",
                         fontWeight: 600,
                         color: event.color,
@@ -337,7 +328,6 @@ export function Workshops() {
                         />
                         <span
                           style={{
-                            fontFamily: "'Space Grotesk', sans-serif",
                             fontSize: "0.82rem",
                             fontWeight: 600,
                             color: "#a855f7",

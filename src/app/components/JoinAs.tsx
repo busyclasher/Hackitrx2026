@@ -9,24 +9,24 @@ const builderData = {
   iconColor: "#a855f7",
   iconBg: "rgba(168, 85, 247, 0.12)",
   iconBorder: "rgba(168, 85, 247, 0.25)",
-  title: "Builder",
-  subtitle: "Developers, designers & researchers",
+  title: "Hackers",
+  subtitle: "Youths & working professionals",
   description:
-    "Builders are the makers — individuals or small teams who come to the hackathon to create. Whether you write code, design experiences, or crunch data, your job is to turn a real patient problem into a working solution over the course of the event.",
-  tagsLabel: "Themes you can work on",
+    "We are looking for passionate youths and working professionals who want their work to matter beyond their day job — who'd rather spend a few weeks building something that genuinely improves how people in Singapore experience care.",
+  tagsLabel: "We need you!",
   tags: [
-    "Mental health",
-    "Rare diseases",
-    "Clinical trials",
-    "Remote monitoring",
-    "Patient data",
-    "Medication mgmt",
-    "Carer support",
-    "Accessibility",
+    "Healthcare professionals",
+    "Software Engineer",
+    "Product Manager",
+    "Product Designer",
+    "UI/UX Researcher",
+    "Innovators",
+    "Business Analyst",
+    "& more",
   ],
-  expectLabel: "What to expect",
+  expectLabel: "What you will expect",
   expect:
-    "You'll be matched with a patient organisation who brings the problem. You bring the skills. Mentors, datasets, and clinical advisors are available throughout the event.",
+    "You'll tackle real problems — shaped by patients, caregivers, and the patient organisations alongside them. You'll meet the people you're designing for, hear their stories, and build with them in the room. You'll be supported with a network of public-good builders, developer and design tools as you build — and when something proves itself, there's a real pathway into the hands of the communities it was built for.",
   accentColor: "#a855f7",
   gradientFrom: "#a855f7",
   gradientTo: "#ec4899",
@@ -37,21 +37,21 @@ const patientOrgData = {
   iconColor: "#14b8a6",
   iconBg: "rgba(20, 184, 166, 0.12)",
   iconBorder: "rgba(20, 184, 166, 0.25)",
-  title: "Patient Organisation",
-  subtitle: "Charities, advocacy groups & foundations",
+  title: "Patient & Social Service Organisation",
+  subtitle: "Support groups & social service agencies",
   description:
-    "Patient organisations bring the mission. You represent the people most affected by a condition — and you hold knowledge that no dataset can capture. At this hackathon, your role is to share that lived experience so builders can create something that genuinely helps.",
+    "Patient organisations, support groups, and social service agencies who walk alongside patients and caregivers in Singapore — and who want to turn what they hear, day in and day out, into something that actually changes the experience of care. Change doesn't wait for the perfect conditions. It begins the moment one organisation, one champion, decides to name one problem worth solving.",
   tagsLabel: "What you bring",
   tags: [
     "Lived experience",
-    "Clinical advisors",
     "Patient insight",
-    "Real-world data",
-    "Pilot opportunity",
+    "Real problems that matter",
+    "Trust of the community you serve",
+    "Voice of the unheard",
   ],
   expectLabel: "What to expect",
   expect:
-    "You'll submit a challenge brief before the event. Builder teams then select your challenge and spend the hackathon building toward it — with you available to give feedback and steer direction.",
+    "A team of skilled builders, designers, and healthcare professionals who'll co-create with you. A structured programme that matches your bandwidth. There will be support and guidance through every step of problem discovery. And, for solutions that prove themselves, a real pathway from prototype into deployment — with OGP, government partners, and potential funders ready to take what works further.",
   accentColor: "#14b8a6",
   gradientFrom: "#14b8a6",
   gradientTo: "#a855f7",
@@ -114,7 +114,6 @@ function PersonaCard({ data, active, onClick, onCTA }: CardProps) {
       <h3
         className="mb-1"
         style={{
-          fontFamily: "'Space Grotesk', sans-serif",
           fontSize: "1.5rem",
           fontWeight: 700,
           color: active ? "#1a1a2e" : "#6b7280",
@@ -125,7 +124,6 @@ function PersonaCard({ data, active, onClick, onCTA }: CardProps) {
       <p
         className="mb-5"
         style={{
-          fontFamily: "'Space Grotesk', sans-serif",
           fontSize: "0.9rem",
           color: active ? "#6a6a7e" : "#9ca3af",
         }}
@@ -146,7 +144,6 @@ function PersonaCard({ data, active, onClick, onCTA }: CardProps) {
       <p
         className="mb-6"
         style={{
-          fontFamily: "'Space Grotesk', sans-serif",
           fontSize: "0.97rem",
           color: active ? "#374151" : "#9ca3af",
           lineHeight: 1.75,
@@ -161,7 +158,6 @@ function PersonaCard({ data, active, onClick, onCTA }: CardProps) {
         <p
           className="mb-3"
           style={{
-            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "0.72rem",
             fontWeight: 700,
             color: active ? "#9ca3af" : "#d1d5db",
@@ -177,7 +173,6 @@ function PersonaCard({ data, active, onClick, onCTA }: CardProps) {
               key={tag}
               className="px-3 py-1 rounded-full"
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: "0.82rem",
                 background: active ? `${data.accentColor}12` : "rgba(0,0,0,0.04)",
                 color: active ? data.accentColor : "#9ca3af",
@@ -204,7 +199,6 @@ function PersonaCard({ data, active, onClick, onCTA }: CardProps) {
         <p
           className="mb-2"
           style={{
-            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "0.72rem",
             fontWeight: 700,
             color: active ? "#9ca3af" : "#d1d5db",
@@ -216,7 +210,6 @@ function PersonaCard({ data, active, onClick, onCTA }: CardProps) {
         </p>
         <p
           style={{
-            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "0.95rem",
             color: active ? "#374151" : "#9ca3af",
             lineHeight: 1.7,
@@ -234,7 +227,6 @@ function PersonaCard({ data, active, onClick, onCTA }: CardProps) {
         }}
         className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold transition-all duration-200"
         style={{
-          fontFamily: "'Space Grotesk', sans-serif",
           fontSize: "0.95rem",
           background: active
             ? `linear-gradient(135deg, ${data.gradientFrom}, ${data.gradientTo})`
@@ -336,7 +328,6 @@ export function JoinAs() {
           <span
             className="inline-block px-4 py-1.5 rounded-full mb-4"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "0.82rem",
               fontWeight: 700,
               letterSpacing: "0.1em",
@@ -350,7 +341,6 @@ export function JoinAs() {
           </span>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(2rem, 5vw, 3rem)",
               fontWeight: 700,
               color: "#1a1a2e",
@@ -362,7 +352,6 @@ export function JoinAs() {
           <p
             className="mt-4 max-w-xl mx-auto"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               color: "#6a6a7e",
               fontSize: "1rem",
               lineHeight: 1.7,
@@ -373,12 +362,11 @@ export function JoinAs() {
         </div>
 
         {/* Toggle tabs */}
-        <div className="flex gap-3 mb-8">
+        <div className="flex flex-wrap gap-3 mb-8">
           <button
             onClick={() => setActive("builder")}
             className="flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-200"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "0.95rem",
               fontWeight: 600,
               background: active === "builder" ? "#1a1a2e" : "#ffffff",
@@ -388,13 +376,12 @@ export function JoinAs() {
             }}
           >
             <Code size={16} />
-            Builder
+            Hackers
           </button>
           <button
             onClick={() => setActive("patient-org")}
             className="flex items-center gap-2 px-5 py-2.5 rounded-full transition-all duration-200"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "0.95rem",
               fontWeight: 600,
               background: active === "patient-org" ? "#1a1a2e" : "#ffffff",
@@ -404,7 +391,7 @@ export function JoinAs() {
             }}
           >
             <Building2 size={16} />
-            Patient Organisation
+            Patient &amp; Social Service Organisation
           </button>
         </div>
 

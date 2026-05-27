@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router";
 import hackitRxLogo from "../../imports/HackitRx_logo_black.png";
 // @ts-ignore
-import singaporeanSvgRaw from "../../imports/singaporean.svg?raw";
+import heroImageRaw from "../../imports/hero_image.svg?raw";
 import { SvgScene } from "./SvgScene";
 
 const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
 
 export function Hero() {
+  const navigate = useNavigate();
   return (
     <section
       className="relative min-h-screen flex flex-col items-center overflow-hidden"
@@ -69,16 +71,7 @@ export function Hero() {
               animation: "fadeInUp 1s ease-out",
             }}
           >
-            {/* Logo */}
-            <div className="mb-8 flex justify-center lg:justify-start">
-              <img
-                src={hackitRxLogo}
-                alt="HackitRx Singapore 2026"
-                className="h-20 md:h-28 object-contain"
-              />
-            </div>
-
-            {/* Event badge */}
+            {/* Tagline badge */}
             <div
               className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full mb-7"
               style={{
@@ -93,20 +86,27 @@ export function Hero() {
               <span
                 className="font-semibold"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "1.05rem",
                   color: "#ec4899"
                 }}
               >
-                Singapore · 2026
+                Find the need. Hack the Fix.
               </span>
+            </div>
+
+            {/* Logo */}
+            <div className="mb-8 flex justify-center lg:justify-start">
+              <img
+                src={hackitRxLogo}
+                alt="HackitRx"
+                className="h-20 md:h-28 object-contain"
+              />
             </div>
 
             {/* Headline */}
             <h1
               className="mb-7"
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: "clamp(2.4rem, 6vw, 4.2rem)",
                 fontWeight: 700,
                 lineHeight: 1.15,
@@ -114,7 +114,7 @@ export function Hero() {
                 letterSpacing: "-0.02em",
               }}
             >
-              Empowering{" "}
+              Co-creating the Future of Care,{" "}
               <span
                 style={{
                   background: "linear-gradient(135deg, #ec4899, #a855f7)",
@@ -123,17 +123,14 @@ export function Hero() {
                   backgroundClip: "text",
                 }}
               >
-                healthcare innovation
+                Grounded in Lived Experience.
               </span>
-              <br />
-              through collaboration.
             </h1>
 
             {/* Sub-headline */}
             <p
               className="mb-8 max-w-xl"
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: "clamp(1.05rem, 2vw, 1.25rem)",
                 color: "#4a4a5e",
                 lineHeight: 1.75,
@@ -141,26 +138,6 @@ export function Hero() {
             >
               Bringing together patients, healthcare leaders, and innovators to solve real-world healthcare challenges.
             </p>
-
-            {/* Demo Day highlight */}
-            <div
-              className="inline-block mb-9 px-5 py-2.5 rounded-2xl"
-              style={{
-                background: "linear-gradient(135deg, rgba(236, 72, 153, 0.1), rgba(168, 85, 247, 0.1))",
-                border: "2px solid rgba(236, 72, 153, 0.3)",
-              }}
-            >
-              <p
-                style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: "1.15rem",
-                  fontWeight: 600,
-                  color: "#ec4899",
-                }}
-              >
-                Demo Day: <span style={{ color: "#a855f7" }}>10-11 October 2026</span>
-              </p>
-            </div>
 
             {/* CTAs */}
             <div className="flex flex-wrap gap-4 justify-center lg:justify-start">
@@ -170,20 +147,18 @@ export function Hero() {
                 rel="noopener noreferrer"
                 className="px-9 py-4 rounded-full font-semibold text-white transition-all duration-200 hover:scale-105"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   background: "linear-gradient(135deg, #ec4899, #a855f7)",
                   boxShadow: "0 4px 20px rgba(236, 72, 153, 0.3)",
                   fontSize: "1.1rem",
                   textDecoration: "none",
                 }}
               >
-                Join Telegram
+                Join Our Community
               </a>
               <a
-                href="#events"
+                href="/programmes"
                 className="px-9 py-4 rounded-full font-semibold transition-all duration-200 hover:scale-105"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   background: "#ffffff",
                   border: "2px solid #ec4899",
                   color: "#ec4899",
@@ -192,7 +167,7 @@ export function Hero() {
                 }}
                 onClick={(e) => {
                   e.preventDefault();
-                  document.getElementById("events")?.scrollIntoView({ behavior: "smooth" });
+                  navigate("/programmes");
                 }}
               >
                 Explore Events
@@ -203,8 +178,8 @@ export function Hero() {
           {/* Right: illustration */}
           <div className="flex-shrink-0 w-full lg:w-[480px] xl:w-[540px] flex items-end justify-center">
             <SvgScene
-              raw={singaporeanSvgRaw}
-              aspectRatio="492/386"
+              raw={heroImageRaw}
+              aspectRatio="969/883"
               className="max-w-sm lg:max-w-full drop-shadow-lg"
             />
           </div>
@@ -227,7 +202,6 @@ export function Hero() {
           >
             <span
               style={{
-                fontFamily: "'Space Grotesk', sans-serif",
                 fontSize: "0.85rem",
                 color: "#6a6a7e",
                 fontWeight: 500,
@@ -251,42 +225,6 @@ export function Hero() {
               />
             </svg>
           </button>
-        </div>
-      </div>
-
-      {/* Stats strip */}
-      <div className="relative z-10 w-full border-t" style={{ borderColor: "rgba(236, 72, 153, 0.15)", background: "rgba(255,255,255,0.6)", backdropFilter: "blur(8px)" }}>
-        <div className="max-w-5xl mx-auto px-6 py-6 grid grid-cols-2 gap-6">
-          {[
-            { value: "3rd", label: "Edition" },
-            { value: "Oct 10–11", label: "Demo Day 2026" },
-          ].map((stat) => (
-            <div key={stat.label} className="flex flex-col items-center text-center">
-              <span
-                style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: "clamp(1.5rem, 3vw, 2rem)",
-                  fontWeight: 700,
-                  background: "linear-gradient(135deg, #ec4899, #a855f7)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text",
-                }}
-              >
-                {stat.value}
-              </span>
-              <span
-                style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
-                  fontSize: "0.88rem",
-                  color: "#6a6a7e",
-                  marginTop: "2px",
-                }}
-              >
-                {stat.label}
-              </span>
-            </div>
-          ))}
         </div>
       </div>
     </section>

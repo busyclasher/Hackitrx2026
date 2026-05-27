@@ -51,7 +51,6 @@ export function PastStories() {
           <h3
             className="mb-8"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "1.8rem",
               fontWeight: 700,
               color: "#1a1a2e",
@@ -100,7 +99,6 @@ export function PastStories() {
                   <h4
                     className="mb-4"
                     style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
                       fontSize: "1.4rem",
                       fontWeight: 700,
                       color: "#0ea5e9",
@@ -116,7 +114,6 @@ export function PastStories() {
                         key={idx}
                         className="flex items-start gap-2.5"
                         style={{
-                          fontFamily: "'Space Grotesk', sans-serif",
                           color: "#3a3a4e",
                           fontSize: "1.05rem",
                           lineHeight: 1.6,
@@ -138,7 +135,6 @@ export function PastStories() {
           <h3
             className="mb-8"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "1.8rem",
               fontWeight: 700,
               color: "#1a1a2e",
@@ -191,7 +187,6 @@ export function PastStories() {
                       <Award size={13} style={{ color: "#fff" }} />
                       <span
                         style={{
-                          fontFamily: "'Space Grotesk', sans-serif",
                           fontSize: "0.8rem",
                           fontWeight: 700,
                           color: "#fff",
@@ -208,7 +203,6 @@ export function PastStories() {
                   <h4
                     className="mb-1"
                     style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
                       fontSize: "1.25rem",
                       fontWeight: 700,
                       color: "#0ea5e9",
@@ -219,7 +213,6 @@ export function PastStories() {
                   <p
                     className="mb-3"
                     style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
                       fontSize: "0.85rem",
                       color: "#94a3b8",
                     }}
@@ -228,7 +221,6 @@ export function PastStories() {
                   </p>
                   <p
                     style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
                       color: "#3a3a4e",
                       fontSize: "0.97rem",
                       lineHeight: 1.6,

@@ -54,7 +54,6 @@ export function Registration() {
           <span
             className="inline-block text-sm font-semibold tracking-widest uppercase mb-4 px-4 py-1.5 rounded-full"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               color: "#ec4899",
               background: "rgba(236, 72, 153, 0.1)",
               border: "1px solid rgba(236, 72, 153, 0.25)",
@@ -64,7 +63,6 @@ export function Registration() {
           </span>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(2rem, 5vw, 3rem)",
               fontWeight: 700,
               color: "#ffffff",
@@ -86,7 +84,6 @@ export function Registration() {
           <p
             className="mt-4 max-w-2xl mx-auto"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               color: "rgba(255,255,255,0.55)",
               fontSize: "1.05rem",
               lineHeight: 1.7,
@@ -115,7 +112,6 @@ export function Registration() {
               <div
                 className="text-xs font-semibold tracking-widest uppercase mb-1"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   color: "rgba(255,255,255,0.4)",
                 }}
               >
@@ -124,7 +120,6 @@ export function Registration() {
               <div
                 className="font-bold"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   color: "#ffffff",
                   fontSize: "1.05rem",
                 }}
@@ -164,7 +159,6 @@ export function Registration() {
               <h3
                 className="mb-3"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "1.2rem",
                   fontWeight: 700,
                   color: "#ffffff",
@@ -176,7 +170,6 @@ export function Registration() {
               <p
                 className="flex-1 mb-6"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   color: "rgba(255,255,255,0.55)",
                   fontSize: "0.95rem",
                   lineHeight: 1.7,
@@ -188,7 +181,6 @@ export function Registration() {
               <button
                 className="w-full py-3 rounded-full font-semibold text-sm transition-all duration-200 hover:scale-105"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   background: opt.primary
                     ? "linear-gradient(135deg, #ec4899, #a855f7)"
                     : "transparent",

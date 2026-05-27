@@ -41,7 +41,6 @@ function SpeakerCard({
         <h3
           className="mb-2"
           style={{
-            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "1.2rem",
             fontWeight: 700,
             color: "#1a1a2e",
@@ -53,7 +52,6 @@ function SpeakerCard({
 
         <p
           style={{
-            fontFamily: "'Space Grotesk', sans-serif",
             fontSize: "0.95rem",
             fontWeight: 600,
             color: "#ec4899",
@@ -67,7 +65,6 @@ function SpeakerCard({
           <p
             className="mt-2"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "0.88rem",
               fontWeight: 500,
               color: "#6a6a7e",
@@ -82,7 +79,6 @@ function SpeakerCard({
       <p
         className="mt-auto text-center"
         style={{
-          fontFamily: "'Space Grotesk', sans-serif",
           fontSize: "0.92rem",
           color: "#4a4a5e",
           lineHeight: 1.7,
@@ -105,7 +101,6 @@ export function Speakers() {
                 <h2
                   className="mb-3"
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "clamp(1.6rem, 3.5vw, 2.1rem)",
                     fontWeight: 700,
                     color: "#1a1a2e",
@@ -116,7 +111,6 @@ export function Speakers() {
                 <p
                   className="mx-auto max-w-2xl"
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "1.05rem",
                     color: "#6a6a7e",
                     lineHeight: 1.7,

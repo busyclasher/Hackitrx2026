@@ -84,7 +84,7 @@ export function PatientOrgPage() {
   return (
     <div
       className="min-h-screen"
-      style={{ background: "#ffffff", fontFamily: "'Space Grotesk', sans-serif" }}
+      style={{ background: "#ffffff" }}
     >
       {/* Hero */}
       <section
@@ -124,7 +124,6 @@ export function PatientOrgPage() {
                   cursor: "pointer",
                   color: "#6b7280",
                   fontSize: "0.95rem",
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 500,
                   padding: 0,
                 }}
@@ -144,7 +143,6 @@ export function PatientOrgPage() {
                 <Building2 size={16} style={{ color: "#14b8a6" }} />
                 <span
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "0.85rem",
                     fontWeight: 700,
                     color: "#14b8a6",

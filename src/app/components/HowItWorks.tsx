@@ -66,7 +66,6 @@ export function HowItWorks() {
           <span
             className="inline-block text-sm font-semibold tracking-widest uppercase mb-4 px-4 py-1.5 rounded-full"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               color: "#ec4899",
               background: "rgba(236, 72, 153, 0.1)",
               border: "1px solid rgba(236, 72, 153, 0.25)",
@@ -76,7 +75,6 @@ export function HowItWorks() {
           </span>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(2rem, 5vw, 3rem)",
               fontWeight: 700,
               color: "#ffffff",
@@ -126,7 +124,6 @@ export function HowItWorks() {
                 <span
                   className="text-xs font-bold tracking-widest uppercase mb-2"
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
                     color: step.color,
                     opacity: 0.7,
                   }}
@@ -137,7 +134,6 @@ export function HowItWorks() {
                 <h3
                   className="mb-3"
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "1rem",
                     fontWeight: 700,
                     color: "#ffffff",
@@ -149,7 +145,6 @@ export function HowItWorks() {
 
                 <p
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
                     color: "rgba(255,255,255,0.5)",
                     fontSize: "0.875rem",
                     lineHeight: 1.6,

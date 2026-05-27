@@ -96,7 +96,6 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               <h3
                 className="text-center mb-2"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "1.9rem",
                   fontWeight: 700,
                   color: "#1a1a2e",
@@ -118,7 +117,6 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               <p
                 className="text-center mb-8"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "1rem",
                   color: "#6a6a7e",
                   lineHeight: 1.6,
@@ -133,7 +131,6 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     htmlFor="modal-email"
                     className="block mb-2"
                     style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
                       fontSize: "0.9rem",
                       fontWeight: 600,
                       color: "#1a1a2e",
@@ -150,7 +147,6 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                     placeholder="your.email@example.com"
                     className="w-full px-4 py-3 rounded-xl transition-all duration-200 focus:outline-none"
                     style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
                       fontSize: "1rem",
                       color: "#1a1a2e",
                       background: "#f8f9fa",
@@ -172,7 +168,6 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                   disabled={isLoading}
                   className="w-full px-6 py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "1.05rem",
                     background: isLoading
                       ? "#9ca3af"
@@ -190,7 +185,6 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               <p
                 className="mt-5 text-center"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "0.82rem",
                   color: "#9ca3af",
                 }}
@@ -213,7 +207,6 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               <h3
                 className="mb-3"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "1.8rem",
                   fontWeight: 700,
                   color: "#1a1a2e",
@@ -224,7 +217,6 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
               <p
                 className="mb-8"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "1rem",
                   color: "#4a4a5e",
                   lineHeight: 1.7,
@@ -242,7 +234,6 @@ export function WaitlistModal({ isOpen, onClose }: WaitlistModalProps) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-semibold transition-all duration-200 hover:scale-105"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "0.95rem",
                   background: "linear-gradient(135deg, #ec4899, #a855f7)",
                   color: "#ffffff",

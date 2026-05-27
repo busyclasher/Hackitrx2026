@@ -1,93 +1,196 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router";
 import {
   ArrowLeft,
   Code,
-  CheckCircle,
-  Calendar,
+  Stethoscope,
+  Landmark,
+  Brain,
+  UserPlus,
+  HeartHandshake,
   Sparkles,
   Users,
-  Lightbulb,
-  Trophy,
-  Send,
 } from "lucide-react";
 // @ts-ignore
 import singaporean1SvgRaw from "../../imports/singaporean__1_.svg?raw";
 import { SvgScene } from "./SvgScene";
+import collabImg from "../../../images/Ground-up Innovation.jpg";
 
-const themes = [
-  "Mental Wellbeing",
-  "Telehealth",
-  "Global Data",
-  "Active Ageing",
-  "Patient Care",
-  "Medication Management",
-  "Carer Support",
-  "Accessibility",
-];
+const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
+// TODO: replace with the live hacker registration form URL when ready
+const REGISTRATION_URL = "https://form.gov.sg/placeholder";
 
-const timeline = [
+const whyJoin = [
   {
-    icon: Send,
-    date: "Now — June 2026",
-    title: "Register your interest",
-    description:
-      "Join the waitlist to be among the first notified when applications open. No commitment yet — just signal your interest.",
-    color: "#ec4899",
+    icon: Code,
+    color: "#a855f7",
+    title: "For engineers, designers & PMs",
+    body: "Tired of shipping the next feature on someone's roadmap? Want to put your AI skills behind something that actually lands in someone's hands? HackitRx hands you real, patient-sourced problems — and the people on the other side who can tell you whether you're solving the right one.",
+    highlight: false,
   },
   {
-    icon: Lightbulb,
-    date: "July 2026",
-    title: "Applications open & team formation",
-    description:
-      "Official applications open. Solo participants are matched into teams. Optional networking sessions help you find your crew before the event.",
+    icon: Stethoscope,
+    color: "#ec4899",
+    title: "For healthcare professionals",
+    body: "You see it every day — patients struggling with the things you wish you had time to fix. Want to scale your impact beyond the consult room? HackitRx gives you the team, the tools, and the time to turn the gaps you see into solutions patients can actually use.",
+    highlight: false,
+  },
+  {
+    icon: Landmark,
+    color: "#14b8a6",
+    title: "For government, agencies & the ecosystem",
+    body: "You set policy, fund initiatives, and shape the system from the top down. Come see what the gaps look like from the ground up — and back the solutions that prove they can scale.",
+    highlight: false,
+  },
+  {
+    icon: Brain,
+    color: "#ffffff",
+    title: "For everyone else",
+    body: "Anyone who's watched a parent, a sibling, or a friend struggle with the care system and thought it shouldn't have to be this hard — you belong here. No credentials required. Curiosity and conviction are enough.",
+    highlight: true,
+  },
+];
+
+const beforeApply = [
+  {
+    icon: UserPlus,
     color: "#a855f7",
+    title: "Apply as an individual or with friends",
+    body: "You're welcome to apply with people you already know — but each application is reviewed individually. Applying as a group doesn't guarantee that every member is selected.",
+    highlight: false,
+  },
+  {
+    icon: Stethoscope,
+    color: "#ec4899",
+    title: "Have a healthcare professional on the team",
+    body: "Every team is recommended to have at least one healthcare professional or pharmacist, to bring the provider's lens to the problem.",
+    highlight: false,
+  },
+  {
+    icon: HeartHandshake,
+    color: "#14b8a6",
+    title: "You'll be paired with a patient organisation",
+    body: "They aren't just the source of your problem statement — they're your co-creators. You'll meet, listen, test, and iterate with them throughout the programme.",
+    highlight: false,
   },
   {
     icon: Sparkles,
-    date: "August – September 2026",
-    title: "Pre-hackathon workshops",
-    description:
-      "Optional skill-building workshops covering design thinking, healthcare data, and rapid prototyping — to help you hit the ground running.",
-    color: "#ec4899",
-  },
-  {
-    icon: Users,
-    date: "10 – 11 October 2026",
-    title: "Hackathon weekend",
-    description:
-      "The main event. Two days to go from problem to prototype. You'll be paired with a patient organisation, supported by mentors, clinicians, and datasets.",
     color: "#a855f7",
-  },
-  {
-    icon: Trophy,
-    date: "11 October 2026",
-    title: "Demo Day & awards",
-    description:
-      "Present your solution to a panel of judges from healthcare, technology, and policy. Winners receive support to pilot their solutions.",
-    color: "#ec4899",
+    title: "No code? No problem",
+    body: "No coding experience required. AI tooling, product-management support, and a network of public-good builders are part of the package.",
+    highlight: true,
   },
 ];
 
-export function BuilderPage() {
-  const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
+const commitment = [
+  {
+    date: "12 Jun",
+    title: "Applications open",
+    body: "Submit through the registration form.",
+  },
+  {
+    date: "29–30 Aug",
+    title: "Kick-Off Day",
+    body: "Meet your problem statement, meet your team, meet the patient organisation you are passionate to work with. The build begins here.",
+  },
+  {
+    date: "Sep – Oct",
+    title: "Build sprint",
+    body: "Six weeks of focused co-creation. Expect regular check-ins with our team, at least one learning journey into a real care setting, and at least one in-depth meet-up with your patient organisation to test and refine your work.",
+  },
+  {
+    date: "10–11 Oct",
+    title: "Demo Day",
+    body: "Present your solution to judges, partners, and the patient community — the people who can take it further.",
+  },
+  {
+    date: "Beyond Oct",
+    title: "A pathway to scale",
+    body: "For solutions that prove themselves, a real pathway to scale — with OGP, government partners, and funders ready to support what's next.",
+  },
+];
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-    setSubmitted(true);
-    setIsLoading(false);
-  };
+function FadeIn({
+  children,
+  delay = 0,
+  className,
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
+  const [visible, setVisible] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) setVisible(true);
+      },
+      { threshold: 0.08 },
+    );
+    if (ref.current) observer.observe(ref.current);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div
-      className="min-h-screen"
-      style={{ background: "#ffffff", fontFamily: "'Space Grotesk', sans-serif" }}
+      ref={ref}
+      className={className}
+      style={{
+        opacity: visible ? 1 : 0,
+        transform: visible ? "translateY(0)" : "translateY(24px)",
+        transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`,
+      }}
     >
+      {children}
+    </div>
+  );
+}
+
+function SignUpButton({
+  children,
+  variant = "solid",
+}: {
+  children: React.ReactNode;
+  variant?: "solid" | "white";
+}) {
+  const base =
+    "inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-transform duration-200 hover:scale-105";
+  const style: React.CSSProperties =
+    variant === "white"
+      ? {
+          fontSize: "1.05rem",
+          background: "#ffffff",
+          color: "#a855f7",
+          textDecoration: "none",
+          boxShadow: "0 8px 24px rgba(0,0,0,0.18)",
+        }
+      : {
+          fontSize: "1.05rem",
+          background: "linear-gradient(135deg, #a855f7, #ec4899)",
+          color: "#ffffff",
+          textDecoration: "none",
+          boxShadow: "0 4px 20px rgba(168,85,247,0.3)",
+        };
+  return (
+    <a
+      href={REGISTRATION_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={base}
+      style={style}
+    >
+      {children}
+    </a>
+  );
+}
+
+export function BuilderPage() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="min-h-screen" style={{ background: "#ffffff" }}>
       {/* Hero */}
       <section
         className="relative pt-36 pb-16 overflow-hidden"
@@ -95,7 +198,6 @@ export function BuilderPage() {
           background: "linear-gradient(135deg, #fef3f7 0%, #fef8fa 50%, #f5f3ff 100%)",
         }}
       >
-        {/* Blobs */}
         <div
           className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
           style={{
@@ -113,20 +215,17 @@ export function BuilderPage() {
 
         <div className="max-w-6xl mx-auto px-6 relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-14">
-
             {/* Left: text */}
             <div className="flex-1">
-              {/* Back button */}
               <button
                 onClick={() => navigate("/")}
-                className="flex items-center gap-2 mb-10 transition-all duration-200 hover:-translate-x-1"
+                className="flex items-center gap-2 mb-10 transition-transform duration-200 hover:-translate-x-1"
                 style={{
                   background: "none",
                   border: "none",
                   cursor: "pointer",
                   color: "#6b7280",
                   fontSize: "0.95rem",
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontWeight: 500,
                   padding: 0,
                 }}
@@ -135,7 +234,6 @@ export function BuilderPage() {
                 Back
               </button>
 
-              {/* Badge */}
               <div
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
                 style={{
@@ -146,14 +244,13 @@ export function BuilderPage() {
                 <Code size={16} style={{ color: "#a855f7" }} />
                 <span
                   style={{
-                    fontFamily: "'Space Grotesk', sans-serif",
                     fontSize: "0.85rem",
                     fontWeight: 700,
                     color: "#a855f7",
                     letterSpacing: "0.05em",
                   }}
                 >
-                  For Builders
+                  For Hackers
                 </span>
               </div>
 
@@ -167,7 +264,7 @@ export function BuilderPage() {
                   letterSpacing: "-0.02em",
                 }}
               >
-                Build solutions that{" "}
+                Find the Need.{" "}
                 <span
                   style={{
                     background: "linear-gradient(135deg, #a855f7, #ec4899)",
@@ -176,25 +273,28 @@ export function BuilderPage() {
                     backgroundClip: "text",
                   }}
                 >
-                  actually matter.
+                  Hack the Fix.
                 </span>
               </h1>
 
               <p
+                className="mb-8"
                 style={{
-                  fontSize: "1.15rem",
+                  fontSize: "1.2rem",
+                  fontStyle: "italic",
                   color: "#4a4a5e",
-                  lineHeight: 1.75,
-                  maxWidth: "560px",
+                  lineHeight: 1.7,
+                  maxWidth: "540px",
                 }}
               >
-                HackitRx is a two-day hackathon where builders — developers, designers, and
-                researchers — work alongside patient organisations to prototype real solutions to
-                real healthcare challenges.
+                Of everything you could build this year, build the one a patient is
+                actually waiting for.
               </p>
+
+              <SignUpButton>Sign up now →</SignUpButton>
             </div>
 
-            {/* Right: illustration */}
+            {/* Right: illustration (preserved) */}
             <div className="flex-shrink-0 w-full lg:w-[340px] xl:w-[400px] flex items-end justify-center">
               <SvgScene
                 raw={singaporean1SvgRaw}
@@ -202,321 +302,498 @@ export function BuilderPage() {
                 className="max-w-[300px] lg:max-w-full"
               />
             </div>
-
           </div>
         </div>
       </section>
 
-      {/* Commitment section */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <div
-            className="rounded-3xl p-10"
-            style={{
-              background: "linear-gradient(135deg, rgba(168,85,247,0.05), rgba(236,72,153,0.05))",
-              border: "2px solid rgba(168,85,247,0.12)",
-            }}
-          >
-            <h2
-              className="mb-4"
-              style={{ fontSize: "1.7rem", fontWeight: 700, color: "#1a1a2e" }}
-            >
-              What you're signing up for
-            </h2>
-            <p
-              className="mb-8"
-              style={{ fontSize: "1.05rem", color: "#4a4a5e", lineHeight: 1.8 }}
-            >
-              Joining the waitlist is <strong>zero commitment</strong> — we'll simply notify you
-              when registration opens. The hackathon itself is a{" "}
-              <strong>one weekend event</strong> (10–11 October 2026). There are optional
-              pre-event workshops if you'd like to prepare, but they're not mandatory. We keep
-              communication light, relevant, and respectful of your time.
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-              {[
-                { label: "Time commitment", value: "1 weekend", sub: "10–11 Oct 2026" },
-                { label: "Team size", value: "2–5 people", sub: "Solo sign-ups welcome" },
-                { label: "Experience needed", value: "Any level", sub: "Beginners welcome" },
-              ].map((item) => (
-                <div
-                  key={item.label}
-                  className="rounded-2xl p-5 text-center"
-                  style={{
-                    background: "#ffffff",
-                    border: "1.5px solid rgba(168,85,247,0.15)",
-                    boxShadow: "0 4px 15px rgba(168,85,247,0.06)",
-                  }}
-                >
-                  <p
-                    style={{
-                      fontSize: "0.75rem",
-                      fontWeight: 700,
-                      color: "#9ca3af",
-                      textTransform: "uppercase",
-                      letterSpacing: "0.08em",
-                      marginBottom: "6px",
-                    }}
-                  >
-                    {item.label}
-                  </p>
-                  <p
-                    style={{ fontSize: "1.4rem", fontWeight: 700, color: "#1a1a2e", marginBottom: "2px" }}
-                  >
-                    {item.value}
-                  </p>
-                  <p style={{ fontSize: "0.85rem", color: "#6b7280" }}>{item.sub}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Themes */}
-      <section className="py-6">
-        <div className="max-w-4xl mx-auto px-6">
-          <h2
-            className="mb-2"
-            style={{ fontSize: "1.7rem", fontWeight: 700, color: "#1a1a2e" }}
-          >
-            Challenge themes
-          </h2>
-          <p className="mb-6" style={{ fontSize: "1rem", color: "#6a6a7e", lineHeight: 1.7 }}>
-            Builder teams will be matched to challenges submitted by patient organisations.
-            These are the domains you'll be working across:
-          </p>
-          <div className="flex flex-wrap gap-3">
-            {themes.map((theme) => (
-              <span
-                key={theme}
-                className="px-4 py-2 rounded-full"
+      {/* Why join as Hackers */}
+      <section className="py-24">
+        <div className="max-w-5xl mx-auto px-6">
+          <FadeIn>
+            <div className="text-center mb-14">
+              <h2
+                className="mb-4"
                 style={{
-                  fontSize: "0.9rem",
-                  background: "rgba(168, 85, 247, 0.08)",
-                  color: "#a855f7",
-                  border: "1.5px solid rgba(168, 85, 247, 0.2)",
-                  fontWeight: 500,
+                  fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                  fontWeight: 700,
+                  color: "#1a1a2e",
                 }}
               >
-                {theme}
-              </span>
-            ))}
+                Why join as{" "}
+                <span
+                  style={{
+                    background: "linear-gradient(135deg, #ec4899, #a855f7)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  Hackers
+                </span>
+                ?
+              </h2>
+              <p
+                className="mx-auto"
+                style={{
+                  fontSize: "1.1rem",
+                  color: "#6a6a7e",
+                  lineHeight: 1.7,
+                  maxWidth: "600px",
+                }}
+              >
+                We need diverse minds to build solutions that actually scale. Here's
+                what's in it for you.
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {whyJoin.map((c, i) => {
+              const Icon = c.icon;
+              return (
+                <FadeIn key={c.title} delay={i * 90} className="h-full">
+                  <div
+                    className="rounded-3xl p-8 text-center flex flex-col items-center h-full"
+                    style={
+                      c.highlight
+                        ? {
+                            background:
+                              "linear-gradient(135deg, #ec4899, #a855f7)",
+                            boxShadow: "0 16px 40px rgba(168,85,247,0.28)",
+                          }
+                        : {
+                            background: "#ffffff",
+                            border: `1.5px solid ${c.color}22`,
+                            boxShadow: `0 8px 28px ${c.color}10`,
+                          }
+                    }
+                  >
+                    <div
+                      className="w-14 h-14 rounded-full flex items-center justify-center mb-5"
+                      style={{
+                        background: c.highlight
+                          ? "rgba(255,255,255,0.18)"
+                          : `${c.color}14`,
+                        border: c.highlight
+                          ? "1.5px solid rgba(255,255,255,0.35)"
+                          : `1.5px solid ${c.color}33`,
+                      }}
+                    >
+                      <Icon
+                        size={24}
+                        style={{ color: c.highlight ? "#ffffff" : c.color }}
+                      />
+                    </div>
+                    <h3
+                      className="mb-3"
+                      style={{
+                        fontSize: "1.25rem",
+                        fontWeight: 700,
+                        color: c.highlight ? "#ffffff" : "#1a1a2e",
+                      }}
+                    >
+                      {c.title}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "0.97rem",
+                        color: c.highlight
+                          ? "rgba(255,255,255,0.92)"
+                          : "#4a4a5e",
+                        lineHeight: 1.75,
+                      }}
+                    >
+                      {c.body}
+                    </p>
+                  </div>
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Timeline */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <div className="flex items-center gap-3 mb-10">
-            <Calendar size={22} style={{ color: "#a855f7" }} />
-            <h2 style={{ fontSize: "1.7rem", fontWeight: 700, color: "#1a1a2e" }}>
-              Your journey
+      {/* Who we're looking for */}
+      <section
+        className="py-24"
+        style={{
+          background: "linear-gradient(135deg, #fef6fb 0%, #f6f4fd 100%)",
+        }}
+      >
+        <div className="max-w-3xl mx-auto px-6 text-center">
+          <FadeIn>
+            <h2
+              className="mb-6"
+              style={{
+                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                fontWeight: 700,
+                color: "#1a1a2e",
+              }}
+            >
+              Who we're looking for
             </h2>
-          </div>
+            <p
+              style={{
+                fontSize: "clamp(1.1rem, 2.4vw, 1.3rem)",
+                color: "#4a4a5e",
+                lineHeight: 1.85,
+              }}
+            >
+              Hackers who care more about whether the solution works than whether it's
+              their idea. People who can listen before they design. People willing to be
+              wrong about their first solution and curious enough to find the second.
+              Teams with mixed backgrounds — engineers, healthcare professionals,
+              students, and citizens, side by side.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
 
-          <div className="relative">
-            {/* Vertical line */}
-            <div
-              className="absolute left-[26px] top-8 bottom-8 w-0.5 hidden sm:block"
-              style={{ background: "linear-gradient(180deg, #a855f7, #ec4899)" }}
-            />
+      {/* Before you apply */}
+      <section className="py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeIn>
+            <h2
+              className="mb-12"
+              style={{
+                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                fontWeight: 700,
+                color: "#1a1a2e",
+              }}
+            >
+              Before you apply
+            </h2>
+          </FadeIn>
 
-            <div className="flex flex-col gap-8">
-              {timeline.map((step, i) => {
-                const Icon = step.icon;
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-14 items-start">
+            {/* Left: items */}
+            <div className="flex flex-col gap-4">
+              {beforeApply.map((item, i) => {
+                const Icon = item.icon;
                 return (
-                  <div key={i} className="flex gap-6">
-                    {/* Icon dot */}
+                  <FadeIn key={item.title} delay={i * 80}>
                     <div
-                      className="w-14 h-14 rounded-full flex-shrink-0 flex items-center justify-center relative z-10"
-                      style={{
-                        background: `${step.color}15`,
-                        border: `2px solid ${step.color}40`,
-                      }}
+                      className="rounded-2xl p-5 flex gap-4 items-start"
+                      style={
+                        item.highlight
+                          ? {
+                              background:
+                                "linear-gradient(135deg, rgba(236,72,153,0.1), rgba(168,85,247,0.1))",
+                              border: "1.5px solid rgba(168,85,247,0.3)",
+                            }
+                          : {
+                              background: "#ffffff",
+                              border: "1px solid #ececf1",
+                              boxShadow: "0 2px 12px rgba(26,26,46,0.04)",
+                            }
+                      }
                     >
-                      <Icon size={20} style={{ color: step.color }} />
-                    </div>
-
-                    {/* Content */}
-                    <div className="pt-1 pb-2 flex-1">
-                      <p
+                      <div
+                        className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
                         style={{
-                          fontSize: "0.78rem",
-                          fontWeight: 700,
-                          color: step.color,
-                          textTransform: "uppercase",
-                          letterSpacing: "0.08em",
-                          marginBottom: "4px",
+                          background: `${item.color}14`,
+                          border: `1.5px solid ${item.color}33`,
                         }}
                       >
-                        {step.date}
-                      </p>
-                      <h3
-                        style={{
-                          fontSize: "1.1rem",
-                          fontWeight: 700,
-                          color: "#1a1a2e",
-                          marginBottom: "6px",
-                        }}
-                      >
-                        {step.title}
-                      </h3>
-                      <p style={{ fontSize: "0.95rem", color: "#6a6a7e", lineHeight: 1.7 }}>
-                        {step.description}
-                      </p>
+                        <Icon size={20} style={{ color: item.color }} />
+                      </div>
+                      <div>
+                        <h3
+                          className="mb-1"
+                          style={{
+                            fontSize: "1.05rem",
+                            fontWeight: 700,
+                            color: "#1a1a2e",
+                          }}
+                        >
+                          {item.title}
+                        </h3>
+                        <p
+                          style={{
+                            fontSize: "0.93rem",
+                            color: "#5a5a6e",
+                            lineHeight: 1.65,
+                          }}
+                        >
+                          {item.body}
+                        </p>
+                      </div>
                     </div>
-                  </div>
+                  </FadeIn>
                 );
               })}
             </div>
+
+            {/* Right: image + overlay */}
+            <FadeIn delay={120} className="relative">
+              <div
+                className="rounded-3xl overflow-hidden"
+                style={{ boxShadow: "0 20px 50px rgba(26,26,46,0.12)" }}
+              >
+                <img
+                  src={collabImg}
+                  alt="Hackers co-creating with patients and clinicians"
+                  loading="lazy"
+                  className="w-full h-full object-cover"
+                  style={{ aspectRatio: "4 / 3" }}
+                />
+              </div>
+              <div
+                className="absolute -bottom-5 left-5 right-5 sm:right-auto sm:max-w-[300px] rounded-2xl p-5"
+                style={{
+                  background: "rgba(255,255,255,0.96)",
+                  backdropFilter: "blur(8px)",
+                  border: "1px solid rgba(168,85,247,0.18)",
+                  boxShadow: "0 12px 30px rgba(26,26,46,0.12)",
+                }}
+              >
+                <div className="flex items-center gap-2 mb-1.5">
+                  <Users size={16} style={{ color: "#a855f7" }} />
+                  <span
+                    style={{
+                      fontSize: "0.85rem",
+                      fontWeight: 700,
+                      color: "#1a1a2e",
+                    }}
+                  >
+                    Collaborative Spirit
+                  </span>
+                </div>
+                <p
+                  style={{
+                    fontSize: "0.85rem",
+                    color: "#5a5a6e",
+                    lineHeight: 1.6,
+                  }}
+                >
+                  People who can listen before they design — willing to be wrong, and
+                  bringing a mix of backgrounds to the table.
+                </p>
+              </div>
+            </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* CTA — Waitlist */}
+      {/* Your commitment */}
       <section
-        className="py-20"
+        className="py-24"
         style={{
-          background: "linear-gradient(135deg, #fef3f7 0%, #f5f3ff 100%)",
+          background: "linear-gradient(180deg, #ffffff 0%, #fdfaff 100%)",
         }}
       >
-        <div className="max-w-xl mx-auto px-6 text-center">
-          {!submitted ? (
-            <>
-              <div
-                className="w-16 h-16 rounded-2xl mx-auto mb-6 flex items-center justify-center"
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeIn>
+            <div className="text-center mb-16">
+              <h2
+                className="mb-4"
                 style={{
-                  background: "linear-gradient(135deg, rgba(168,85,247,0.12), rgba(236,72,153,0.12))",
-                  border: "1.5px solid rgba(168,85,247,0.25)",
+                  fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                  fontWeight: 700,
+                  color: "#1a1a2e",
                 }}
               >
-                <Code size={28} style={{ color: "#a855f7" }} />
-              </div>
-
-              <h2
-                className="mb-3"
-                style={{ fontSize: "2rem", fontWeight: 700, color: "#1a1a2e" }}
-              >
-                Join us in making a difference
+                Your commitment
               </h2>
               <p
-                className="mb-8"
-                style={{ fontSize: "1rem", color: "#6a6a7e", lineHeight: 1.7 }}
+                className="mx-auto"
+                style={{
+                  fontSize: "1.1rem",
+                  color: "#6a6a7e",
+                  lineHeight: 1.7,
+                  maxWidth: "640px",
+                }}
               >
-                Leave your email and we'll notify you the moment applications open for
-                HackitRx 2026. No spam — just one email when it matters.
+                About 2–3 hours of focused time per week — spread across evenings,
+                weekends, and a handful of in-person moments from the kick-off day onward.
               </p>
+            </div>
+          </FadeIn>
 
-              <form onSubmit={handleSubmit} className="text-left">
-                <label
-                  htmlFor="builder-email"
-                  className="block mb-2"
-                  style={{ fontSize: "0.9rem", fontWeight: 600, color: "#1a1a2e" }}
-                >
-                  Your email address
-                </label>
-                <input
-                  type="email"
-                  id="builder-email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  placeholder="you@example.com"
-                  className="w-full px-4 py-3 rounded-xl mb-4 transition-all duration-200 focus:outline-none"
+          {/* Desktop: horizontal timeline */}
+          <FadeIn className="hidden lg:block">
+            <div className="relative grid grid-cols-5 mb-8">
+              <div
+                className="absolute h-0.5"
+                style={{
+                  left: "10%",
+                  right: "10%",
+                  top: "9px",
+                  background: "linear-gradient(90deg, #ec4899, #a855f7)",
+                }}
+              />
+              {commitment.map((c) => (
+                <div key={c.title} className="flex flex-col items-center px-3">
+                  <div
+                    className="w-5 h-5 rounded-full relative z-10"
+                    style={{
+                      background: "linear-gradient(135deg, #ec4899, #a855f7)",
+                      boxShadow: "0 0 0 4px #ffffff, 0 2px 8px rgba(168,85,247,0.4)",
+                    }}
+                  />
+                  <p
+                    className="mt-4"
+                    style={{
+                      fontSize: "0.8rem",
+                      fontWeight: 700,
+                      color: "#a855f7",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.04em",
+                    }}
+                  >
+                    {c.date}
+                  </p>
+                </div>
+              ))}
+            </div>
+            <div className="grid grid-cols-5 gap-4 items-stretch">
+              {commitment.map((c) => (
+                <div
+                  key={c.title}
+                  className="rounded-2xl p-5 h-full"
                   style={{
-                    fontSize: "1rem",
-                    color: "#1a1a2e",
                     background: "#ffffff",
-                    border: "2px solid #e9ecef",
-                    fontFamily: "'Space Grotesk', sans-serif",
-                  }}
-                  onFocus={(e) => (e.target.style.borderColor = "#a855f7")}
-                  onBlur={(e) => (e.target.style.borderColor = "#e9ecef")}
-                />
-                <button
-                  type="submit"
-                  disabled={isLoading}
-                  className="w-full py-4 rounded-xl font-semibold transition-all duration-200 hover:scale-[1.02] disabled:opacity-50"
-                  style={{
-                    fontSize: "1.05rem",
-                    background: isLoading
-                      ? "#9ca3af"
-                      : "linear-gradient(135deg, #a855f7, #ec4899)",
-                    color: "#ffffff",
-                    border: "none",
-                    cursor: isLoading ? "not-allowed" : "pointer",
-                    boxShadow: isLoading ? "none" : "0 4px 20px rgba(168,85,247,0.3)",
-                    fontFamily: "'Space Grotesk', sans-serif",
+                    border: "1px solid #ececf1",
+                    boxShadow: "0 4px 18px rgba(26,26,46,0.05)",
                   }}
                 >
-                  {isLoading ? "Submitting…" : "Join now in making a difference →"}
-                </button>
-              </form>
+                  <h3
+                    className="mb-2"
+                    style={{
+                      fontSize: "1rem",
+                      fontWeight: 700,
+                      color: "#1a1a2e",
+                    }}
+                  >
+                    {c.title}
+                  </h3>
+                  <p
+                    style={{
+                      fontSize: "0.88rem",
+                      color: "#5a5a6e",
+                      lineHeight: 1.65,
+                    }}
+                  >
+                    {c.body}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </FadeIn>
 
-              <p
-                className="mt-4"
-                style={{ fontSize: "0.8rem", color: "#9ca3af" }}
-              >
-                No spam, ever. We respect your privacy.
-              </p>
-            </>
-          ) : (
-            /* Success state */
-            <div>
-              <div
-                className="w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center"
-                style={{
-                  background: "rgba(16, 185, 129, 0.12)",
-                  border: "2px solid rgba(16, 185, 129, 0.3)",
-                }}
-              >
-                <CheckCircle size={38} style={{ color: "#10b981" }} />
-              </div>
+          {/* Mobile: vertical timeline */}
+          <div className="lg:hidden">
+            {commitment.map((c, i) => {
+              const isLast = i === commitment.length - 1;
+              return (
+                <FadeIn key={c.title} delay={i * 70} className="flex gap-4">
+                  <div className="flex flex-col items-center flex-shrink-0">
+                    <div
+                      className="mt-1 w-5 h-5 rounded-full"
+                      style={{
+                        background: "linear-gradient(135deg, #ec4899, #a855f7)",
+                        boxShadow: "0 0 0 4px rgba(168,85,247,0.12)",
+                      }}
+                    />
+                    {!isLast && (
+                      <div
+                        className="flex-1 w-0.5 my-1"
+                        style={{ background: "#e9e7f0", minHeight: "30px" }}
+                      />
+                    )}
+                  </div>
+                  <div className="flex-1 pb-8">
+                    <p
+                      className="mb-1"
+                      style={{
+                        fontSize: "0.78rem",
+                        fontWeight: 700,
+                        color: "#a855f7",
+                        textTransform: "uppercase",
+                        letterSpacing: "0.05em",
+                      }}
+                    >
+                      {c.date}
+                    </p>
+                    <h3
+                      className="mb-1.5"
+                      style={{
+                        fontSize: "1.05rem",
+                        fontWeight: 700,
+                        color: "#1a1a2e",
+                      }}
+                    >
+                      {c.title}
+                    </h3>
+                    <p
+                      style={{
+                        fontSize: "0.92rem",
+                        color: "#5a5a6e",
+                        lineHeight: 1.65,
+                      }}
+                    >
+                      {c.body}
+                    </p>
+                  </div>
+                </FadeIn>
+              );
+            })}
+          </div>
+        </div>
+      </section>
 
-              <h2
-                className="mb-3"
-                style={{ fontSize: "2rem", fontWeight: 700, color: "#1a1a2e" }}
-              >
-                You're on the list!
-              </h2>
-              <p
-                className="mb-8"
-                style={{ fontSize: "1rem", color: "#4a4a5e", lineHeight: 1.7 }}
-              >
-                We'll send you one email when applications open for HackitRx 2026.
-                <br />
-                In the meantime, join our Telegram channel for updates, workshop
-                announcements, and early sneak peeks.
-              </p>
-
+      {/* Ready to build? */}
+      <section
+        className="py-24"
+        style={{ background: "linear-gradient(135deg, #ec4899 0%, #a855f7 100%)" }}
+      >
+        <div className="max-w-2xl mx-auto px-6 text-center">
+          <FadeIn>
+            <h2
+              className="mb-4"
+              style={{
+                fontSize: "clamp(2rem, 5vw, 3rem)",
+                fontWeight: 700,
+                color: "#ffffff",
+                lineHeight: 1.2,
+              }}
+            >
+              Ready to build?
+            </h2>
+            <p
+              className="mb-10 mx-auto"
+              style={{
+                fontSize: "1.15rem",
+                color: "rgba(255,255,255,0.92)",
+                lineHeight: 1.7,
+                maxWidth: "520px",
+              }}
+            >
+              The problem statements are real. The patients are waiting. The tools are in
+              your hands.
+            </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <SignUpButton variant="white">Sign up now →</SignUpButton>
               <a
-                href="https://t.me/+GLw0053W_PQxYzc9"
+                href={TELEGRAM_CHANNEL_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all duration-200 hover:scale-105"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-transform duration-200 hover:scale-105"
                 style={{
-                  fontSize: "1rem",
-                  background: "linear-gradient(135deg, #a855f7, #ec4899)",
+                  fontSize: "1.05rem",
+                  background: "rgba(255,255,255,0.12)",
+                  border: "1.5px solid rgba(255,255,255,0.5)",
                   color: "#ffffff",
                   textDecoration: "none",
-                  boxShadow: "0 4px 20px rgba(168,85,247,0.3)",
                 }}
               >
-                {/* Telegram icon */}
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                   <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
                 </svg>
-                Join our Telegram channel
+                Join the Telegram channel →
               </a>
-
-              <p className="mt-5" style={{ fontSize: "0.85rem", color: "#9ca3af" }}>
-                Updates, workshops &amp; community — all in one place.
-              </p>
             </div>
-          )}
+          </FadeIn>
         </div>
       </section>
     </div>

@@ -21,7 +21,7 @@ Clear calls-to-action
 Smooth scrolling experiences
 Modern card systems
 Soft gradients and subtle motion
-Use modern typography like Inter or Poppins and a palette centered around deep blue, teal, white, and soft purple gradients.
+Use modern typography with Plus Jakarta Sans for headlines and Inter for body text, and a palette centered around deep blue, teal, white, and soft purple gradients.
 
 NAVIGATION BAR PROMPT
 Imagine you are designing the navigation experience for a modern healthcare-tech startup website.

@@ -1,49 +1,116 @@
 import { useEffect, useRef, useState } from "react";
 import {
-  Award,
-  Check,
   Users,
   Heart,
   Code2,
   Sparkles,
+  Pill,
+  Repeat,
+  Linkedin,
+  User,
+  Workflow,
+  Maximize2,
+  X,
 } from "lucide-react";
-import { ImageWithFallback } from "./figma/ImageWithFallback";
-import { innovations2025, winners2024 } from "../../data/pastWinners";
 import pssLogo from "../../imports/PSS_logo_N_(1).png";
 import aposLogo from "../../imports/APOS_main_(1).png";
 import ogpLogo from "../../imports/OGP_black.png";
+import journey2024 from "../../../images/our_journey/2024.jpg";
+import journey2025 from "../../../images/our_journey/2025.JPG";
+import journey2026 from "../../../images/our_journey/2026.jpeg";
+import hackitrxWayImg from "../../../images/The HackitRx Way.jpg";
+import qihuangPhoto from "../../../images/team/qihuang.jpg";
+import alfredPhoto from "../../../images/team/alfred.jpg";
+import zhiQianPhoto from "../../../images/team/zhi-qian.jpg";
+import codyPhoto from "../../../images/team/cody.jpg";
+import winHonPhoto from "../../../images/team/win-hon.jpg";
+import hazelPhoto from "../../../images/team/hazel.jpg";
+import eunicePhoto from "../../../images/team/eunice.jpg";
+import stellaPhoto from "../../../images/team/stella.jpg";
 
-const milestones = [
+const journey = [
   {
     year: "2024",
-    edition: "1st Edition",
-    tagline: "Where it all began",
-    description:
-      "HackitRx was born from a simple but urgent question: what happens when patient voices shape the tech that's meant to serve them? The inaugural edition brought together pharmacists, patient advocates, and developers for Singapore's first patient-centred health hackathon.",
-    stat: "Teams",
-    statValue: "20+",
+    title: "2024 — A start in pharmacy",
+    body: "HackitRx began with the support of the Pharmaceutical Society of Singapore (PSS), bringing pharmacists into the conversation around healthcare innovation. That first run proved a simple idea: when the people closest to the workflow are given the room and the tools to build, the solutions are sharper, more grounded, and more usable.",
+    image: journey2024,
+    icon: Pill,
     color: "#f59e0b",
   },
   {
     year: "2025",
-    edition: "2nd Edition",
-    tagline: "Scaling impact",
-    description:
-      "The second edition doubled down on the formula that worked — pairing patient organisations directly with builder teams. New challenge themes emerged around active ageing and medication management, and the quality of prototypes raised the bar for what a two-day sprint can produce.",
-    stat: "Challenges tackled",
-    statValue: "9",
+    title: "2025 — A proof that travelled",
+    body: "A HackitRx team built a financial and medication-refill tool with patients at the National Cancer Centre Singapore. It worked — and is now being funded to scale across NCCS in 2026. One team. One problem worth solving. One solution that made it from the room into people's lives.",
+    image: journey2025,
+    icon: Repeat,
     color: "#ec4899",
   },
   {
     year: "2026",
-    edition: "3rd Edition",
-    tagline: "Building with, not for",
-    description:
-      "This year, HackitRx deepens the model with earlier co-design workshops, structured problem-statement sessions with patient organisations, and a stronger pipeline from prototype to pilot. The 3rd edition marks a shift from building solutions for patients — to building them with patients.",
-    stat: "Date",
-    statValue: "Oct 10–11",
+    title: "2026 — A bigger room. The same connection.",
+    body: "The breakthrough wasn't the technology — it was the patient voice at the centre of the build. So we're opening the room. We're joined by Open Government Products (OGP), and by the Alliance of Patient's Organizations Singapore (APOS) to bring patient organisations into the programme as co-creators. Pharmacists remain our ecosystem anchors; patients, caregivers, and the organisations who serve them are now in the room from day one.",
+    image: journey2026,
+    icon: Users,
     color: "#a855f7",
   },
+];
+
+const team = [
+  {
+    name: "Xie Qihuang",
+    role: "Co-Chair",
+    linkedin: "https://www.linkedin.com/in/qihuang-xie/",
+    photo: qihuangPhoto,
+  },
+  {
+    name: "Alfred Ho",
+    role: "Co-Chair",
+    linkedin: "https://www.linkedin.com/in/alfred-hozt/",
+    photo: alfredPhoto,
+  },
+  {
+    name: "Teng Zhi Qian",
+    role: "Programmes & Partnership",
+    linkedin: "https://www.linkedin.com/in/zhi-qian-teng-99985b216/",
+    photo: zhiQianPhoto,
+  },
+  {
+    name: "Cody Tan",
+    role: "Programmes & Partnership",
+    linkedin: "https://www.linkedin.com/in/cody-t-733a38252/",
+    photo: codyPhoto,
+  },
+  {
+    name: "Win Hon See Tho",
+    role: "Programmes & Partnership",
+    linkedin: "https://www.linkedin.com/in/seethowinhon/",
+    photo: winHonPhoto,
+  },
+  {
+    name: "Hazel Kim",
+    role: "Marketing & Publicity",
+    linkedin: "https://www.linkedin.com/in/jung-eun-kim-01113a208/",
+    photo: hazelPhoto,
+  },
+  {
+    name: "Eunice Toh",
+    role: "Marketing & Publicity",
+    linkedin: "https://www.linkedin.com/in/eunice-toh-si-ying/",
+    photo: eunicePhoto,
+  },
+  {
+    name: "Tee Siew Chien",
+    role: "Marketing & Publicity",
+    linkedin: "https://www.linkedin.com/in/tee-siew-chien-230709176/",
+    photo: stellaPhoto,
+  },
+];
+
+const advisorPlaceholders = [
+  { bg: "linear-gradient(135deg, #ec4899, #f472b6)" },
+  { bg: "linear-gradient(135deg, #a855f7, #c084fc)" },
+  { bg: "linear-gradient(135deg, #14b8a6, #2dd4bf)" },
+  { bg: "linear-gradient(135deg, #0ea5e9, #38bdf8)" },
 ];
 
 const partners = [
@@ -58,7 +125,7 @@ const partners = [
     role: "Clinical Expertise & Pharmacy Insights",
   },
   {
-    name: "Alliance for Patient-Oriented Solutions",
+    name: "Alliance of Patient's Organizations Singapore",
     abbr: "APOS",
     logo: aposLogo,
     color: "#a855f7",
@@ -82,9 +149,13 @@ const partners = [
 function FadeIn({
   children,
   delay = 0,
+  className,
+  style,
 }: {
   children: React.ReactNode;
   delay?: number;
+  className?: string;
+  style?: React.CSSProperties;
 }) {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -103,12 +174,12 @@ function FadeIn({
   return (
     <div
       ref={ref}
+      className={className}
       style={{
         opacity: visible ? 1 : 0,
-        transform: visible
-          ? "translateY(0)"
-          : "translateY(24px)",
+        transform: visible ? "translateY(0)" : "translateY(24px)",
         transition: `opacity 0.7s ease ${delay}ms, transform 0.7s ease ${delay}ms`,
+        ...style,
       }}
     >
       {children}
@@ -117,14 +188,24 @@ function FadeIn({
 }
 
 export function AboutPage() {
+  const [wayExpanded, setWayExpanded] = useState(false);
+
+  useEffect(() => {
+    if (!wayExpanded) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setWayExpanded(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [wayExpanded]);
+
   return (
-    <div
-      className="min-h-screen"
-      style={{
-        background: "#ffffff",
-        fontFamily: "'Space Grotesk', sans-serif",
-      }}
-    >
+    <div className="min-h-screen" style={{ background: "#ffffff" }}>
       {/* Hero */}
       <section
         className="relative pt-36 pb-20 overflow-hidden"
@@ -180,17 +261,16 @@ export function AboutPage() {
               letterSpacing: "-0.02em",
             }}
           >
-            Healthcare innovation,{" "}
+            Co-creating the Future of Care,{" "}
             <span
               style={{
-                background:
-                  "linear-gradient(135deg, #ec4899, #a855f7)",
+                background: "linear-gradient(135deg, #ec4899, #a855f7)",
                 WebkitBackgroundClip: "text",
                 WebkitTextFillColor: "transparent",
                 backgroundClip: "text",
               }}
             >
-              built with patients.
+              Grounded in Lived Experience.
             </span>
           </h1>
           <p
@@ -199,388 +279,217 @@ export function AboutPage() {
               fontSize: "clamp(1.05rem, 2.5vw, 1.25rem)",
               color: "#5a5a6e",
               lineHeight: 1.75,
-              maxWidth: "640px",
+              maxWidth: "720px",
             }}
           >
-            HackitRx is Singapore's patient-centred health
-            hackathon. Since 2024, we have been bridging the gap
-            between those who experience healthcare challenges
-            and those who have the skills to solve them.
+            Every solution that lasts begins with someone who lived the problem
+            first. That's the conviction HackitRx was built on — and it's the one
+            that has carried us from a single pharmacist-led hackathon in 2024 to
+            the patient-centric innovation programme we're running today.
           </p>
         </div>
       </section>
 
-      {/* History / Editions */}
-      <section className="py-24">
-        <div className="max-w-5xl mx-auto px-6">
-          <FadeIn>
-            <h2
-              className="mb-4"
-              style={{
-                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
-                fontWeight: 700,
-                color: "#1a1a2e",
-              }}
-            >
-              Three editions. One mission.
-            </h2>
-            <p
-              className="mb-14"
-              style={{
-                fontSize: "1.05rem",
-                color: "#6a6a7e",
-                lineHeight: 1.75,
-                maxWidth: "620px",
-              }}
-            >
-              Each edition has refined how we bring patients and
-              builders together — and raised the bar for what
-              collaborative healthcare innovation looks like in
-              Singapore.
-            </p>
-          </FadeIn>
-
-          <div className="relative">
-            {/* Vertical line */}
-            <div
-              className="absolute left-[20px] top-6 bottom-6 w-0.5 hidden sm:block"
-              style={{
-                background:
-                  "linear-gradient(180deg, #f59e0b, #ec4899, #a855f7)",
-              }}
-            />
-
-            <div className="flex flex-col gap-12">
-              {milestones.map((m, i) => (
-                <FadeIn key={m.year} delay={i * 120}>
-                  <div className="flex gap-8 sm:gap-12">
-                    {/* Dot */}
-                    <div
-                      className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center relative z-10"
-                      style={{
-                        background: `${m.color}18`,
-                        border: `2px solid ${m.color}`,
-                      }}
-                    >
-                      <span
-                        style={{
-                          fontSize: "0.75rem",
-                          fontWeight: 800,
-                          color: m.color,
-                        }}
-                      >
-                        {m.year.slice(2)}
-                      </span>
-                    </div>
-
-                    {/* Content */}
-                    <div
-                      className="flex-1 rounded-2xl p-7"
-                      style={{
-                        background: "rgba(255,255,255,0.8)",
-                        border: `1.5px solid ${m.color}22`,
-                        boxShadow: `0 4px 20px ${m.color}0d`,
-                      }}
-                    >
-                      <div className="flex flex-wrap items-center gap-3 mb-3">
-                        <span
-                          style={{
-                            fontSize: "0.75rem",
-                            fontWeight: 700,
-                            color: m.color,
-                            textTransform: "uppercase",
-                            letterSpacing: "0.08em",
-                          }}
-                        >
-                          {m.year} — {m.edition}
-                        </span>
-                        <span
-                          className="px-3 py-0.5 rounded-full"
-                          style={{
-                            background: `${m.color}12`,
-                            fontSize: "0.78rem",
-                            color: m.color,
-                            fontWeight: 600,
-                          }}
-                        >
-                          {m.tagline}
-                        </span>
-                      </div>
-                      <p
-                        className="mb-5"
-                        style={{
-                          fontSize: "0.98rem",
-                          color: "#4a4a5e",
-                          lineHeight: 1.8,
-                        }}
-                      >
-                        {m.description}
-                      </p>
-                      <div
-                        className="inline-flex flex-col items-start px-4 py-3 rounded-xl"
-                        style={{
-                          background: `${m.color}0e`,
-                          border: `1px solid ${m.color}22`,
-                        }}
-                      >
-                        <span
-                          style={{
-                            fontSize: "0.7rem",
-                            fontWeight: 700,
-                            color: "#9ca3af",
-                            textTransform: "uppercase",
-                            letterSpacing: "0.07em",
-                          }}
-                        >
-                          {m.stat}
-                        </span>
-                        <span
-                          style={{
-                            fontSize: "1.5rem",
-                            fontWeight: 800,
-                            color: m.color,
-                          }}
-                        >
-                          {m.statValue}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2025 Winners */}
+      {/* Our Journey */}
       <section
         className="py-24"
         style={{
-          background:
-            "linear-gradient(135deg, #fef8fa 0%, #f8f4fe 100%)",
+          background: "linear-gradient(180deg, #ffffff 0%, #fdfaff 100%)",
         }}
       >
         <div className="max-w-6xl mx-auto px-6">
           <FadeIn>
-            <div className="mb-10">
-              <span
-                style={{
-                  fontSize: "0.78rem",
-                  fontWeight: 700,
-                  color: "#ec4899",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                }}
-              >
-                Past Winners
-              </span>
+            <div className="text-center">
               <h2
-                className="mt-2"
                 style={{
                   fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
                   fontWeight: 700,
                   color: "#1a1a2e",
                 }}
               >
-                2025 Winning Solutions
+                Our Journey
               </h2>
+              <div
+                className="mx-auto mt-4 mb-14 h-1 w-16 rounded-full"
+                style={{
+                  background: "linear-gradient(90deg, #ec4899, #a855f7)",
+                }}
+              />
             </div>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {innovations2025.map((item, i) => (
-              <FadeIn key={item.team} delay={i * 100}>
-                <div
-                  className="group rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl"
+          {/* Mobile: horizontal scroll · Desktop: equal-height row, aligned */}
+          <div className="flex items-stretch gap-6 overflow-x-auto md:overflow-visible snap-x snap-mandatory md:snap-none pb-6">
+            {journey.map((j, i) => {
+              const Icon = j.icon;
+              return (
+                <FadeIn
+                  key={j.year}
+                  delay={i * 120}
+                  className="flex-shrink-0 w-[85%] sm:w-[360px] md:w-auto md:flex-1 snap-start flex flex-col rounded-3xl overflow-hidden bg-white"
                   style={{
-                    background: "rgba(255, 255, 255, 0.8)",
-                    border: "1px solid rgba(236,72,153,0.12)",
-                    boxShadow:
-                      "0 4px 16px rgba(168,85,247,0.07)",
+                    border: `1.5px solid ${j.color}22`,
+                    boxShadow: `0 10px 36px ${j.color}14`,
                   }}
                 >
-                  <div className="relative h-44 overflow-hidden">
-                    <ImageWithFallback
-                      src={item.image}
-                      alt={item.team}
-                      className={`w-full h-full transition-transform duration-500 group-hover:scale-105 ${
-                        "imageFit" in item && item.imageFit === "contain"
-                          ? "object-contain bg-white p-4"
-                          : "object-cover"
-                      }`}
+                  <div className="relative h-52 overflow-hidden flex-shrink-0">
+                    <img
+                      src={j.image}
+                      alt={j.title}
+                      loading="lazy"
+                      className="w-full h-full object-cover"
                     />
-                    <div
-                      className="absolute inset-0"
+                    <span
+                      className="absolute top-4 left-4 px-3 py-1 rounded-full"
                       style={{
-                        background:
-                          "linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.4) 100%)",
-                      }}
-                    />
-                  </div>
-                  <div className="p-6">
-                    <h4
-                      className="mb-4"
-                      style={{
-                        fontSize: "1.3rem",
-                        fontWeight: 700,
-                        color: "#ec4899",
+                        background: "rgba(255,255,255,0.92)",
+                        backdropFilter: "blur(6px)",
+                        fontSize: "0.8rem",
+                        fontWeight: 800,
+                        color: j.color,
+                        letterSpacing: "0.04em",
                       }}
                     >
-                      {item.team}
-                    </h4>
-                    <ul className="space-y-2.5">
-                      {item.solutions.map((sol, idx) => (
-                        <li
-                          key={idx}
-                          className="flex items-start gap-2.5"
-                        >
-                          <Check
-                            size={16}
-                            className="mt-0.5 flex-shrink-0"
-                            style={{ color: "#a855f7" }}
-                          />
-                          <span
-                            style={{
-                              fontSize: "0.95rem",
-                              color: "#3a3a4e",
-                              lineHeight: 1.6,
-                            }}
-                          >
-                            {sol}
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
+                      {j.year}
+                    </span>
                   </div>
-                </div>
-              </FadeIn>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 2024 Winners */}
-      <section className="py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <FadeIn>
-            <div className="mb-10">
-              <span
-                style={{
-                  fontSize: "0.78rem",
-                  fontWeight: 700,
-                  color: "#f59e0b",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                }}
-              >
-                Past Winners
-              </span>
-              <h2
-                className="mt-2"
-                style={{
-                  fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
-                  fontWeight: 700,
-                  color: "#1a1a2e",
-                }}
-              >
-                2024 Award Winners
-              </h2>
-            </div>
-          </FadeIn>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {winners2024.map((item, i) => (
-              <FadeIn key={item.team} delay={i * 100}>
-                <div
-                  className="group rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl"
-                  style={{
-                    background: "rgba(255, 255, 255, 0.8)",
-                    border: "1px solid rgba(245,158,11,0.15)",
-                    boxShadow:
-                      "0 4px 16px rgba(245,158,11,0.07)",
-                  }}
-                >
-                  <div className="relative h-44 overflow-hidden">
-                    <ImageWithFallback
-                      src={item.image}
-                      alt={item.team}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                    />
+                  <div className="p-7 flex flex-col flex-1">
                     <div
-                      className="absolute inset-0"
+                      className="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
                       style={{
-                        background:
-                          "linear-gradient(to bottom, transparent 30%, rgba(0,0,0,0.55) 100%)",
+                        background: `${j.color}14`,
+                        border: `1.5px solid ${j.color}33`,
                       }}
-                    />
-                    <div className="absolute bottom-3 left-4">
-                      <div
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full"
-                        style={{
-                          background:
-                            "rgba(245, 158, 11, 0.92)",
-                        }}
-                      >
-                        <Award
-                          size={13}
-                          style={{ color: "#fff" }}
-                        />
-                        <span
-                          style={{
-                            fontSize: "0.8rem",
-                            fontWeight: 700,
-                            color: "#fff",
-                          }}
-                        >
-                          {item.prize}
-                        </span>
-                      </div>
+                    >
+                      <Icon size={20} style={{ color: j.color }} />
                     </div>
-                  </div>
-                  <div className="p-6">
-                    <h4
-                      className="mb-1"
+                    <h3
+                      className="mb-3"
                       style={{
                         fontSize: "1.2rem",
                         fontWeight: 700,
-                        color: "#f59e0b",
+                        color: "#1a1a2e",
+                        lineHeight: 1.3,
                       }}
                     >
-                      {item.team}
-                    </h4>
-                    <p
-                      className="mb-3"
-                      style={{
-                        fontSize: "0.82rem",
-                        color: "#94a3b8",
-                      }}
-                    >
-                      {item.group}
-                    </p>
+                      {j.title}
+                    </h3>
                     <p
                       style={{
-                        fontSize: "0.95rem",
-                        color: "#3a3a4e",
-                        lineHeight: 1.65,
+                        fontSize: "0.96rem",
+                        color: "#4a4a5e",
+                        lineHeight: 1.8,
                       }}
                     >
-                      {item.description}
+                      {j.body}
                     </p>
                   </div>
-                </div>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* Partners */}
+      {/* The HackitRx Way */}
+      <section className="py-24">
+        <div className="max-w-5xl mx-auto px-6">
+          <FadeIn>
+            <div className="text-center mb-12">
+              <div
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-5"
+                style={{
+                  background: "rgba(168, 85, 247, 0.08)",
+                  border: "1.5px solid rgba(168, 85, 247, 0.22)",
+                }}
+              >
+                <Workflow size={16} style={{ color: "#a855f7" }} />
+                <span
+                  style={{
+                    fontSize: "0.8rem",
+                    fontWeight: 700,
+                    color: "#a855f7",
+                    letterSpacing: "0.08em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Our Approach
+                </span>
+              </div>
+              <h2
+                className="mb-4"
+                style={{
+                  fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                  fontWeight: 700,
+                  color: "#1a1a2e",
+                }}
+              >
+                The HackitRx Way
+              </h2>
+              <p
+                className="mx-auto"
+                style={{
+                  fontSize: "1.1rem",
+                  color: "#6a6a7e",
+                  lineHeight: 1.7,
+                  maxWidth: "640px",
+                }}
+              >
+                From the first patient conversation to a solution in production —
+                here's how we build.
+              </p>
+            </div>
+          </FadeIn>
+
+          <FadeIn delay={120}>
+            <button
+              type="button"
+              onClick={() => setWayExpanded(true)}
+              aria-label="Expand The HackitRx Way diagram"
+              className="group block w-full rounded-3xl overflow-hidden cursor-zoom-in"
+              style={{
+                border: "1px solid rgba(168, 85, 247, 0.15)",
+                boxShadow: "0 16px 48px rgba(168, 85, 247, 0.1)",
+                background: "#ffffff",
+                padding: 0,
+              }}
+            >
+              <div className="relative">
+                <img
+                  src={hackitrxWayImg}
+                  alt="The HackitRx Way — from patient conversation to a solution in production"
+                  loading="lazy"
+                  className="w-full h-auto block transition-transform duration-500 group-hover:scale-[1.02]"
+                />
+                <div
+                  className="absolute top-4 right-4 flex items-center gap-1.5 px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                  style={{
+                    background: "rgba(26,26,46,0.7)",
+                    backdropFilter: "blur(6px)",
+                  }}
+                >
+                  <Maximize2 size={14} style={{ color: "#ffffff" }} />
+                  <span
+                    style={{
+                      fontSize: "0.78rem",
+                      fontWeight: 600,
+                      color: "#ffffff",
+                    }}
+                  >
+                    Click to expand
+                  </span>
+                </div>
+              </div>
+            </button>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* In Collaboration With (Partners) */}
       <section
         className="py-24"
         style={{
-          background:
-            "linear-gradient(135deg, #fef3f7 0%, #f5f3ff 100%)",
+          background: "linear-gradient(135deg, #fef3f7 0%, #f5f3ff 100%)",
         }}
       >
         <div className="max-w-5xl mx-auto px-6">
@@ -616,9 +525,8 @@ export function AboutPage() {
                   maxWidth: "560px",
                 }}
               >
-                HackitRx brings together three organisations
-                that each represent a critical perspective:
-                clinical expertise, patient voice, and
+                HackitRx brings together three organisations that each represent a
+                critical perspective: clinical expertise, patient voice, and
                 technology.
               </p>
             </div>
@@ -637,7 +545,6 @@ export function AboutPage() {
                       boxShadow: `0 4px 20px ${p.color}0a`,
                     }}
                   >
-                    {/* Logo */}
                     <div
                       className="flex-shrink-0 flex items-center justify-center rounded-2xl p-5"
                       style={{
@@ -654,7 +561,6 @@ export function AboutPage() {
                       />
                     </div>
 
-                    {/* Text */}
                     <div className="flex-1">
                       <div className="flex flex-wrap items-center gap-3 mb-2">
                         <h3
@@ -684,10 +590,7 @@ export function AboutPage() {
                         className="inline-flex items-center gap-1.5 mb-3 px-3 py-1 rounded-lg"
                         style={{ background: `${p.color}0e` }}
                       >
-                        <Icon
-                          size={14}
-                          style={{ color: p.color }}
-                        />
+                        <Icon size={14} style={{ color: p.color }} />
                         <span
                           style={{
                             fontSize: "0.78rem",
@@ -715,6 +618,213 @@ export function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Organising Team */}
+      <section className="py-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeIn>
+            <h2
+              className="mb-2"
+              style={{
+                fontSize: "clamp(1.8rem, 4vw, 2.6rem)",
+                fontWeight: 700,
+                color: "#1a1a2e",
+              }}
+            >
+              Organising Team
+            </h2>
+            <p
+              className="mb-12"
+              style={{
+                fontSize: "1.05rem",
+                color: "#6a6a7e",
+                lineHeight: 1.7,
+                maxWidth: "560px",
+              }}
+            >
+              The core group driving the vision and execution of the hackathon.
+            </p>
+          </FadeIn>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-x-6 gap-y-10">
+            {team.map((m, i) => (
+              <FadeIn key={m.name} delay={(i % 4) * 80}>
+                <a
+                  href={m.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group block"
+                >
+                  <div
+                    className="relative rounded-2xl overflow-hidden mb-4"
+                    style={{
+                      aspectRatio: "1 / 1",
+                      boxShadow: "0 8px 24px rgba(26,26,46,0.1)",
+                    }}
+                  >
+                    <img
+                      src={m.photo}
+                      alt={m.name}
+                      loading="lazy"
+                      className="w-full h-full object-cover object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                    {/* LinkedIn badge */}
+                    <div
+                      className="absolute bottom-3 right-3 w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 group-hover:scale-110"
+                      style={{
+                        background: "rgba(255,255,255,0.92)",
+                        backdropFilter: "blur(6px)",
+                        boxShadow: "0 2px 10px rgba(0,0,0,0.15)",
+                      }}
+                    >
+                      <Linkedin size={18} style={{ color: "#0a66c2" }} />
+                    </div>
+                  </div>
+                  <h3
+                    className="transition-colors duration-200 group-hover:text-[#ec4899]"
+                    style={{
+                      fontSize: "1.05rem",
+                      fontWeight: 700,
+                      color: "#1a1a2e",
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {m.name}
+                  </h3>
+                  <p
+                    className="mt-1"
+                    style={{
+                      fontSize: "0.85rem",
+                      color: "#6a6a7e",
+                      lineHeight: 1.5,
+                    }}
+                  >
+                    {m.role}
+                  </p>
+                </a>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Advisors (placeholder) */}
+      <section className="pb-24">
+        <div className="max-w-6xl mx-auto px-6">
+          <FadeIn>
+            <div
+              className="rounded-3xl p-8 md:p-12"
+              style={{
+                background:
+                  "linear-gradient(135deg, #f6f4fd 0%, #fef6fb 100%)",
+                border: "1px solid rgba(168, 85, 247, 0.12)",
+              }}
+            >
+              <div className="flex items-center gap-5 mb-10">
+                <h2
+                  style={{
+                    fontSize: "clamp(1.5rem, 3.5vw, 2.2rem)",
+                    fontWeight: 700,
+                    color: "#1a1a2e",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  Advisors
+                </h2>
+                <div
+                  className="flex-1 h-px"
+                  style={{ background: "rgba(168, 85, 247, 0.2)" }}
+                />
+                <span
+                  className="px-3 py-1 rounded-full"
+                  style={{
+                    background: "rgba(168, 85, 247, 0.1)",
+                    fontSize: "0.72rem",
+                    fontWeight: 700,
+                    color: "#a855f7",
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  To be announced
+                </span>
+              </div>
+
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-6">
+                {advisorPlaceholders.map((a, i) => (
+                  <div key={i}>
+                    <div
+                      className="rounded-2xl flex items-center justify-center mb-4"
+                      style={{
+                        aspectRatio: "1 / 1",
+                        background: a.bg,
+                        opacity: 0.85,
+                      }}
+                    >
+                      <User size={40} style={{ color: "rgba(255,255,255,0.9)" }} />
+                    </div>
+                    <h3
+                      style={{
+                        fontSize: "1rem",
+                        fontWeight: 700,
+                        color: "#1a1a2e",
+                      }}
+                    >
+                      To be announced
+                    </h3>
+                    <p
+                      className="mt-1"
+                      style={{
+                        fontSize: "0.85rem",
+                        color: "#8a8a9e",
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      Advisor &amp; Mentor
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* The HackitRx Way — fullscreen lightbox */}
+      {wayExpanded && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-8"
+          style={{
+            background: "rgba(10, 6, 18, 0.92)",
+            backdropFilter: "blur(4px)",
+          }}
+          onClick={() => setWayExpanded(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="The HackitRx Way"
+        >
+          <button
+            type="button"
+            onClick={() => setWayExpanded(false)}
+            aria-label="Close"
+            className="fixed top-5 right-5 w-11 h-11 rounded-full flex items-center justify-center transition-transform duration-200 hover:scale-110"
+            style={{
+              background: "rgba(255,255,255,0.12)",
+              border: "1px solid rgba(255,255,255,0.25)",
+            }}
+          >
+            <X size={24} style={{ color: "#ffffff" }} />
+          </button>
+          <img
+            src={hackitrxWayImg}
+            alt="The HackitRx Way — from patient conversation to a solution in production"
+            className="max-w-[95vw] max-h-[90vh] w-auto h-auto object-contain rounded-xl"
+            style={{ boxShadow: "0 20px 60px rgba(0,0,0,0.5)" }}
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -1,105 +1,78 @@
 import { useEffect, useRef, useState } from "react";
-import { Calendar, MessageCircle, Users, Rocket, Clock, MapPin, User } from "lucide-react";
+import { MapPin, Clock } from "lucide-react";
+import lumaImage from "../../../images/fireside-1-luma.jpg";
 
-interface Speaker {
-  name: string;
-  role: string;
-  org: string;
-}
-
-interface EventCard {
+interface EventItem {
   id: number;
   label: string;
   title: string;
-  date: string;
+  dateLabel: string;
+  tentative?: boolean;
   time: string;
   venue: string;
   synopsis: string;
-  color: string;
-  icon: typeof MessageCircle;
-  speakers: Speaker[];
-  tags: string[];
+  image?: string;
+  cta: { label: string; href?: string };
 }
 
-const events: EventCard[] = [
+const events: EventItem[] = [
   {
     id: 1,
-    label: "Talk 1",
+    label: "Fireside Chat 1",
     title: "Reimagining Healthcare from the Ground Up",
-    date: "12 June 2026",
+    dateLabel: "12 June 2026",
     time: "7:00 PM – 9:00 PM",
-    venue: "To be confirmed",
+    venue: "Open Government Products · 51 Bras Basah Rd, #04-08 Lazada One, Singapore 189554",
     synopsis:
-      "Who builds for the gaps in our healthcare system? Join us for a fireside chat exploring how to identify and address unmet patient needs. This session brings together healthcare innovators, patient advocates, and technology leaders to discuss frameworks for patient-centred design and real-world case studies of successful healthcare innovations in Singapore.",
-    color: "#f59e0b",
-    icon: MessageCircle,
-    speakers: [
-      { name: "Speaker TBA", role: "Healthcare Innovator", org: "To be announced" },
-      { name: "Speaker TBA", role: "Patient Advocate", org: "To be announced" },
-    ],
-    tags: ["Fireside Chat", "Patient-Centred Design", "Healthcare Gaps"],
+      "Who builds for the gaps in our healthcare system? Join us for a fireside chat exploring how to identify and address unmet patient needs — bringing together healthcare innovators, patient advocates, and technology leaders to talk patient-centred design and real-world healthcare innovation in Singapore.",
+    image: lumaImage,
+    cta: { label: "Register Now", href: "https://luma.com/amd4vto1" },
   },
   {
     id: 2,
-    label: "Talk 2",
-    title: "From Pain Point to Prototype",
-    date: "13–17 July 2026",
-    time: "7:00 PM – 9:00 PM (Evenings)",
+    label: "Fireside Chat 2",
+    title: "Turning Patient Challenges into Lasting Solutions",
+    dateLabel: "To be confirmed",
+    time: "To be confirmed",
     venue: "To be confirmed",
     synopsis:
-      "A hands-on workshop covering the full journey from problem discovery to prototype validation. Topics include rapid prototyping techniques, user testing with patients, regulatory considerations for digital health, and strategies for sustainable implementation in Singapore's healthcare settings. Perfect for builders who want to hit the ground running at the hackathon.",
-    color: "#10b981",
-    icon: MessageCircle,
-    speakers: [
-      { name: "Speaker TBA", role: "Product Designer", org: "To be announced" },
-      { name: "Speaker TBA", role: "Digital Health Lead", org: "To be announced" },
-    ],
-    tags: ["Workshop", "Prototyping", "User Testing", "Digital Health"],
+      "A fireside chat on what it takes to move from a real patient challenge to a solution that lasts — one that keeps serving the community long after the build is done.",
+    cta: { label: "Coming Soon" },
   },
   {
     id: 3,
     label: "Kick-off Day",
     title: "Collaborate with Patients",
-    date: "29–30 August 2026",
-    time: "9:00 AM – 6:00 PM",
+    dateLabel: "29 August 2026",
+    tentative: true,
+    time: "Tentative",
     venue: "To be confirmed",
     synopsis:
-      "The official launch of HackitRx 2026. Meet your team members, connect with patient organisations, select your challenge, and begin building. Mentors from healthcare, design, and engineering will be available throughout the two days to help you refine your approach. This is your first opportunity to sit down with real patients and hear their stories firsthand.",
-    color: "#3b82f6",
-    icon: Users,
-    speakers: [
-      { name: "Speaker TBA", role: "Clinical Mentor", org: "To be announced" },
-      { name: "Speaker TBA", role: "Patient Organisation Lead", org: "To be announced" },
-      { name: "Speaker TBA", role: "Tech Mentor", org: "To be announced" },
-    ],
-    tags: ["Kick-off", "Team Formation", "Mentorship", "Patient Matching"],
+      "Not a two-day hackathon. The Kick-off Day is where you hear directly from our patient and social service organisations about the key challenges they face — and where you form your team and connect with the patient organisation you'll work with. It marks the start of a month-long hackathon, where teams embark on learning journeys and build solutions together with patients.",
+    cta: { label: "Coming Soon" },
   },
   {
     id: 4,
     label: "Demo Day",
-    title: "Show Your Prototype",
-    date: "10–11 October 2026",
-    time: "9:00 AM – 6:00 PM",
+    title: "Show Your Solution",
+    dateLabel: "10–11 October 2026",
+    tentative: true,
+    time: "Tentative",
     venue: "To be confirmed",
     synopsis:
-      "The culmination of HackitRx 2026. After two days of building, teams present their prototypes to a panel of judges including healthcare professionals, patient advocates, technologists, and policy makers. Network with other teams, celebrate innovation, and explore pathways to bring your solution to market. Winners receive support to pilot their solutions with partnering organisations.",
-    color: "#a855f7",
-    icon: Rocket,
-    speakers: [
-      { name: "Judge TBA", role: "Healthcare Professional", org: "To be announced" },
-      { name: "Judge TBA", role: "Technology Investor", org: "To be announced" },
-      { name: "Judge TBA", role: "Patient Advocate", org: "To be announced" },
-    ],
-    tags: ["Demo Day", "Judging", "Awards", "Main Event"],
+      "The culmination of HackitRx 2026. After a month of building with patients, teams present their solutions to a panel of judges from healthcare, technology, and policy — celebrating the work and exploring pathways to pilot and scale what they have built.",
+    cta: { label: "Coming Soon" },
   },
 ];
 
 function FadeIn({
   children,
   delay = 0,
+  className,
 }: {
   children: React.ReactNode;
   delay?: number;
+  className?: string;
 }) {
   const [visible, setVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -109,7 +82,7 @@ function FadeIn({
       ([entry]) => {
         if (entry.isIntersecting) setVisible(true);
       },
-      { threshold: 0.08 }
+      { threshold: 0.08 },
     );
     if (ref.current) observer.observe(ref.current);
     return () => observer.disconnect();
@@ -118,6 +91,7 @@ function FadeIn({
   return (
     <div
       ref={ref}
+      className={className}
       style={{
         opacity: visible ? 1 : 0,
         transform: visible ? "translateY(0)" : "translateY(24px)",
@@ -129,90 +103,28 @@ function FadeIn({
   );
 }
 
-function SpeakerAvatar({ speaker }: { speaker: Speaker }) {
-  return (
-    <div className="flex items-center gap-3">
-      <div
-        className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center"
-        style={{
-          background: "rgba(168,85,247,0.1)",
-          border: "1.5px solid rgba(168,85,247,0.2)",
-        }}
-      >
-        <User size={18} style={{ color: "#a855f7" }} />
-      </div>
-      <div>
-        <p style={{ fontSize: "0.85rem", fontWeight: 700, color: "#1a1a2e" }}>
-          {speaker.name}
-        </p>
-        <p style={{ fontSize: "0.75rem", color: "#9ca3af" }}>
-          {speaker.role} · {speaker.org}
-        </p>
-      </div>
-    </div>
-  );
-}
-
 export function ProgrammesPage() {
   return (
-    <div
-      className="min-h-screen"
-      style={{ background: "#ffffff", fontFamily: "'Space Grotesk', sans-serif" }}
-    >
-      {/* Hero */}
+    <div className="min-h-screen" style={{ background: "#ffffff" }}>
+      {/* Header */}
       <section
-        className="relative pt-36 pb-20 overflow-hidden"
+        className="relative pt-36 pb-12"
         style={{
-          background: "linear-gradient(135deg, #fef3f7 0%, #fef8fa 50%, #f5f3ff 100%)",
+          background: "linear-gradient(135deg, #fef6fb 0%, #f6f4fd 100%)",
         }}
       >
-        <div
-          className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none"
-          style={{
-            background: "radial-gradient(circle, rgba(236,72,153,0.07) 0%, transparent 70%)",
-            filter: "blur(80px)",
-          }}
-        />
-        <div
-          className="absolute bottom-0 left-0 w-[500px] h-[500px] rounded-full pointer-events-none"
-          style={{
-            background: "radial-gradient(circle, rgba(168,85,247,0.07) 0%, transparent 70%)",
-            filter: "blur(80px)",
-          }}
-        />
-
-        <div className="max-w-5xl mx-auto px-6 relative z-10 text-center">
-          <div
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6"
-            style={{
-              background: "rgba(236, 72, 153, 0.08)",
-              border: "1.5px solid rgba(236, 72, 153, 0.25)",
-            }}
-          >
-            <Calendar size={16} style={{ color: "#ec4899" }} />
-            <span
-              style={{
-                fontSize: "0.85rem",
-                fontWeight: 700,
-                color: "#ec4899",
-                letterSpacing: "0.06em",
-              }}
-            >
-              2026 Programmes
-            </span>
-          </div>
-
+        <div className="max-w-4xl mx-auto px-6">
           <h1
-            className="mb-5"
+            className="mb-4"
             style={{
-              fontSize: "clamp(2.4rem, 6vw, 4rem)",
+              fontSize: "clamp(2.4rem, 6vw, 3.6rem)",
               fontWeight: 700,
               color: "#1a1a2e",
               lineHeight: 1.15,
               letterSpacing: "-0.02em",
             }}
           >
-            Mark your{" "}
+            Programme{" "}
             <span
               style={{
                 background: "linear-gradient(135deg, #ec4899, #a855f7)",
@@ -221,273 +133,202 @@ export function ProgrammesPage() {
                 backgroundClip: "text",
               }}
             >
-              calendar.
+              Timeline
             </span>
           </h1>
           <p
-            className="mx-auto"
             style={{
-              fontSize: "clamp(1.05rem, 2.5vw, 1.2rem)",
+              fontSize: "clamp(1.02rem, 2.2vw, 1.15rem)",
               color: "#5a5a6e",
-              lineHeight: 1.75,
-              maxWidth: "600px",
+              lineHeight: 1.7,
+              maxWidth: "640px",
             }}
           >
-            From introductory talks to the final demo day — every event in the HackitRx
-            2026 journey, laid out clearly so you can plan ahead.
+            Join us for a series of fireside chats, a month-long hackathon, and
+            networking sessions designed to co-create the future of care.
           </p>
         </div>
       </section>
 
-      {/* Events */}
-      <section className="py-20">
+      {/* Timeline */}
+      <section className="py-16">
         <div className="max-w-4xl mx-auto px-6">
-          <div className="flex flex-col gap-10">
-            {events.map((event, i) => {
-              const Icon = event.icon;
-              return (
-                <FadeIn key={event.id} delay={i * 80}>
+          {events.map((event, i) => {
+            const active = Boolean(event.cta.href);
+            const isLast = i === events.length - 1;
+            return (
+              <FadeIn key={event.id} delay={i * 80} className="flex gap-4 sm:gap-6">
+                {/* Rail */}
+                <div className="flex flex-col items-center flex-shrink-0">
                   <div
-                    className="rounded-3xl overflow-hidden transition-all duration-300 hover:shadow-2xl"
+                    className="mt-1 rounded-full flex-shrink-0"
+                    style={
+                      active
+                        ? {
+                            width: "20px",
+                            height: "20px",
+                            background:
+                              "linear-gradient(135deg, #ec4899, #a855f7)",
+                            boxShadow: "0 0 0 5px rgba(236,72,153,0.15)",
+                          }
+                        : {
+                            width: "20px",
+                            height: "20px",
+                            background: "#ffffff",
+                            border: "2px solid #d1d5db",
+                          }
+                    }
+                  />
+                  {!isLast && (
+                    <div
+                      className="flex-1 w-0.5 my-1"
+                      style={{ background: "#e9e7f0", minHeight: "40px" }}
+                    />
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="flex-1 min-w-0 pb-12">
+                  {/* Date label */}
+                  <div className="flex flex-wrap items-center gap-3 mb-3">
+                    <h2
+                      style={{
+                        fontSize: "1.1rem",
+                        fontWeight: 700,
+                        color: active ? "#1a1a2e" : "#6b7280",
+                      }}
+                    >
+                      {event.dateLabel}
+                    </h2>
+                    {event.tentative && (
+                      <span
+                        className="px-2.5 py-0.5 rounded-full"
+                        style={{
+                          fontSize: "0.7rem",
+                          fontWeight: 700,
+                          color: "#a855f7",
+                          background: "rgba(168,85,247,0.1)",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.05em",
+                        }}
+                      >
+                        Tentative
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Card */}
+                  <div
+                    className="rounded-2xl bg-white p-6 md:p-7 flex flex-col md:flex-row gap-6 transition-shadow duration-300 hover:shadow-lg"
                     style={{
-                      background: "#ffffff",
-                      border: `2px solid ${event.color}20`,
-                      boxShadow: `0 4px 24px ${event.color}0d`,
+                      border: "1px solid #ececf1",
+                      boxShadow: "0 4px 20px rgba(26,26,46,0.05)",
                     }}
                   >
-                    {/* Card top accent */}
-                    <div
-                      className="h-1.5 w-full"
-                      style={{
-                        background: `linear-gradient(90deg, ${event.color}, ${event.color}80)`,
-                      }}
-                    />
-
-                    <div className="p-8">
-                      {/* Header row */}
-                      <div className="flex flex-wrap items-start justify-between gap-4 mb-5">
-                        <div className="flex items-center gap-3">
-                          <div
-                            className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-                            style={{
-                              background: `${event.color}14`,
-                              border: `1.5px solid ${event.color}35`,
-                            }}
-                          >
-                            <Icon size={20} style={{ color: event.color }} />
-                          </div>
-                          <span
-                            style={{
-                              fontSize: "0.75rem",
-                              fontWeight: 700,
-                              color: event.color,
-                              textTransform: "uppercase",
-                              letterSpacing: "0.09em",
-                            }}
-                          >
-                            {event.label}
-                          </span>
-                        </div>
-
-                        {/* Tags */}
-                        <div className="flex flex-wrap gap-2">
-                          {event.tags.map((tag) => (
-                            <span
-                              key={tag}
-                              className="px-3 py-1 rounded-full"
-                              style={{
-                                background: `${event.color}0e`,
-                                border: `1px solid ${event.color}28`,
-                                fontSize: "0.72rem",
-                                fontWeight: 600,
-                                color: event.color,
-                              }}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
+                    <div className="flex-1 min-w-0">
+                      <div
+                        className="flex items-center gap-1.5 mb-2"
+                        style={{ color: "#6b7280" }}
+                      >
+                        <Clock size={14} />
+                        <span style={{ fontSize: "0.85rem", fontWeight: 600 }}>
+                          {event.time}
+                        </span>
+                        <span
+                          className="px-2 py-0.5 rounded ml-1"
+                          style={{
+                            fontSize: "0.7rem",
+                            fontWeight: 700,
+                            color: "#a855f7",
+                            background: "rgba(168,85,247,0.08)",
+                          }}
+                        >
+                          {event.label}
+                        </span>
                       </div>
 
-                      {/* Title */}
-                      <h2
-                        className="mb-5"
+                      <h3
+                        className="mb-3"
                         style={{
-                          fontSize: "clamp(1.3rem, 3vw, 1.75rem)",
+                          fontSize: "clamp(1.25rem, 3vw, 1.6rem)",
                           fontWeight: 700,
                           color: "#1a1a2e",
                           lineHeight: 1.25,
                         }}
                       >
                         {event.title}
-                      </h2>
+                      </h3>
 
-                      {/* Meta */}
-                      <div className="flex flex-wrap gap-5 mb-6">
-                        <div className="flex items-center gap-2">
-                          <Calendar size={16} style={{ color: event.color }} />
-                          <span style={{ fontSize: "0.9rem", color: "#374151", fontWeight: 600 }}>
-                            {event.date}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Clock size={16} style={{ color: event.color }} />
-                          <span style={{ fontSize: "0.9rem", color: "#374151" }}>
-                            {event.time}
-                          </span>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <MapPin size={16} style={{ color: event.color }} />
-                          <span style={{ fontSize: "0.9rem", color: "#374151" }}>
-                            {event.venue}
-                          </span>
-                        </div>
+                      <div
+                        className="flex items-center gap-1.5 mb-4"
+                        style={{ color: "#6b7280" }}
+                      >
+                        <MapPin size={15} />
+                        <span style={{ fontSize: "0.9rem" }}>{event.venue}</span>
                       </div>
 
-                      {/* Synopsis */}
                       <p
-                        className="mb-8"
+                        className="mb-6"
                         style={{
-                          fontSize: "1rem",
+                          fontSize: "0.97rem",
                           color: "#4a4a5e",
-                          lineHeight: 1.8,
+                          lineHeight: 1.75,
                         }}
                       >
                         {event.synopsis}
                       </p>
 
-                      {/* Divider */}
-                      <div
-                        className="mb-6"
-                        style={{ borderTop: `1px solid ${event.color}18` }}
-                      />
-
-                      {/* Speakers */}
-                      <div>
-                        <p
-                          className="mb-4"
+                      {active ? (
+                        <a
+                          href={event.cta.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 rounded-lg px-6 py-2.5 font-semibold transition-transform duration-200 hover:scale-[1.03]"
                           style={{
-                            fontSize: "0.72rem",
-                            fontWeight: 700,
+                            fontSize: "0.95rem",
+                            background:
+                              "linear-gradient(135deg, #ec4899, #a855f7)",
+                            color: "#ffffff",
+                            textDecoration: "none",
+                            boxShadow: "0 4px 16px rgba(236,72,153,0.3)",
+                          }}
+                        >
+                          {event.cta.label} →
+                        </a>
+                      ) : (
+                        <span
+                          className="inline-flex items-center rounded-lg px-6 py-2.5"
+                          style={{
+                            fontSize: "0.95rem",
+                            fontWeight: 600,
+                            background: "#f1f1f4",
                             color: "#9ca3af",
-                            textTransform: "uppercase",
-                            letterSpacing: "0.09em",
+                            cursor: "default",
                           }}
                         >
-                          {event.id === 4 ? "Judges & Panellists" : "Speakers & Mentors"}
-                        </p>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                          {event.speakers.map((speaker, si) => (
-                            <div
-                              key={si}
-                              className="flex items-center gap-3 p-3 rounded-xl"
-                              style={{
-                                background: `${event.color}06`,
-                                border: `1px solid ${event.color}14`,
-                              }}
-                            >
-                              <div
-                                className="w-10 h-10 rounded-full flex-shrink-0 flex items-center justify-center"
-                                style={{
-                                  background: `${event.color}14`,
-                                  border: `1.5px solid ${event.color}30`,
-                                }}
-                              >
-                                <User size={16} style={{ color: event.color }} />
-                              </div>
-                              <div>
-                                <p
-                                  style={{
-                                    fontSize: "0.85rem",
-                                    fontWeight: 700,
-                                    color: "#1a1a2e",
-                                  }}
-                                >
-                                  {speaker.name}
-                                </p>
-                                <p style={{ fontSize: "0.75rem", color: "#9ca3af" }}>
-                                  {speaker.role}
-                                </p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-
-                      {/* Main event badge */}
-                      {event.id === 4 && (
-                        <div
-                          className="mt-6 inline-flex items-center gap-2 px-4 py-1.5 rounded-full"
-                          style={{
-                            background: "rgba(168, 85, 247, 0.1)",
-                            border: "1px solid rgba(168, 85, 247, 0.3)",
-                          }}
-                        >
-                          <span
-                            className="w-2 h-2 rounded-full animate-pulse"
-                            style={{ background: "#a855f7" }}
-                          />
-                          <span
-                            style={{
-                              fontSize: "0.82rem",
-                              fontWeight: 600,
-                              color: "#a855f7",
-                            }}
-                          >
-                            Main Event
-                          </span>
-                        </div>
+                          {event.cta.label}
+                        </span>
                       )}
                     </div>
-                  </div>
-                </FadeIn>
-              );
-            })}
-          </div>
-        </div>
-      </section>
 
-      {/* Stay updated CTA */}
-      <section
-        className="py-20"
-        style={{
-          background: "linear-gradient(135deg, #fef3f7 0%, #f5f3ff 100%)",
-        }}
-      >
-        <div className="max-w-xl mx-auto px-6 text-center">
-          <FadeIn>
-            <h2
-              className="mb-3"
-              style={{ fontSize: "1.9rem", fontWeight: 700, color: "#1a1a2e" }}
-            >
-              Speaker announcements coming soon
-            </h2>
-            <p
-              className="mb-8"
-              style={{ fontSize: "1rem", color: "#6a6a7e", lineHeight: 1.75 }}
-            >
-              Full speaker line-ups will be confirmed over the coming months. Join our
-              Telegram channel to be the first to know when speakers are announced.
-            </p>
-            <a
-              href="https://t.me/+GLw0053W_PQxYzc9"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-full font-semibold transition-all duration-200 hover:scale-105"
-              style={{
-                fontSize: "1rem",
-                background: "linear-gradient(135deg, #ec4899, #a855f7)",
-                color: "#ffffff",
-                textDecoration: "none",
-                boxShadow: "0 4px 20px rgba(168,85,247,0.3)",
-              }}
-            >
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z" />
-              </svg>
-              Join Telegram for updates
-            </a>
-          </FadeIn>
+                    {event.image && (
+                      <div className="md:w-[260px] lg:w-[290px] flex-shrink-0">
+                        <img
+                          src={event.image}
+                          alt={event.title}
+                          loading="lazy"
+                          className="w-full max-w-[300px] mx-auto rounded-xl"
+                          style={{
+                            border: "1px solid rgba(0,0,0,0.06)",
+                          }}
+                        />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </FadeIn>
+            );
+          })}
         </div>
       </section>
     </div>

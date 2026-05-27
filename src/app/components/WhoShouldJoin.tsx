@@ -62,7 +62,6 @@ export function WhoShouldJoin() {
           <span
             className="inline-block text-sm font-semibold tracking-widest uppercase mb-4 px-4 py-1.5 rounded-full"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               color: "#a855f7",
               background: "rgba(168, 85, 247, 0.1)",
               border: "1px solid rgba(168, 85, 247, 0.25)",
@@ -72,7 +71,6 @@ export function WhoShouldJoin() {
           </span>
           <h2
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               fontSize: "clamp(2rem, 5vw, 3rem)",
               fontWeight: 700,
               color: "#ffffff",
@@ -94,7 +92,6 @@ export function WhoShouldJoin() {
           <p
             className="mt-4 max-w-2xl mx-auto"
             style={{
-              fontFamily: "'Space Grotesk', sans-serif",
               color: "rgba(255,255,255,0.55)",
               fontSize: "1.05rem",
               lineHeight: 1.7,
@@ -132,7 +129,6 @@ export function WhoShouldJoin() {
               <span
                 className="text-xs font-semibold tracking-widest uppercase mb-2"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   color: p.color,
                   opacity: 0.8,
                 }}
@@ -143,7 +139,6 @@ export function WhoShouldJoin() {
               <h3
                 className="mb-3"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   fontSize: "1.3rem",
                   fontWeight: 700,
                   color: "#ffffff",
@@ -155,7 +150,6 @@ export function WhoShouldJoin() {
               <p
                 className="flex-1 mb-6"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   color: "rgba(255,255,255,0.55)",
                   fontSize: "0.95rem",
                   lineHeight: 1.7,
@@ -171,7 +165,6 @@ export function WhoShouldJoin() {
                     key={tag}
                     className="text-xs px-3 py-1 rounded-full"
                     style={{
-                      fontFamily: "'Space Grotesk', sans-serif",
                       background: `${p.color}12`,
                       border: `1px solid ${p.color}25`,
                       color: p.color,
@@ -187,7 +180,6 @@ export function WhoShouldJoin() {
                 href={p.href}
                 className="inline-flex items-center gap-2 text-sm font-semibold transition-all duration-200 hover:gap-3"
                 style={{
-                  fontFamily: "'Space Grotesk', sans-serif",
                   color: p.color,
                 }}
               >
