@@ -57,7 +57,7 @@ const journey = [
   {
     year: "2026",
     title: "2026 — A bigger room. The same connection.",
-    body: "The breakthrough wasn't the technology — it was the patient voice at the centre of the build. So we're opening the room. We're joined by Open Government Products (OGP), and by the Alliance of Patient's Organisations Singapore (APOS) to bring patient organisations into the programme as co-creators. Pharmacists remain our ecosystem anchors; patients, caregivers, and the organisations who serve them are now in the room from day one.",
+    body: "The breakthrough wasn't the technology — it was the patient voice at the centre of the build. So we're opening the room. We joined the Stewards for Good (SFG) Programme and collaborated with the Alliance of Patient's Organisations Singapore (APOS) to bring patient organisations into the programme as co-creators. Pharmacists remain our ecosystem anchors; patients, caregivers, and the organisations who serve them are now in the room from day one.",
     image: journey2026,
     icon: Users,
     color: "#a855f7",
@@ -191,6 +191,7 @@ const partners = [
     logo: pssLogo,
     color: "#ec4899",
     icon: Heart,
+    url: "https://pss.org.sg/",
     description:
       "The PSS represents over 1,500 pharmacists and pharmacy technicians in Singapore, advancing the profession through professional development and public outreach. As a co-organiser of HackitRx, PSS brings deep clinical knowledge, professional networks, and a commitment to medication-related challenges that affect millions of patients daily.",
     role: "Clinical Expertise & Pharmacy Insights",
@@ -201,19 +202,43 @@ const partners = [
     logo: aposLogo,
     color: "#a855f7",
     icon: Users,
+    url: "https://apos.sg/",
     description:
       "APOS is a coalition of patient organisations advocating for patient-centred healthcare in Singapore. APOS connects HackitRx with real patient communities, ensuring that the challenges tackled at the hackathon reflect lived experiences rather than assumed pain points.",
     role: "Patient Voice & Community Access",
   },
   {
-    name: "Open Government Products",
-    abbr: "OGP",
+    name: "Stewards for Good",
+    abbr: "SFG",
     logo: ogpLogo,
     color: "#0ea5e9",
-    icon: Code2,
-    description:
-      "OGP is Singapore's in-house tech team that builds products for the public good. Bringing engineering rigour, design thinking, and product strategy to HackitRx, OGP helps builder teams move from idea to viable prototype — and thinks through what it takes to deploy solutions responsibly at scale.",
-    role: "Technology & Product Strategy",
+    icon: Sparkles,
+    description: (
+      <p>
+        Born out of the Build for Good spirit, Stewards for Good (SFG) is a
+        by-invitation, experimental programme that empowers community leaders to use
+        tech, design, and community action to serve the public good.{" "}
+        <a
+          href="https://www.build.gov.sg/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#0ea5e9", textDecoration: "underline" }}
+        >
+          Build for Good
+        </a>{" "}
+        is a citizens' initiative by{" "}
+        <a
+          href="https://www.open.gov.sg/"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "#0ea5e9", textDecoration: "underline" }}
+        >
+          Open Government Products
+        </a>
+        , that inspires citizens to make Singapore better with technology.
+      </p>
+    ),
+    role: "Community-Led Innovation",
   },
 ];
 
@@ -682,13 +707,22 @@ export function AboutPage() {
               return (
                 <FadeIn key={p.abbr} delay={i * 120}>
                   <div
-                    className="rounded-2xl p-8 flex flex-col sm:flex-row gap-6 items-start"
+                    className="relative rounded-2xl p-8 flex flex-col sm:flex-row gap-6 items-start transition-shadow duration-200 hover:shadow-lg"
                     style={{
                       background: "rgba(255,255,255,0.85)",
                       border: `2px solid ${p.color}18`,
                       boxShadow: `0 4px 20px ${p.color}0a`,
                     }}
                   >
+                    {p.url && (
+                      <a
+                        href={p.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={`Visit ${p.name}`}
+                        className="absolute inset-0 z-10 rounded-2xl"
+                      />
+                    )}
                     <div
                       className="flex-shrink-0 flex items-center justify-center rounded-2xl p-5"
                       style={{
@@ -745,7 +779,7 @@ export function AboutPage() {
                           {p.role}
                         </span>
                       </div>
-                      <p
+                      <div
                         style={{
                           fontSize: "0.97rem",
                           color: "#4a4a5e",
@@ -753,7 +787,7 @@ export function AboutPage() {
                         }}
                       >
                         {p.description}
-                      </p>
+                      </div>
                     </div>
                   </div>
                 </FadeIn>
