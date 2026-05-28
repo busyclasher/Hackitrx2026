@@ -82,7 +82,7 @@ const beforeApply = [
     color: "#a855f7",
     title: "No code? No problem",
     body: "No coding experience required. AI tooling, product-management support, and a network of public-good builders are part of the package.",
-    highlight: true,
+    highlight: false,
   },
 ];
 

@@ -97,7 +97,7 @@ const commitment = [
     date: "Beyond Demo Day",
     title: "Beyond Demo Day",
     note: "",
-    body: "For solutions that prove themselves, we keep walking with you — through OGP scale-up pathways, SGPO funding routes, and government partners ready to back what comes next.",
+    body: "For solutions that prove themselves, we keep walking with you — through OGP scale-up pathways and funding routes, connecting participants to the right agencies ready to back what comes next.",
     wide: true,
   },
 ];

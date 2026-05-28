@@ -48,8 +48,8 @@ const journey = [
   },
   {
     year: "2025",
-    title: "2025 — A proof that travelled",
-    body: "A HackitRx team built a financial and medication-refill tool with patients at the National Cancer Centre Singapore. It worked — and is now being funded to scale across NCCS in 2026. One team. One problem worth solving. One solution that made it from the room into people's lives.",
+    title: "2025 — Ideas that outlive the hackathon",
+    body: "A HackitRx team built a financial and medication-refill tool for patients at the National Cancer Centre Singapore. It worked — and is now being funded to scale across NCCS in 2026. One team. One problem worth solving. One solution that made it from the room into people's lives.",
     image: journey2025,
     icon: Repeat,
     color: "#ec4899",
@@ -57,7 +57,7 @@ const journey = [
   {
     year: "2026",
     title: "2026 — A bigger room. The same connection.",
-    body: "The breakthrough wasn't the technology — it was the patient voice at the centre of the build. So we're opening the room. We're joined by Open Government Products (OGP), and by the Alliance of Patient's Organizations Singapore (APOS) to bring patient organisations into the programme as co-creators. Pharmacists remain our ecosystem anchors; patients, caregivers, and the organisations who serve them are now in the room from day one.",
+    body: "The breakthrough wasn't the technology — it was the patient voice at the centre of the build. So we're opening the room. We're joined by Open Government Products (OGP), and by the Alliance of Patient's Organisations Singapore (APOS) to bring patient organisations into the programme as co-creators. Pharmacists remain our ecosystem anchors; patients, caregivers, and the organisations who serve them are now in the room from day one.",
     image: journey2026,
     icon: Users,
     color: "#a855f7",
@@ -142,7 +142,7 @@ const advisors: {
   },
   {
     name: "Nidhi Swarup",
-    role: "Founding Chair, Alliance of Patient's Organizations Singapore (APOS)",
+    role: "Founding Chair, Alliance of Patient's Organisations Singapore (APOS)",
     linkedin: "https://www.linkedin.com/in/nidhi-swarup-09100128/",
     photo: nidhiPhoto,
   },
@@ -192,11 +192,11 @@ const partners = [
     color: "#ec4899",
     icon: Heart,
     description:
-      "The PSS represents over 3,000 pharmacists in Singapore, advancing pharmaceutical practice and patient safety. As a co-organiser of HackitRx, PSS brings deep clinical knowledge, professional networks, and a commitment to medication-related challenges that affect millions of patients daily.",
+      "The PSS represents over 1,500 pharmacists and pharmacy technicians in Singapore, advancing the profession through professional development and public outreach. As a co-organiser of HackitRx, PSS brings deep clinical knowledge, professional networks, and a commitment to medication-related challenges that affect millions of patients daily.",
     role: "Clinical Expertise & Pharmacy Insights",
   },
   {
-    name: "Alliance of Patient's Organizations Singapore",
+    name: "Alliance of Patient's Organisations Singapore",
     abbr: "APOS",
     logo: aposLogo,
     color: "#a855f7",
@@ -629,7 +629,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* In Collaboration With (Partners) */}
+      {/* Jointly Organised by (Partners) */}
       <section
         className="py-24"
         style={{
@@ -658,7 +658,7 @@ export function AboutPage() {
                   color: "#1a1a2e",
                 }}
               >
-                In Collaboration With
+                Jointly Organised by
               </h2>
               <p
                 className="mt-3 mx-auto"

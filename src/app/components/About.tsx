@@ -110,7 +110,7 @@ export function About() {
               lineHeight: 1.45,
             }}
           >
-            Built for better healthcare.{" "}
+            Build for better healthcare.{" "}
             <span style={{ color: "#5a5a6e", fontWeight: 500 }}>
               Shaped by those who live it.
             </span>

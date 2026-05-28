@@ -89,7 +89,7 @@ export function Contact() {
           }}
         >
           <a
-            href="mailto:sghackitx@gmail.com"
+            href="mailto:sghackitrx@gmail.com"
             className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3.5 rounded-full font-semibold"
             style={{
               fontSize: "1rem",
@@ -133,7 +133,7 @@ export function Contact() {
         >
           {/* Email */}
           <a
-            href="mailto:sghackitx@gmail.com"
+            href="mailto:sghackitrx@gmail.com"
             className="group flex flex-col items-center text-center h-full p-10 rounded-3xl transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
             style={{
               background: "#ffffff",
@@ -177,7 +177,7 @@ export function Contact() {
                 color: "#ec4899",
               }}
             >
-              sghackitx@gmail.com
+              sghackitrx@gmail.com
             </p>
           </a>
 

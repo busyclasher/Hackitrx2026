@@ -3,14 +3,14 @@ import pssLogo from "../../imports/PSS_logo_N_(1).png";
 import aposLogo from "../../imports/APOS_main_(1).png";
 import ogpLogo from "../../imports/OGP_black.png";
 
-const organizers = [
+const organisers = [
   {
     name: "Pharmaceutical Society of Singapore",
     logo: pssLogo,
     abbr: "PSS",
   },
   {
-    name: "Alliance of Patient's Organizations Singapore",
+    name: "Alliance of Patient's Organisations Singapore",
     logo: aposLogo,
     abbr: "APOS",
   },
@@ -74,13 +74,13 @@ export function Sponsors() {
               lineHeight: 1.3,
             }}
           >
-            In Collaboration with
+            Jointly Organised by
           </h2>
         </div>
 
-        {/* Organizer Logos */}
+        {/* Organiser Logos */}
         <div className="flex flex-nowrap justify-center items-center gap-3 sm:gap-10 md:gap-16">
-          {organizers.map((org) => (
+          {organisers.map((org) => (
             <div
               key={org.abbr}
               className="flex-1 min-w-0 flex items-center justify-center p-2 sm:p-6 rounded-2xl transition-all duration-300"
