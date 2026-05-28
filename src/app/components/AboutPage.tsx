@@ -57,7 +57,7 @@ const journey = [
   {
     year: "2026",
     title: "2026 — A bigger room. The same connection.",
-    body: "The breakthrough wasn't the technology — it was the patient voice at the centre of the build. So we're opening the room. We joined the Stewards for Good (SFG) Programme and collaborated with the Alliance of Patient's Organisations Singapore (APOS) to bring patient organisations into the programme as co-creators. Pharmacists remain our ecosystem anchors; patients, caregivers, and the organisations who serve them are now in the room from day one.",
+    body: "The breakthrough wasn't the technology — it was the patient voice at the centre of the build. So we're opening the room. We joined the Stewards for Good (SFG) Programme and collaborated with the Alliance of Patient's Organizations Singapore (APOS) to bring patient organisations into the programme as co-creators. Pharmacists remain our ecosystem anchors; patients, caregivers, and the organisations who serve them are now in the room from day one.",
     image: journey2026,
     icon: Users,
     color: "#a855f7",
@@ -197,7 +197,7 @@ const partners = [
     role: "Clinical Expertise & Pharmacy Insights",
   },
   {
-    name: "Alliance of Patient's Organisations Singapore",
+    name: "Alliance of Patient's Organizations Singapore",
     abbr: "APOS",
     logo: aposLogo,
     color: "#a855f7",
@@ -696,7 +696,7 @@ export function AboutPage() {
               >
                 HackitRx brings together three organisations that each represent a
                 critical perspective: clinical expertise, patient voice, and
-                technology.
+                technology for public good.
               </p>
             </div>
           </FadeIn>
