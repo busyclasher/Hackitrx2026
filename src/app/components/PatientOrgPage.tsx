@@ -16,6 +16,7 @@ import {
 import advocatesHumanSvgRaw from "../../assets/images/advocates-human.svg?raw";
 import { SvgScene } from "./SvgScene";
 import involvementImg from "../../../images/Where the Needs Lives.jpeg";
+import { Seo } from "./Seo";
 
 const FORMSG_URL = "https://form.gov.sg/69994a14dd306e1eb1ecf87f";
 
@@ -175,6 +176,10 @@ export function PatientOrgPage() {
 
   return (
     <div className="min-h-screen" style={{ background: "#ffffff" }}>
+      <Seo
+        title="Join HackitRx as a Patient & Social Service Organisation — Patient-Centric Innovation in Singapore"
+        description="Co-create lasting solutions for your community at Singapore's patient-centric healthcare innovation programme."
+      />
       {/* Hero */}
       <section
         className="relative pt-36 pb-16 overflow-hidden"

@@ -1,5 +1,6 @@
 import { Award } from "lucide-react";
 import { PastStories } from "./PastStories";
+import { Seo } from "./Seo";
 
 const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
 
@@ -9,6 +10,10 @@ export function PastWinnersPage() {
       className="min-h-screen"
       style={{ background: "#ffffff" }}
     >
+      <Seo
+        title="Past Winners — HackitRx Singapore Healthcare Hackathon"
+        description="Previous winning solutions from HackitRx, Singapore's patient-centric healthcare innovation challenge."
+      />
       <section
         className="relative overflow-hidden pt-36 pb-14"
         style={{

@@ -15,6 +15,7 @@ import {
 import singaporean1SvgRaw from "../../imports/singaporean__1_.svg?raw";
 import { SvgScene } from "./SvgScene";
 import collabImg from "../../../images/Ground-up Innovation.jpg";
+import { Seo } from "./Seo";
 
 const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
 // TODO: replace with the live hacker registration form URL when ready
@@ -185,6 +186,10 @@ export function BuilderPage() {
 
   return (
     <div className="min-h-screen" style={{ background: "#ffffff" }}>
+      <Seo
+        title="Join HackitRx as a Hacker — Singapore's Healthcare Innovation Challenge for Public Good"
+        description="For engineers, designers, PMs, healthcare professionals and everyone in between — build tech for public good at Singapore's patient-centric healthcare hackathon."
+      />
       {/* Hero */}
       <section
         className="relative pt-36 pb-16 overflow-hidden"

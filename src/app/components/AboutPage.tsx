@@ -36,6 +36,7 @@ import zhengKangPhoto from "../../../images/Advisors/Zheng Kang.jpeg";
 import sharonPhoto from "../../../images/Advisors/Sharon Yeo.jpeg";
 import nigelPhoto from "../../../images/Advisors/Nigel Lim.jpeg";
 import elstonPhoto from "../../../images/Advisors/Elston.jpeg";
+import { Seo } from "./Seo";
 
 const journey = [
   {
@@ -375,6 +376,10 @@ export function AboutPage() {
 
   return (
     <div className="min-h-screen" style={{ background: "#ffffff" }}>
+      <Seo
+        title="About HackitRx — Patient-Centric, Ground-Up Healthcare Innovation in Singapore"
+        description="How HackitRx runs Singapore's patient-centric healthcare innovation programme — co-creating tech for public good with patients, healthcare professionals, and builders."
+      />
       {/* Hero */}
       <section
         className="relative pt-36 pb-20 overflow-hidden"

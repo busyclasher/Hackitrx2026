@@ -1,5 +1,6 @@
 import { Users } from "lucide-react";
 import { Speakers } from "./Speakers";
+import { Seo } from "./Seo";
 
 const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
 
@@ -9,6 +10,10 @@ export function SpeakersPage() {
       className="min-h-screen"
       style={{ background: "#ffffff" }}
     >
+      <Seo
+        title="Speakers — HackitRx 2026 Singapore Healthcare Innovation Programme"
+        description="Clinicians, technologists and patient advocates speaking at Singapore's patient-centric healthcare hackathon."
+      />
       <section
         className="relative overflow-hidden pt-36 pb-14"
         style={{

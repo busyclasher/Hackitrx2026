@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { MapPin, Clock } from "lucide-react";
 import lumaImage from "../../../images/fireside-1-luma.jpg";
+import { Seo } from "./Seo";
 
 interface EventItem {
   id: number;
@@ -106,6 +107,10 @@ function FadeIn({
 export function ProgrammesPage() {
   return (
     <div className="min-h-screen" style={{ background: "#ffffff" }}>
+      <Seo
+        title="HackitRx 2026 Programme — Singapore Healthcare Hackathon, Fireside Chats & Demo Day"
+        description="The Singapore healthcare innovation challenge in full: fireside chats, the month-long healthcare hackathon, and Demo Day."
+      />
       {/* Header */}
       <section
         className="relative pt-36 pb-12"
