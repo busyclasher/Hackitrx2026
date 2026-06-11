@@ -249,8 +249,9 @@ export function About() {
               lineHeight: 1.85,
             }}
           >
-            As part of PSS and the Stewards for Good (SFG) Programme in collaboration with Alliance of Patients' Organizations Singapore, we want to build a stronger care ecosystem from the ground-up — public good that genuinely matters to patients, caregivers, and the
-            organisations who serve them. We get there by tapping the collective wisdom of
+            As part of PSS and the Stewards for Good (SFG) Programme in collaboration with Alliance of Patients' Organizations Singapore (APOS), we want to build a stronger care ecosystem from the ground-up — public good that genuinely matters to patients, caregivers, and the
+            organisations who serve them. 
+            We get there by tapping the collective wisdom of
             healthcare professionals, passionate builders, designers, and everyday Singaporeans,
             one solution at a time.
           </p>

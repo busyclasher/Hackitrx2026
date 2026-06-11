@@ -18,8 +18,7 @@ import collabImg from "../../../images/Ground-up Innovation.jpg";
 import { Seo } from "./Seo";
 
 const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
-// TODO: replace with the live hacker registration form URL when ready
-const REGISTRATION_URL = "https://form.gov.sg/placeholder";
+const REGISTRATION_URL = "https://form.gov.sg/69f9fe0888075a8a0713d241";
 
 const whyJoin = [
   {
@@ -154,29 +153,34 @@ function FadeIn({
 }
 
 function SignUpButton({ variant = "solid" }: { variant?: "solid" | "white" }) {
-  // Sign-ups are not open yet — rendered as a disabled "Coming Soon!" button.
   const base =
-    "inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold whitespace-nowrap w-full sm:w-auto";
+    "inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full font-semibold whitespace-nowrap w-full sm:w-auto transition-transform duration-200 hover:scale-105";
   const style: React.CSSProperties =
     variant === "white"
       ? {
           fontSize: "1.05rem",
-          background: "rgba(255,255,255,0.18)",
-          color: "#ffffff",
-          border: "1.5px solid rgba(255,255,255,0.45)",
-          cursor: "not-allowed",
+          background: "#ffffff",
+          color: "#7c3aed",
+          border: "1.5px solid #ffffff",
+          textDecoration: "none",
         }
       : {
           fontSize: "1.05rem",
-          background: "#e5e7eb",
-          color: "#9ca3af",
-          border: "1.5px solid #e5e7eb",
-          cursor: "not-allowed",
+          background: "#7c3aed",
+          color: "#ffffff",
+          border: "1.5px solid #7c3aed",
+          textDecoration: "none",
         };
   return (
-    <span className={base} style={style} aria-disabled="true">
-      Sign up now (Coming Soon!)
-    </span>
+    <a
+      href={REGISTRATION_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className={base}
+      style={style}
+    >
+      Sign up now →
+    </a>
   );
 }
 
