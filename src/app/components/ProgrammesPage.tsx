@@ -3,6 +3,8 @@ import { MapPin, Clock } from "lucide-react";
 import lumaImage from "../../../images/fireside-1-luma.jpg";
 import { Seo } from "./Seo";
 
+const talk2Image = "/Talk2_website_square.png";
+
 interface EventItem {
   id: number;
   label: string;
@@ -38,6 +40,7 @@ const events: EventItem[] = [
     venue: "To be confirmed",
     synopsis:
       "A fireside chat on what it takes to move from a real patient challenge to a solution that lasts — one that keeps serving the community long after the build is done.",
+    image: talk2Image,
     cta: { label: "Coming Soon" },
   },
   {
