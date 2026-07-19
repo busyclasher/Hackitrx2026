@@ -41,7 +41,7 @@ const events: EventItem[] = [
     synopsis:
       "A fireside chat on what it takes to move from a real patient challenge to a solution that lasts — one that keeps serving the community long after the build is done.",
     image: talk2Image,
-    cta: { label: "Coming Soon" },
+    cta: { label: "Register Now", href: "https://luma.com/ogp-8d2t" },
   },
   {
     id: 3,
