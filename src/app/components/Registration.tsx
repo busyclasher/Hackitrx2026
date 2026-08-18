@@ -103,10 +103,10 @@ export function Registration() {
           }}
         >
           {[
-            { label: "Date", value: "October 2026" },
+            { label: "Date", value: "30 Aug – 27 Sep 2026" },
             { label: "Location", value: "Singapore" },
             { label: "Format", value: "In-Person + Hybrid" },
-            { label: "Duration", value: "48 Hours" },
+            { label: "Duration", value: "4 Weeks" },
           ].map((item) => (
             <div key={item.label} className="text-center">
               <div

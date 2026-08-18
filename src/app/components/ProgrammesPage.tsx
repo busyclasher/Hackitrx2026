@@ -4,6 +4,7 @@ import lumaImage from "../../../images/fireside-1-luma.jpg";
 import { Seo } from "./Seo";
 
 const talk2Image = "/Talk2_website_square.png";
+const kickoffImage = "/kickoff-day-square.png";
 
 interface EventItem {
   id: number;
@@ -13,6 +14,7 @@ interface EventItem {
   tentative?: boolean;
   time: string;
   venue: string;
+  venueHref?: string;
   synopsis: string;
   image?: string;
   cta: { label: string; href?: string };
@@ -47,24 +49,24 @@ const events: EventItem[] = [
     id: 3,
     label: "Kick-off Day",
     title: "Collaborate with Patients",
-    dateLabel: "29 August 2026",
-    tentative: true,
-    time: "Tentative",
-    venue: "To be confirmed",
+    dateLabel: "30 August 2026",
+    time: "9:30 AM – 4:30 PM",
+    venue: "Outram Community Hospital (OCH)",
+    venueHref: "https://maps.app.goo.gl/WMC1NarwdMCsjXVu7",
     synopsis:
-      "Not a two-day hackathon. The Kick-off Day is where you hear directly from our patient and social service organisations about the key challenges they face — and where you form your team and connect with the patient organisation you'll work with. It marks the start of a month-long hackathon, where teams embark on learning journeys and build solutions together with patients.",
-    cta: { label: "Coming Soon" },
+      "The starting line for HackitRx 2026. Hear directly from the patient organisations behind this year's problem statements, understand the real needs driving each one, and find the challenge you want to spend the next four weeks solving. It is also where teams come together — come as a solo builder, a pair, or a full team, and leave with people whose skills complement yours.\n\nExpect talks from leaders in the healthcare space, small-group sharing sessions with our partner patient organisations, and a full afternoon dedicated to team matching and problem statement selection. Registration is required and open to participants who have received an acceptance email. Representatives from patient organisations and advocacy groups are also warmly welcome to observe — please indicate your organisation when registering.",
+    image: kickoffImage,
+    cta: { label: "RSVP Now!", href: "https://luma.com/md536irp" },
   },
   {
     id: 4,
     label: "Demo Day",
     title: "Show Your Solution",
-    dateLabel: "10–11 October 2026",
-    tentative: true,
-    time: "Tentative",
+    dateLabel: "27 September 2026",
+    time: "To be confirmed",
     venue: "To be confirmed",
     synopsis:
-      "The culmination of HackitRx 2026. After a month of building with patients, teams present their solutions to a panel of judges from healthcare, technology, and policy — celebrating the work and exploring pathways to pilot and scale what they have built.",
+      "The culmination of HackitRx 2026. After four weeks of building with patients, teams present their solutions to a panel of judges from healthcare, technology, and policy — celebrating the work and exploring pathways to pilot and scale what they have built.",
     cta: { label: "Coming Soon" },
   },
 ];
@@ -272,19 +274,40 @@ export function ProgrammesPage() {
                         style={{ color: "#6b7280" }}
                       >
                         <MapPin size={15} />
-                        <span style={{ fontSize: "0.9rem" }}>{event.venue}</span>
+                        {event.venueHref ? (
+                          <a
+                            href={event.venueHref}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            style={{
+                              fontSize: "0.9rem",
+                              color: "#a855f7",
+                              textDecoration: "underline",
+                              textUnderlineOffset: "2px",
+                            }}
+                          >
+                            {event.venue}
+                          </a>
+                        ) : (
+                          <span style={{ fontSize: "0.9rem" }}>{event.venue}</span>
+                        )}
                       </div>
 
-                      <p
-                        className="mb-6"
-                        style={{
-                          fontSize: "0.97rem",
-                          color: "#4a4a5e",
-                          lineHeight: 1.75,
-                        }}
-                      >
-                        {event.synopsis}
-                      </p>
+                      <div className="mb-6">
+                        {event.synopsis.split("\n\n").map((para, pi) => (
+                          <p
+                            key={pi}
+                            style={{
+                              fontSize: "0.97rem",
+                              color: "#4a4a5e",
+                              lineHeight: 1.75,
+                              marginBottom: "0.9rem",
+                            }}
+                          >
+                            {para}
+                          </p>
+                        ))}
+                      </div>
 
                       {active ? (
                         <a

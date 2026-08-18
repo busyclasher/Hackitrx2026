@@ -93,22 +93,22 @@ const commitment = [
     body: "Submit through the registration form.",
   },
   {
-    date: "29–30 Aug",
+    date: "30 Aug",
     title: "Kick-Off Day",
     body: "Meet your problem statement, meet your team, meet the patient organisation you are passionate to work with. The build begins here.",
   },
   {
-    date: "Sep – Oct",
+    date: "Sep",
     title: "Build sprint",
-    body: "Six weeks of focused co-creation. Expect regular check-ins with our team, at least one learning journey into a real care setting, and at least one in-depth meet-up with your patient organisation to test and refine your work.",
+    body: "Four weeks of focused co-creation. Expect regular check-ins with our team, at least one learning journey into a real care setting, and at least one in-depth meet-up with your patient organisation to test and refine your work.",
   },
   {
-    date: "10–11 Oct",
+    date: "27 Sep",
     title: "Demo Day",
     body: "Present your solution to judges, partners, and the patient community — the people who can take it further.",
   },
   {
-    date: "Beyond Oct",
+    date: "Beyond Sep",
     title: "A pathway to scale",
     body: "For solutions that prove themselves, a real pathway to scale — with OGP, government partners, and funders ready to support what's next.",
   },
@@ -638,7 +638,7 @@ export function BuilderPage() {
                   maxWidth: "640px",
                 }}
               >
-                About 2–3 hours of focused time per week, over 6 weeks — spread across
+                About 2–3 hours of focused time per week, over 4 weeks — spread across
                 evenings, weekends, and a handful of in-person moments.
               </p>
             </div>

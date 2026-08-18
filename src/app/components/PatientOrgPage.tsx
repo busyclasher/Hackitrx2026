@@ -71,7 +71,7 @@ const commitment = [
   },
   {
     icon: Flag,
-    date: "29–30 Aug 2026",
+    date: "30 Aug 2026",
     title: "Kick-Off Day",
     note: "~half-day",
     body: "You present your refined problem statements at the Problem Statement Marketplace, meet the hacking teams, and pair with the team that takes your problem on.",
@@ -79,15 +79,15 @@ const commitment = [
   },
   {
     icon: Code,
-    date: "Sep – Early Oct 2026",
+    date: "Sep 2026",
     title: "Hacking Phase",
     note: "~1–2 touchpoints of 1–2 hours",
-    body: "You stay close to your team as they build. Expect a learning-journey session with them in the first two weeks, a feedback session on their first working prototype around week four, and informal check-ins in between (optional).",
+    body: "You stay close to your team as they build. Expect a learning-journey session with them in the first week or two, a feedback session on their first working prototype around week three, and informal check-ins in between (optional).",
     wide: false,
   },
   {
     icon: Trophy,
-    date: "Late Oct 2026",
+    date: "27 Sep 2026",
     title: "Demo Day",
     note: "~half-day",
     body: "You celebrate alongside your team, witness the final solution, and meet the partners and funders who can help take it forward.",

@@ -23,7 +23,7 @@ const events = [
     icon: MessageCircle,
   },
   {
-    date: "29–30 August",
+    date: "30 August",
     label: "Kick-off Day",
     title: "Collaborate with Patients",
     description:
@@ -33,7 +33,7 @@ const events = [
     icon: Users,
   },
   {
-    date: "10–11 October",
+    date: "27 September",
     label: "Demo Day",
     title: "Show Your Prototype",
     description:
