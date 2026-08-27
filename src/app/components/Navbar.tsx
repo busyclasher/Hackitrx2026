@@ -9,6 +9,7 @@ const pageLinks = [
   { label: "Home", path: "/" },
   { label: "About", path: "/about" },
   { label: "Programmes", path: "/programmes" },
+  { label: "Problem Statements", path: "/problem-statements" },
   { label: "Past Winners", path: "/past-winners" },
 ];
 

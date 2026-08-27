@@ -5,6 +5,7 @@ import { BuilderPage } from "./components/BuilderPage";
 import { PatientOrgPage } from "./components/PatientOrgPage";
 import { AboutPage } from "./components/AboutPage";
 import { ProgrammesPage } from "./components/ProgrammesPage";
+import { ProblemStatementsPage } from "./components/ProblemStatementsPage";
 import { SpeakersPage } from "./components/SpeakersPage";
 import { PastWinnersPage } from "./components/PastWinnersPage";
 
@@ -16,6 +17,7 @@ export const router = createBrowserRouter([
       { index: true, Component: MainPage },
       { path: "about", Component: AboutPage },
       { path: "programmes", Component: ProgrammesPage },
+      { path: "problem-statements", Component: ProblemStatementsPage },
       { path: "speakers", Component: SpeakersPage },
       { path: "past-winners", Component: PastWinnersPage },
       { path: "join/builder", Component: BuilderPage },
