@@ -222,19 +222,6 @@ const events: EventItem[] = [
     cta: { label: "Sign Up Opening Soon" },
   },
   {
-    id: 8,
-    label: "Engagement",
-    title: "Southwest CDC Engagement with Mayor Low Yen Ling",
-    dateLabel: "23 September 2026",
-    time: "To be confirmed",
-    venue: "To be confirmed",
-    sprintRole:
-      "Phase 2 — explore pathways to pilot and scale your project across the Southwest district.",
-    synopsis:
-      "For teams partnering with Lakeside, NUHS, and MINDS: get feedback and support on potentially scaling your project across the Southwest district, in an engagement with Southwest CDC and Mayor Low Yen Ling.\n\nAll other teams are welcome to come onboard too if you'd like an additional round of feedback before Demo Day.",
-    cta: { label: "Sign Up Opening Soon" },
-  },
-  {
     id: 9,
     label: "Demo Day",
     title: "Show Your Solution",
@@ -267,7 +254,6 @@ const timeline: TimelineNode[] = [
   { kind: "event", event: eventById(6) },
   { kind: "phase", phase: phases[1] },
   { kind: "event", event: eventById(7) },
-  { kind: "event", event: eventById(8) },
   { kind: "event", event: eventById(9) },
 ];
 

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
 import { ArrowDown, ArrowRight, X } from "lucide-react";
 import { Seo } from "./Seo";
 
@@ -78,7 +77,7 @@ const categories: Category[] = [
             number: 2,
             headline: "Bleed guidance at 2am on a Sunday",
             problem:
-              "Bleeds don't keep clinic hours. When one happens at night, on a weekend, or on a public holiday, families rely on memory of what a nurse said months ago, WhatsApp peer advice, or Google. Site-specific first aid (a joint bleed is not a muscle bleed is not a gum bleed) is hard to recall under stress, so families defer reporting until Monday — and delay raises the risk of long-term joint damage.",
+              "Bleeds don't keep within clinic hours.. When one happens at night, on a weekend, or on a public holiday, families rely on memory of what a nurse said months ago, WhatsApp peer advice, or Google. Site-specific first aid (a joint bleed is not a muscle bleed is not a gum bleed) is hard to recall under stress, so families defer reporting until Monday — and delay raises the risk of long-term joint damage.",
             tags: ["Patient education", "Triage & first aid", "Off-hours support"],
           },
           {
@@ -360,7 +359,6 @@ function ProblemCard({
 }
 
 export function ProblemStatementsPage() {
-  const navigate = useNavigate();
   const [activeTag, setActiveTag] = useState<string | null>(null);
 
   const toggleTag = (tag: string) =>
@@ -615,14 +613,14 @@ export function ProblemStatementsPage() {
                   >
                     Partners
                   </p>
-                  <div className="flex flex-wrap items-center gap-2">
+                  <div className="flex flex-nowrap items-center gap-1.5">
                     {cat.partners.map((partner) => (
                       <span
                         key={partner.name}
                         className="inline-flex items-center justify-center rounded-lg bg-white"
                         style={{
-                          height: "44px",
-                          padding: "5px 10px",
+                          height: "40px",
+                          padding: "4px 8px",
                           border: "1px solid #ececf1",
                         }}
                         title={partner.name}
@@ -633,7 +631,7 @@ export function ProblemStatementsPage() {
                           loading="lazy"
                           style={{
                             maxHeight: "100%",
-                            maxWidth: "88px",
+                            maxWidth: "64px",
                             objectFit: "contain",
                           }}
                         />
@@ -800,7 +798,7 @@ export function ProblemStatementsPage() {
             alongside — and with OGP and PSS behind you to take the strongest
             solutions further.
           </p>
-          <div className="flex flex-wrap justify-center gap-3 mb-10">
+          <div className="flex flex-wrap justify-center gap-3">
             <a
               href={TELEGRAM_CHANNEL_URL}
               target="_blank"
@@ -816,36 +814,7 @@ export function ProblemStatementsPage() {
             >
               Join the Telegram channel
             </a>
-            <button
-              type="button"
-              onClick={() => navigate("/join/patient-organisation")}
-              className="inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold"
-              style={{
-                fontSize: "0.95rem",
-                background: "rgba(255,255,255,0.08)",
-                color: "#ffffff",
-                border: "1px solid rgba(255,255,255,0.25)",
-                cursor: "pointer",
-              }}
-            >
-              Partner organisations: bring us your problem
-            </button>
           </div>
-          <p
-            style={{
-              fontSize: "0.9rem",
-              fontWeight: 700,
-              color: "#c7c5d4",
-              marginBottom: "0.6rem",
-            }}
-          >
-            Find the Need | Hack the Fix · #HackitRx2026
-          </p>
-          <p style={{ fontSize: "0.82rem", color: "#8a8899", lineHeight: 1.6 }}>
-            Organised by the Pharmaceutical Society of Singapore (PSS) in
-            partnership with Open Government Products (OGP) and the Alliance of
-            Patient Organisations Singapore (APOS).
-          </p>
         </div>
       </section>
     </div>
