@@ -12,6 +12,7 @@ import hssLogo from "../../../images/Organisations Photos/Haemophilia Society of
 import nuhsLogo from "../../../images/Organisations Photos/NUHS/nuhs.png";
 
 const TELEGRAM_CHANNEL_URL = "https://t.me/+GLw0053W_PQxYzc9";
+const PARTNER_BOOKING_URL = "https://tinyurl.com/PObookinghackitRx";
 
 interface Problem {
   number: number;
@@ -456,6 +457,21 @@ export function ProblemStatementsPage() {
             >
               Meet the partners
             </button>
+            <a
+              href={PARTNER_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold transition-transform duration-200 hover:scale-[1.03]"
+              style={{
+                fontSize: "0.95rem",
+                background: "#1a1a2e",
+                color: "#ffffff",
+                textDecoration: "none",
+                boxShadow: "0 4px 16px rgba(26,26,46,0.25)",
+              }}
+            >
+              Pick your top 3 partners 👉 <ArrowRight size={16} />
+            </a>
           </div>
         </div>
       </section>
@@ -799,7 +815,7 @@ export function ProblemStatementsPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <a
-              href={TELEGRAM_CHANNEL_URL}
+              href={PARTNER_BOOKING_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold transition-transform duration-200 hover:scale-[1.03]"
@@ -809,6 +825,21 @@ export function ProblemStatementsPage() {
                 color: "#ffffff",
                 textDecoration: "none",
                 boxShadow: "0 4px 16px rgba(236,72,153,0.35)",
+              }}
+            >
+              Pick your top 3 partners 👉 <ArrowRight size={16} />
+            </a>
+            <a
+              href={TELEGRAM_CHANNEL_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-lg px-6 py-3 font-semibold transition-transform duration-200 hover:scale-[1.03]"
+              style={{
+                fontSize: "0.95rem",
+                background: "rgba(255,255,255,0.08)",
+                color: "#ffffff",
+                border: "1px solid rgba(255,255,255,0.25)",
+                textDecoration: "none",
               }}
             >
               Join the Telegram channel
