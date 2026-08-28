@@ -526,8 +526,7 @@ export function ProblemStatementsPage() {
           {[
             "Most healthcare solutions are built for patients, not with them. HackitRx26 sets out to change that. Over the past months, eight patient organisations and healthcare providers have worked with us to surface the problems they face every day — not the ones that look good on a slide, but the ones that cost their communities sleep, money, time and health.",
             "None of them are commercially glamorous. All of them matter. That is the point: HackitRx exists to build public goods in healthcare — rooted in real patient need, owned by the organisations that use them, and supported on a path to scale by Open Government Products (OGP) and the Pharmaceutical Society of Singapore (PSS), together with the Alliance of Patient Organisations Singapore (APOS).",
-            "The ten problems below follow a single patient journey: what happens between clinic visits, what happens at the point of care, and what happens beyond the hospital, out in the community. Pick the moment that matters to you.",
-            "You won't build alone. From Kick-off Day (30 Aug) to Demo Day (27 Sep), every team works directly with its partner organisation, with mentors from healthcare, design and technology alongside.",
+            "The ten problems below follow a single patient journey: what happens between clinic visits, what happens at the point of care, and what happens beyond the hospital, out in the community. Pick the moment that matters to you."
           ].map((para, i) => (
             <p
               key={i}
