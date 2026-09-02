@@ -21,6 +21,17 @@ const organisers = [
   },
 ];
 
+const partners = [
+  {
+    name: "OpenAI",
+    logo: "/openai.png",
+  },
+  {
+    name: "Gemini",
+    logo: "/gemini.png",
+  },
+];
+
 export function Sponsors() {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -116,6 +127,58 @@ export function Sponsors() {
               />
             </div>
           ))}
+        </div>
+
+        {/* Partner Logos */}
+        <div
+          className="mt-20 text-center"
+          style={{
+            opacity: isVisible ? 1 : 0,
+            transform: isVisible ? "translateY(0)" : "translateY(30px)",
+            transition: "opacity 0.8s ease-out 0.15s, transform 0.8s ease-out 0.15s",
+          }}
+        >
+          <h2
+            className="mb-10"
+            style={{
+              fontSize: "clamp(1.25rem, 2.4vw, 1.65rem)",
+              fontWeight: 600,
+              color: "rgba(74, 74, 94, 0.62)",
+              lineHeight: 1.3,
+            }}
+          >
+            Our Partners
+          </h2>
+
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12">
+            {partners.map((partner) => (
+              <div
+                key={partner.name}
+                className="w-full max-w-[280px] sm:max-w-[320px] flex items-center justify-center px-8 py-6 rounded-2xl transition-all duration-300"
+                style={{
+                  minHeight: "132px",
+                  background: "rgba(255, 255, 255, 0.72)",
+                  boxShadow: "0 10px 30px rgba(26, 26, 46, 0.06)",
+                  border: "1px solid rgba(236, 72, 153, 0.08)",
+                }}
+              >
+                <img
+                  src={partner.logo}
+                  alt={partner.name}
+                  className={`${partner.name === "Gemini" ? "max-h-14 sm:max-h-16" : "max-h-20 sm:max-h-24"} w-auto max-w-full object-contain transition-all duration-300`}
+                  style={{ filter: "grayscale(10%)", opacity: 0.9 }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.filter = "grayscale(0%)";
+                    e.currentTarget.style.opacity = "1";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.filter = "grayscale(10%)";
+                    e.currentTarget.style.opacity = "0.9";
+                  }}
+                />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
