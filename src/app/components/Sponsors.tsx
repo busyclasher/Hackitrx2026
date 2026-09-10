@@ -25,10 +25,14 @@ const partners = [
   {
     name: "OpenAI",
     logo: "/openai.png",
+    // Roughly 16:9 mark — size by height.
+    imgClass: "max-h-20 sm:max-h-24 w-auto max-w-full",
   },
   {
-    name: "Gemini",
-    logo: "/gemini.png",
+    name: "Lovable AI",
+    logo: "/lovable.svg",
+    // Wide wordmark — size by width so it reads at the same visual weight.
+    imgClass: "w-full max-w-[230px] sm:max-w-[250px] h-auto",
   },
 ];
 
@@ -147,7 +151,7 @@ export function Sponsors() {
               lineHeight: 1.3,
             }}
           >
-            Our Partners
+            Our Tech Partners
           </h2>
 
           <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12">
@@ -165,7 +169,7 @@ export function Sponsors() {
                 <img
                   src={partner.logo}
                   alt={partner.name}
-                  className={`${partner.name === "Gemini" ? "max-h-14 sm:max-h-16" : "max-h-20 sm:max-h-24"} w-auto max-w-full object-contain transition-all duration-300`}
+                  className={`${partner.imgClass} object-contain transition-all duration-300`}
                   style={{ filter: "grayscale(10%)", opacity: 0.9 }}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.filter = "grayscale(0%)";

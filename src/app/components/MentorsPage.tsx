@@ -27,6 +27,8 @@ import tatMingPhoto from "../../../images/Mentors/optimized/ng-tat-ming.jpg";
 import malcolmPhoto from "../../../images/Mentors/optimized/malcolm-tan.jpg";
 import danielPhoto from "../../../images/Mentors/optimized/daniel-lim.jpg";
 import hueiXinPhoto from "../../../images/Mentors/optimized/lou-huei-xin.jpg";
+import sufyanPhoto from "../../../images/Mentors/optimized/sufyan-selamet.jpg";
+import alvinPhoto from "../../../images/Mentors/optimized/alvin-ngeow.jpg";
 
 const MENTOR_BOOKING_URL = "https://forms.gle/3yGmUzzih2nvzvPp6";
 
@@ -320,6 +322,30 @@ const mentors: Mentor[] = [
       "Patient and public empowerment · Helping patients navigate the complex healthcare system · Use of technologies and AI",
     contribute: [
       "I can provide insight and help teams navigate the healthcare landscape, fine-tune the problem statement and test out the solution. I also bring the caregiver perspective.",
+    ],
+  },
+  {
+    name: "Sufyan Selamet",
+    title: "Senior Product Designer, Open Government Products",
+    domain: "publicgood",
+    photo: sufyanPhoto,
+    whatIDo: [
+      "I'm a product designer who works on government productivity tools.",
+    ],
+  },
+  {
+    name: "Dr Alvin Ngeow",
+    title:
+      "Clinical Assistant Professor, Neonatal & Developmental Medicine, Singapore General Hospital",
+    domain: "healthcare",
+    photo: alvinPhoto,
+    whatIDo: [
+      "I'm a neonatologist and clinician-innovator at SGH. I lead BiliSG©, a smartphone AI app for neonatal jaundice screening now in multi-site validation and expanding regionally. My work spans clinical AI validation, regulatory strategy (medical device QMS), health economics, and translating research into deployed digital health tools — from grant funding through IRB approval to real-world implementation and spin-off.",
+    ],
+    interests:
+      "Digital health & mobile AI diagnostics · Medical devices & regulatory pathways · Health economics · Paediatrics and neonatology · Implementation science",
+    contribute: [
+      "Helping teams sharpen clinical problem framing, design validation studies that regulators and hospitals will trust, navigate healthcare regulatory and adoption hurdles, and pitch health-tech ideas convincingly to clinical stakeholders and funders.",
     ],
   },
 ];
