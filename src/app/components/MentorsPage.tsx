@@ -125,13 +125,13 @@ const mentors: Mentor[] = [
   {
     name: "Levonne Goh",
     title:
-      "Manager, Centre for Impact Investing and Practices, Temasek Trust · MPH Class of 2025, NUS · Volunteer, TriGen",
+      "MPH Class of 2025, NUS · Volunteer, TriGen",
     domain: "publicgood",
     initials: "LG",
     whatIDo: [
       "Levonne has years of experience across the public and philanthropy sectors. She started her career at Enterprise Singapore, the local government agency championing enterprise development, where she helped engage and support healthcare and biomedical companies to grow and internationalise.",
       "Levonne holds a Bachelor of Arts (Honours) in Southeast Asian Studies from the National University of Singapore, as well as a Master in Public Health from the Saw Swee Hock School of Public Health. She will be embarking on a PhD with the University of Queensland in January 2027, where her research focuses on youth development. She is also an avid language learner, with intermediate to advanced proficiency in Japanese, Korean and Thai.",
-      "Currently, Levonne is with the Centre for Impact Investing and Practices (CIIP), an entity within Temasek Trust. Her work entails research into impact investing opportunities and programme translation, focusing on areas such as sustainable agriculture and climate adaptation. Outside of CIIP, Levonne is an active youth leader and volunteer. She was the President of AIESEC Singapore, the local chapter of the world's largest youth-run organisation. Since 2021, she has also been with the Global Shapers Community, an initiative of the World Economic Forum to engage active changemakers across the world. She is also part of the research team at TriGen, supporting the evaluation of the inaugural Health Youth Leaders Programme (HYLP).",
+      "Levonne is an active youth leader and volunteer. She was the President of AIESEC Singapore, the local chapter of the world's largest youth-run organisation. Since 2021, she has also been with the Global Shapers Community, an initiative of the World Economic Forum to engage active changemakers across the world. She is also part of the research team at TriGen, supporting the evaluation of the inaugural Health Youth Leaders Programme (HYLP).",
     ],
   },
   {
