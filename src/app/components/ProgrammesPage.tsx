@@ -26,6 +26,7 @@ interface EventItem {
   cta: { label: string; href?: string };
   ended?: boolean;
   milestone?: boolean;
+  finale?: boolean;
   defaultOpen?: boolean;
   sprintRole?: string;
   audience?: string;
@@ -91,13 +92,13 @@ const events: EventItem[] = [
     time: "10:00 AM – 5:00 PM",
     venue: "Outram Community Hospital (OCH)",
     venueHref: "https://maps.app.goo.gl/WMC1NarwdMCsjXVu7",
-    defaultOpen: true,
     sprintRole:
       "Day 1 of your 4-week build sprint — leave with a team, a problem statement, and a patient organisation partner.",
     synopsis:
       "The starting line for HackitRx 2026. Hear directly from the patient organisations behind this year's problem statements, understand the real needs driving each one, and find the challenge you want to spend the next four weeks solving. It is also where teams come together — come as a solo builder, a pair, or a full team, and leave with people whose skills complement yours.\n\nExpect talks from leaders in the healthcare space, small-group sharing sessions with our partner patient organisations, and a full afternoon dedicated to team matching and problem statement selection. Registration is required and open to participants who have received an acceptance email. Representatives from patient organisations and advocacy groups are also warmly welcome to observe — please indicate your organisation when registering.",
     image: kickoffImage,
-    cta: { label: "RSVP Now!", href: "https://luma.com/md536irp" },
+    cta: { label: "Event Ended" },
+    ended: true,
     schedule: [
       {
         time: "10:00 – 10:30",
@@ -177,7 +178,8 @@ const events: EventItem[] = [
       "Turn what you heard at Kick-off into concepts worth building — before you write a single line of code.",
     synopsis:
       "You've heard the problems, straight from the patients and patient organisations living them. Now what?\n\nThe jump from “we understand the need” to “we have a solution worth building” is where most healthtech ideas quietly fall apart — teams either fixate on their first idea or drown in fifty directions at once.\n\nIn this 1-hour session, HackitRx 2026 partners with Singapore Biodesign to walk you through the next stage of the biodesign process, the framework behind hundreds of successful medtech and healthtech innovations worldwide:\n\nConcept generation — how to brainstorm widely and prototype early, so your team explores the full solution space instead of anchoring on the obvious answer.\n\nConcept selection — how to converge on the best concept through a structured, objective process, so the idea you commit to is chosen on evidence, not enthusiasm.\n\nYou'll leave with a practical method your team can apply directly to the needs you've identified with our patient organisation partners — before you write a single line of code.",
-    cta: { label: "Register Now", href: "https://luma.com/mcmvneds" },
+    cta: { label: "Event Ended" },
+    ended: true,
   },
   {
     id: 5,
@@ -191,7 +193,8 @@ const events: EventItem[] = [
       "Phase 1 — dig deeper into your problem with patient organisations and SSAs before you commit your build direction.",
     synopsis:
       "A physical space at the OGP office at Lazada One, open to all patient organisations, social service agencies, and hackers. Come and run your own problem discovery — interview partners, pressure-test assumptions, and work alongside other teams doing the same.",
-    cta: { label: "Sign Up Opening Soon" },
+    cta: { label: "Event Ended" },
+    ended: true,
   },
   {
     id: 6,
@@ -205,7 +208,8 @@ const events: EventItem[] = [
       "The checkpoint between the two phases — close out discovery, pressure-test your direction, and enter Phase 2 with a clear build plan.",
     synopsis:
       "You will showcase what you've found with your patient organisation since Kick-off Day, and — at minimum — the approach you plan to take to tackle the problem: slides, Figma, or a prototype, whichever tells the story best.\n\nPatient organisations and mentors will be there to give feedback and honest criticism, drawing on their experience of what works and what doesn't. Come ready to be grilled — it's the fastest way to a stronger solution.",
-    cta: { label: "Sign Up Opening Soon" },
+    cta: { label: "Event Ended" },
+    ended: true,
   },
   {
     id: 7,
@@ -219,20 +223,71 @@ const events: EventItem[] = [
       "Phase 2 — validate your prototype with patient organisations in person and iterate on the spot.",
     synopsis:
       "A second open co-working day at the OGP office at Lazada One, open to all patient organisations, social service agencies, and hackers. Bring your work-in-progress, put it in front of the people you're building for, and keep the discovery going as your solution takes shape.",
-    cta: { label: "Sign Up Opening Soon" },
+    cta: { label: "Event Ended" },
+    ended: true,
   },
   {
     id: 9,
     label: "Demo Day",
     title: "Show Your Solution",
     dateLabel: "27 September 2026",
-    time: "To be confirmed",
-    venue: "To be confirmed",
+    time: "11:00 AM – 5:00 PM",
+    venue: "Singapore · exact location shared on Luma upon registration",
+    finale: true,
+    defaultOpen: true,
     sprintRole:
-      "The finish line — present the POC/MVP you've built with patients over the past four weeks.",
+      "The finish line — showcase the POC/MVP you've built with patients over the past four weeks.",
     synopsis:
-      "The culmination of HackitRx 2026. After four weeks of building with patients, teams present their solutions to a panel of judges from healthcare, technology, and policy — celebrating the work and exploring pathways to pilot and scale what they have built.",
-    cta: { label: "Sign Up Opening Soon" },
+      "The finishing line of HackitRx 2026. After four weeks of building, testing and iterating, showcase your solution at your team's booth in an exhibition-style format. Judges will rank projects using Gavel, a pairwise-comparison judging system used by leading hackathons such as HackMIT.\n\nRegistration is required for accepted teams. Patient and social service organisations, mentors, and anyone curious about tech in patient care are warmly welcome. Judges, please arrive by 12:30 PM for briefing.",
+    image: kickoffImage,
+    cta: { label: "Register Now!", href: "https://luma.com/f2lhz1fj" },
+    schedule: [
+      {
+        time: "11:00 – 12:30",
+        activity: "Hacker Briefing, Lunch & Booth Setup",
+        remarks: ["Halal lunch provided. Teams set up their booths."],
+      },
+      {
+        time: "12:30 – 1:00",
+        activity: "Opening, Sharing & Group Photo",
+        remarks: [
+          "Opening by Dr Quek Lit Sin, Assistant Chief Executive, NUHS and Senior Consultant, Department of Emergency Medicine, NTFGH.",
+          "Sharing by Hong Yi, Director, Open Government Products.",
+        ],
+      },
+      {
+        time: "1:00 – 2:20",
+        activity: "Judging at the Team Booths",
+        remarks: ["Judges visit each booth and rank projects using Gavel."],
+      },
+      {
+        time: "2:20 – 2:45",
+        activity: "Tea Break & Briefing for Shortlisted Teams",
+      },
+      {
+        time: "2:45 – 3:30",
+        activity: "Rapid-fire Pitches by Shortlisted Teams",
+        remarks: [
+          "Up to 5 teams, shortlisted based on Gavel results. 5 judges, each taking a different lens — we will liaise with shortlisted teams separately.",
+        ],
+      },
+      {
+        time: "3:30 – 3:40",
+        activity: "Sharing by PeekSG",
+        remarks: ["While the judges deliberate on the winners."],
+      },
+      {
+        time: "3:40 – 4:15",
+        activity: "Prize Presentation & Closing",
+        remarks: [
+          "Closing remarks by PSS and sharing by SGPO (MCCY).",
+        ],
+      },
+      {
+        time: "4:15 – 5:00",
+        activity: "Networking",
+      },
+    ],
   },
 ];
 
@@ -485,8 +540,8 @@ function PastEventCard({ event }: { event: EventItem }) {
   );
 }
 
-/** Full-day run-of-show for Kick-off Day. */
-function KickoffSchedule({ schedule }: { schedule: ScheduleRow[] }) {
+/** Full-day run-of-show for Kick-off Day and Demo Day. */
+function EventSchedule({ schedule }: { schedule: ScheduleRow[] }) {
   return (
     <div
       className="rounded-xl overflow-hidden mb-6"
@@ -567,8 +622,8 @@ function UpcomingEventCard({ event }: { event: EventItem }) {
   const [scheduleOpen, setScheduleOpen] = useState(false);
 
   const active = Boolean(event.cta.href);
-  const isKickoff = Boolean(event.schedule);
-  const highlighted = isKickoff || event.milestone;
+  const hasSchedule = Boolean(event.schedule);
+  const highlighted = hasSchedule || event.milestone || event.finale;
 
   return (
     <div
@@ -766,7 +821,7 @@ function UpcomingEventCard({ event }: { event: EventItem }) {
                   </span>
                 )}
 
-                {isKickoff && (
+                {hasSchedule && (
                   <button
                     type="button"
                     aria-expanded={scheduleOpen}
@@ -810,9 +865,9 @@ function UpcomingEventCard({ event }: { event: EventItem }) {
             )}
           </div>
 
-          {isKickoff && scheduleOpen && event.schedule && (
+          {hasSchedule && scheduleOpen && event.schedule && (
             <div className="mt-6">
-              <KickoffSchedule schedule={event.schedule} />
+              <EventSchedule schedule={event.schedule} />
             </div>
           )}
         </div>
@@ -924,7 +979,8 @@ export function ProgrammesPage() {
                   <div
                     className="mt-1 rounded-full flex-shrink-0"
                     style={
-                      active || event.milestone
+                      !event.ended &&
+                      (active || event.milestone || event.finale)
                         ? {
                             width: "20px",
                             height: "20px",
@@ -970,6 +1026,23 @@ export function ProgrammesPage() {
                         style={{
                           fontSize: "0.7rem",
                           fontWeight: 700,
+                          color: event.ended ? "#9ca3af" : "#ffffff",
+                          background: event.ended
+                            ? "#f1f1f4"
+                            : "linear-gradient(135deg, #ec4899, #a855f7)",
+                          textTransform: "uppercase",
+                          letterSpacing: "0.05em",
+                        }}
+                      >
+                        Mid-Point
+                      </span>
+                    )}
+                    {event.finale && (
+                      <span
+                        className="px-2.5 py-0.5 rounded-full"
+                        style={{
+                          fontSize: "0.7rem",
+                          fontWeight: 700,
                           color: "#ffffff",
                           background:
                             "linear-gradient(135deg, #ec4899, #a855f7)",
@@ -977,7 +1050,7 @@ export function ProgrammesPage() {
                           letterSpacing: "0.05em",
                         }}
                       >
-                        Mid-Point
+                        Grand Finale
                       </span>
                     )}
                     {event.tentative && (
