@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
-import { MapPin, Clock, ChevronDown } from "lucide-react";
+import { MapPin, Clock, ChevronDown, Gavel } from "lucide-react";
 import lumaImage from "../../../images/fireside-1-luma.jpg";
 import { Seo } from "./Seo";
+import { JudgesModal } from "./JudgesModal";
 
 const talk2Image = "/Talk2_website_square.png";
 const kickoffImage = "/kickoff-day-square.png";
@@ -27,6 +28,7 @@ interface EventItem {
   ended?: boolean;
   milestone?: boolean;
   finale?: boolean;
+  showJudges?: boolean;
   defaultOpen?: boolean;
   sprintRole?: string;
   audience?: string;
@@ -234,6 +236,7 @@ const events: EventItem[] = [
     time: "11:00 AM – 5:00 PM",
     venue: "Singapore · exact location shared on Luma upon registration",
     finale: true,
+    showJudges: true,
     defaultOpen: true,
     sprintRole:
       "The finish line — showcase the POC/MVP you've built with patients over the past four weeks.",
@@ -620,6 +623,7 @@ function EventSchedule({ schedule }: { schedule: ScheduleRow[] }) {
 function UpcomingEventCard({ event }: { event: EventItem }) {
   const [open, setOpen] = useState(Boolean(event.defaultOpen));
   const [scheduleOpen, setScheduleOpen] = useState(false);
+  const [judgesOpen, setJudgesOpen] = useState(false);
 
   const active = Boolean(event.cta.href);
   const hasSchedule = Boolean(event.schedule);
@@ -850,6 +854,24 @@ function UpcomingEventCard({ event }: { event: EventItem }) {
                   </button>
                 )}
               </div>
+
+              {event.showJudges && (
+                <button
+                  type="button"
+                  onClick={() => setJudgesOpen(true)}
+                  className="inline-flex items-center gap-2 rounded-lg px-5 py-2.5 mt-3 font-semibold transition-transform duration-200 hover:scale-[1.03]"
+                  style={{
+                    fontSize: "0.95rem",
+                    background: "#ffffff",
+                    color: "#ec4899",
+                    border: "1px solid rgba(236,72,153,0.35)",
+                    cursor: "pointer",
+                  }}
+                >
+                  <Gavel size={16} />
+                  Meet the Judges
+                </button>
+              )}
             </div>
 
             {event.image && (
@@ -864,6 +886,13 @@ function UpcomingEventCard({ event }: { event: EventItem }) {
               </div>
             )}
           </div>
+
+          {event.showJudges && (
+            <JudgesModal
+              isOpen={judgesOpen}
+              onClose={() => setJudgesOpen(false)}
+            />
+          )}
 
           {hasSchedule && scheduleOpen && event.schedule && (
             <div className="mt-6">
