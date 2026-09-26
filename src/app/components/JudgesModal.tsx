@@ -5,10 +5,12 @@ import adamCheePhoto from "../../../images/Judges/optimized/adam-chee.jpg";
 import doreenTanPhoto from "../../../images/Judges/optimized/doreen-tan.jpg";
 import carlosEisenbergPhoto from "../../../images/Judges/optimized/carlos-eisenberg.jpg";
 import cheongWeiYangPhoto from "../../../images/Judges/optimized/cheong-wei-yang.jpg";
+import hyginFernandezPhoto from "../../../images/Judges/optimized/hygin-fernandez.jpg";
 import jasmineOngPhoto from "../../../images/Judges/optimized/jasmine-ong.jpg";
 import jonathanLeyPhoto from "../../../images/Judges/optimized/jonathan-ley.jpg";
 import kabilanPhoto from "../../../images/Judges/optimized/kabilan-elangovan.jpg";
 import kelvinTanPhoto from "../../../images/Judges/optimized/kelvin-tan.jpg";
+import liHongyiPhoto from "../../../images/Judges/optimized/li-hongyi.jpg";
 import limHongYeePhoto from "../../../images/Judges/optimized/lim-hong-yee.jpg";
 import lokeWaiChiongPhoto from "../../../images/Judges/optimized/loke-wai-chiong.jpg";
 import nicolasSpanoPhoto from "../../../images/Judges/optimized/nicolas-spano.jpg";
@@ -42,6 +44,11 @@ const judges: Judge[] = [
     photo: cheongWeiYangPhoto,
   },
   {
+    name: "Hygin Fernandez",
+    title: "Chief Operating Officer, OGP",
+    photo: hyginFernandezPhoto,
+  },
+  {
     name: "Jasmine Ong",
     title: "Clinician Innovator & Principal Clinical Pharmacist, SGH",
     photo: jasmineOngPhoto,
@@ -60,6 +67,11 @@ const judges: Judge[] = [
     name: "Kelvin Tan",
     title: "Associate Professor, SUSS",
     photo: kelvinTanPhoto,
+  },
+  {
+    name: "Li Hongyi",
+    title: "Director, OGP",
+    photo: liHongyiPhoto,
   },
   {
     name: "Lim Hong Yee",
