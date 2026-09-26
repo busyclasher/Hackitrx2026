@@ -63,7 +63,7 @@ const judges: Judge[] = [
   },
   {
     name: "Lim Hong Yee",
-    title: "President, PSS · Group Chief Pharmacist, NHG Health",
+    title: "President PSS · Group Chief Pharmacist, NHG Health · Director, Pharmacy, TTSH",
     photo: limHongYeePhoto,
   },
   {
