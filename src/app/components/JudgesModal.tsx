@@ -11,7 +11,9 @@ import jonathanLeyPhoto from "../../../images/Judges/optimized/jonathan-ley.jpg"
 import kabilanPhoto from "../../../images/Judges/optimized/kabilan-elangovan.jpg";
 import kelvinTanPhoto from "../../../images/Judges/optimized/kelvin-tan.jpg";
 import liHongyiPhoto from "../../../images/Judges/optimized/li-hongyi.jpg";
+import liZhaoPhoto from "../../../images/Judges/optimized/li-zhao.jpg";
 import limHongYeePhoto from "../../../images/Judges/optimized/lim-hong-yee.jpg";
+import tangYuPhoto from "../../../images/Judges/optimized/tang-yu.jpg";
 import lokeWaiChiongPhoto from "../../../images/Judges/optimized/loke-wai-chiong.jpg";
 import nicolasSpanoPhoto from "../../../images/Judges/optimized/nicolas-spano.jpg";
 
@@ -74,6 +76,11 @@ const judges: Judge[] = [
     photo: liHongyiPhoto,
   },
   {
+    name: "Li Zhao",
+    title: "Head of Product, EVYD",
+    photo: liZhaoPhoto,
+  },
+  {
     name: "Lim Hong Yee",
     title: "President PSS · Group Chief Pharmacist, NHG Health · Director, Pharmacy, TTSH",
     photo: limHongYeePhoto,
@@ -82,6 +89,11 @@ const judges: Judge[] = [
     name: "Nicolas Spano",
     title: "Engineering Director, OGP",
     photo: nicolasSpanoPhoto,
+  },
+  {
+    name: "Tang Yu",
+    title: "Head of Security & Corporate IT, EVYD",
+    photo: tangYuPhoto,
   },
   {
     name: "Dr Loke Wai Chiong",
